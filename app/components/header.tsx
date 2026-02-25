@@ -1,0 +1,96 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { NAV_ITEMS, SITE_NAME, CONTACT_INFO } from '@/app/lib/constants';
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-navy shadow-lg' : 'bg-navy/90'
+      }`}
+    >
+      {/* Top bar - hotline */}
+      <div className="hidden md:block bg-navy-dark text-white/80 text-xs py-1">
+        <div className="container mx-auto flex justify-end gap-4">
+          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-gold transition-colors">
+            Hotline: {CONTACT_INFO.hotline}
+          </a>
+          <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition-colors">
+            {CONTACT_INFO.email}
+          </a>
+        </div>
+      </div>
+
+      {/* Main nav */}
+      <div className="container mx-auto flex items-center justify-between py-3">
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-2">
+          <img
+            src="/images/misc/logo.png"
+            alt={SITE_NAME}
+            className="h-10 w-auto"
+          />
+        </a>
+
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="px-3 py-2 text-sm text-white/90 hover:text-gold transition-colors whitespace-nowrap"
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          className="lg:hidden text-white p-2"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            {isOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile nav */}
+      {isOpen && (
+        <nav className="lg:hidden bg-navy-dark border-t border-white/10">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block px-6 py-3 text-sm text-white/90 hover:text-gold hover:bg-white/5 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+          <div className="px-6 py-3 border-t border-white/10">
+            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-gold text-sm font-semibold">
+              {CONTACT_INFO.hotline}
+            </a>
+          </div>
+        </nav>
+      )}
+    </header>
+  );
+}

@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0B3D5C;
+  --gold: #D4AF37;
+  --cream: #F8F7F3;
+  --charcoal: #333333;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--charcoal);
+  background-color: #ffffff;
+  line-height: 1.7;
+}
+
+/* Vietnamese text optimization */
+p, li, span, td {
+  line-height: 1.7;
+}
+
+/* Gold accent line decoration */
+.gold-line {
+  @apply w-16 h-0.5 bg-gold mx-auto;
+}
+
+/* Section padding standard */
+.section-padding {
+  @apply py-16 md:py-24;
+}

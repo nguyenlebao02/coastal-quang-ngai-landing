@@ -1,0 +1,345 @@
+{
+  "description": "Mapping of original coastal.com.vn image URLs to local paths",
+  "generated": "2026-02-25",
+  "totalImages": 62,
+  "skipped": [
+    {
+      "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg",
+      "reason": "External Wikimedia asset - using inline SVG instead"
+    },
+    {
+      "url": "http://localhost/sycam/wp-content/uploads/2024/11/bg.png",
+      "reason": "Localhost development artifact"
+    }
+  ],
+  "images": {
+    "hero": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/6137dcc2-27ef-4546-b9b6-0a90dc38133a-1024x683.png",
+        "localPath": "/images/hero/coastal-logo-banner.png",
+        "description": "Coastal logo banner image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/du-an-haus-quang-ngai-co-hoi-dau-tu-bat-dong-san-t.jpg",
+        "localPath": "/images/hero/hero-banner-coastal-aerial.jpg",
+        "description": "Main hero banner - aerial view of Coastal project"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/2026-02-16-00.58.30.jpg",
+        "localPath": "/images/hero/hero-intro-coastal.jpg",
+        "description": "Introduction section hero image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/tong-quan-du-an-1-2.png",
+        "localPath": "/images/hero/project-overview-masterplan.png",
+        "description": "Project overview masterplan image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/01/pic-8.jpg",
+        "localPath": "/images/hero/coastal-overview-aerial.jpg",
+        "description": "Coastal project aerial overview"
+      }
+    ],
+    "amenities": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/nha-hat-do-la-tien-villa-1.jpg",
+        "localPath": "/images/amenities/opera-house.jpg",
+        "description": "Opera House - La Tien Villa amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/quang-truong-am-nhac-la-tien-villa.jpg",
+        "localPath": "/images/amenities/music-square.jpg",
+        "description": "Music Square - La Tien Villa amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/cong-trinh-bieu-tuong-nha-trang-villa.jpg",
+        "localPath": "/images/amenities/iconic-building.jpg",
+        "description": "Iconic Building - Nha Trang Villa amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/cong-vien-san-ho-1.jpg",
+        "localPath": "/images/amenities/coral-park.jpg",
+        "description": "Coral Park amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/ben-du-thuyen-1.jpg",
+        "localPath": "/images/amenities/yacht-marina.jpg",
+        "description": "Yacht Marina amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/yacht-clubhouse.jpg",
+        "localPath": "/images/amenities/yacht-clubhouse.jpg",
+        "description": "Yacht Clubhouse amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/trung-tam-hoi-nghi.jpg",
+        "localPath": "/images/amenities/conference-center.jpg",
+        "description": "Conference Center amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/boutique-house.jpg",
+        "localPath": "/images/amenities/boutique-house.jpg",
+        "description": "Boutique House amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/san-choi-tre-em.jpg",
+        "localPath": "/images/amenities/children-playground.jpg",
+        "description": "Children Playground amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/khu-vui-choi-cho-be.jpg",
+        "localPath": "/images/amenities/kids-play-area.jpg",
+        "description": "Kids Play Area amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/hoi-boi-cho-tre-em.jpg",
+        "localPath": "/images/amenities/children-swimming-pool.jpg",
+        "description": "Children Swimming Pool amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/ho-canh-quan.jpg",
+        "localPath": "/images/amenities/landscape-lake.jpg",
+        "description": "Landscape Lake amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/khu-the-thao.jpg",
+        "localPath": "/images/amenities/sports-area.jpg",
+        "description": "Sports Area amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/4-san-pickleball.jpg",
+        "localPath": "/images/amenities/pickleball-courts.jpg",
+        "description": "4 Pickleball Courts amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/ho-boi-trung-tam.jpg",
+        "localPath": "/images/amenities/central-swimming-pool.jpg",
+        "description": "Central Swimming Pool amenity"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/chu-thich-tien-ich.jpg",
+        "localPath": "/images/amenities/amenity-legend.jpg",
+        "description": "Amenity legend/key image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Bat-dong-san-nghe-thuat-van-hoa_-960x640-1.png",
+        "localPath": "/images/amenities/art-culture-real-estate.png",
+        "description": "Art and Culture Real Estate feature highlight"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Bat-dong-san-du-thuyen-hang-sang-ben-vinh-960x640-1.png",
+        "localPath": "/images/amenities/luxury-yacht-real-estate.png",
+        "description": "Luxury Yacht Real Estate feature highlight"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Bat-dong-san-ton-vinh-van-hoa-truyen-thong-bao-ton-thien-nhien-960x640-1.png",
+        "localPath": "/images/amenities/heritage-nature-real-estate.png",
+        "description": "Heritage and Nature Real Estate feature highlight"
+      }
+    ],
+    "interior": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-1-new-960x640-1.jpg",
+        "localPath": "/images/interior/interior-showcase-1.jpg",
+        "description": "Interior showcase image 1"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-3-new-800x1192.jpg.webp",
+        "localPath": "/images/interior/interior-showcase-3.webp",
+        "description": "Interior showcase image 3"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-2-new-800x1192.jpg.webp",
+        "localPath": "/images/interior/interior-showcase-2.webp",
+        "description": "Interior showcase image 2"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-song-lap-la-tien-villa-1.jpg",
+        "localPath": "/images/interior/semi-detached-villa-interior-1.jpg",
+        "description": "Semi-detached villa interior 1"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-song-lap-la-tien-villa-2.jpg",
+        "localPath": "/images/interior/semi-detached-villa-interior-2.jpg",
+        "description": "Semi-detached villa interior 2"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-song-lap-la-tien-villa-3.jpg",
+        "localPath": "/images/interior/semi-detached-villa-interior-3.jpg",
+        "description": "Semi-detached villa interior 3"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-song-lap-la-tien-villa-4.jpg",
+        "localPath": "/images/interior/semi-detached-villa-interior-4.jpg",
+        "description": "Semi-detached villa interior 4"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-don-lap-la-tien-villa.jpg",
+        "localPath": "/images/interior/detached-villa-interior-1.jpg",
+        "description": "Detached villa interior 1"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-don-lap-la-tien-villa-1.jpg",
+        "localPath": "/images/interior/detached-villa-interior-2.jpg",
+        "description": "Detached villa interior 2"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-don-lap-la-tien-villa-3.jpg",
+        "localPath": "/images/interior/detached-villa-interior-3.jpg",
+        "description": "Detached villa interior 3"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/noi-that-villa-don-lap-la-tien-villa-5.jpg",
+        "localPath": "/images/interior/detached-villa-interior-4.jpg",
+        "description": "Detached villa interior 4"
+      }
+    ],
+    "products": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Central-Villa-new-1023x575-1.jpg",
+        "localPath": "/images/products/central-villa.jpg",
+        "description": "Central Villa product type"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Nature-Villa-1-1023x575-1.jpg",
+        "localPath": "/images/products/nature-villa.jpg",
+        "description": "Nature Villa product type"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Hidden-Villa-1-1023x575-1.jpg",
+        "localPath": "/images/products/hidden-villa.jpg",
+        "description": "Hidden Villa product type"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/multikey.jpg",
+        "localPath": "/images/products/multikey-smart-design.jpg",
+        "description": "Multikey smart design concept"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/01/new-lost-in-nature.jpg",
+        "localPath": "/images/products/lost-in-nature-concept.jpg",
+        "description": "Lost in Nature design concept"
+      }
+    ],
+    "backgrounds": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-tong-quan-2.jpg",
+        "localPath": "/images/backgrounds/bg-overview-section.jpg",
+        "description": "Overview section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-CTA-11_8.jpg",
+        "localPath": "/images/backgrounds/bg-cta-dark.jpg",
+        "description": "Dark CTA section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-TONG-QUAN.jpg",
+        "localPath": "/images/backgrounds/bg-location-section.jpg",
+        "description": "Location section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-TONG-QUAN-1.jpg",
+        "localPath": "/images/backgrounds/bg-interior-section.jpg",
+        "description": "Interior section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-CTA-3.jpg",
+        "localPath": "/images/backgrounds/bg-cta-light.jpg",
+        "description": "Light CTA section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-loai-sp-new.jpg",
+        "localPath": "/images/backgrounds/bg-product-types.jpg",
+        "description": "Product types section background"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/BG-NEW.jpg",
+        "localPath": "/images/backgrounds/bg-layout-section.jpg",
+        "description": "Layout section background"
+      }
+    ],
+    "location": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/map-vi-tri-NEW-687x854-1.png",
+        "localPath": "/images/location/location-map.png",
+        "description": "Location map of Coastal Quang Ngai"
+      }
+    ],
+    "news": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/vi-tri-coastal-quang-ngai-kham-pha-tiem-nang-vang-.jpg",
+        "localPath": "/images/news/blog-location-golden-potential.jpg",
+        "description": "Blog post: Location golden potential"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/haus-quang-ngai-kham-pha-thiet-ke-thi-cong-noi-tha.jpg",
+        "localPath": "/images/news/blog-interior-design-construction.jpg",
+        "description": "Blog post: Interior design and construction"
+      }
+    ],
+    "icons": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/share_location-30x30-1.png",
+        "localPath": "/images/icons/icon-share-location.png",
+        "description": "Share location icon"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/timer_5-30x30-1.png",
+        "localPath": "/images/icons/icon-timer-5-min.png",
+        "description": "Timer 5 minutes icon"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/timer_10-30x30-1.png",
+        "localPath": "/images/icons/icon-timer-10-min.png",
+        "description": "Timer 10 minutes icon"
+      }
+    ],
+    "misc": [
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2026/02/ac975daa-7947-4a3e-822f-9da70bb9d77e-e1771307964419.png",
+        "localPath": "/images/misc/coastal-logo-identity.png",
+        "description": "Coastal logo/identity image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Vi-tri-hoi-tu-600x100-1.png",
+        "localPath": "/images/misc/title-location-convergence.png",
+        "description": "Section title: Location Convergence"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/He-tien-ich-giau-gia-tri-600x180-1.png",
+        "localPath": "/images/misc/title-rich-amenity-system.png",
+        "description": "Section title: Rich Amenity System"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Ban-giao-Full-noi-that-1.png",
+        "localPath": "/images/misc/title-full-interior-delivery.png",
+        "description": "Section title: Full Interior Delivery"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Chinh-sach-ban-hang-new.png",
+        "localPath": "/images/misc/sales-policy-infographic.png",
+        "description": "Sales policy infographic"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Loai-hinh-san-pham.png",
+        "localPath": "/images/misc/title-product-types.png",
+        "description": "Section title: Product Types"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Layout-dien-hinh.png",
+        "localPath": "/images/misc/typical-layout-plan.png",
+        "description": "Typical layout plan image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/4-KEY-min.png",
+        "localPath": "/images/misc/four-key-solutions.png",
+        "description": "4 Key Solutions image"
+      },
+      {
+        "originalUrl": "https://coastal.com.vn/wp-content/uploads/2025/08/Hinh-anh-Video-thuc-te-.png",
+        "localPath": "/images/misc/title-real-photos-video.png",
+        "description": "Section title: Real Photos and Video"
+      }
+    ]
+  }
+}
