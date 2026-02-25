@@ -43,16 +43,18 @@ export default function IntroductionSection() {
         {/* 3 highlight cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {INTRO_HIGHLIGHTS.map((item) => (
-            <div key={item.title} className="group text-center">
-              <div className="overflow-hidden rounded-lg mb-4">
+            <div key={item.title} className="group bg-white rounded-lg overflow-hidden shadow-sm">
+              <div className="overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="font-heading text-lg font-bold text-charcoal mb-2">{item.title}</h3>
-              <p className="text-charcoal/70 text-sm">{item.description}</p>
+              <div className="p-4 text-center">
+                <h3 className="font-heading text-lg font-bold text-charcoal mb-2">{item.title}</h3>
+                <p className="text-charcoal/60 text-sm">{item.description}</p>
+              </div>
             </div>
           ))}
         </div>

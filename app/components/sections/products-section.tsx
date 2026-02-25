@@ -17,21 +17,21 @@ export default function ProductsSection() {
           <div className="rose-line mb-6" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {PRODUCT_TYPES.map((product) => (
             <div
               key={product.id}
-              className="group overflow-hidden rounded-lg bg-white shadow-sm border border-gray-100"
+              className="group overflow-hidden rounded-lg bg-white shadow-md"
             >
               <div className="overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
-              <div className="p-4 text-center">
-                <h3 className="text-charcoal font-heading text-lg font-bold">{product.name}</h3>
+              <div className="p-3 text-center">
+                <h3 className="text-charcoal font-heading text-base font-bold">{product.name}</h3>
               </div>
             </div>
           ))}

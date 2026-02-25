@@ -21,23 +21,17 @@ export default function HeroSection() {
           alt="Coastal Quảng Ngãi"
           className="h-20 md:h-28 mx-auto mb-6"
         />
-        <h1 className="font-heading text-4xl md:text-5xl lg:text-[64px] text-white font-bold leading-tight mb-3 uppercase tracking-[3px]">
+        <h1 className="font-heading text-4xl md:text-5xl lg:text-[64px] text-white font-bold leading-tight mb-4 uppercase tracking-[4px]">
           COASTAL QUẢNG NGÃI
         </h1>
-        <p className="text-white/90 text-base md:text-lg mb-2 font-heading uppercase tracking-wider">
+        <div className="w-20 h-[1px] bg-white/50 mx-auto mb-4" />
+        <p className="text-white/90 text-base md:text-lg mb-2 font-heading uppercase tracking-[3px]">
           Biểu tượng đô thị sinh thái biển
         </p>
-        <p className="text-white/70 text-sm md:text-base mb-8">
+        <p className="text-white/70 text-sm md:text-base mb-10 tracking-wide">
           Đô thị nghệ thuật văn hóa - Du thuyền hạng sang bên vịnh
         </p>
-        <Button href="#lien-he" className="text-base px-10 py-4">Đăng ký tư vấn</Button>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <svg className="w-6 h-6 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+        <Button href="#lien-he" className="text-base px-12 py-4">Đăng ký tư vấn</Button>
       </div>
     </section>
   );

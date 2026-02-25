@@ -15,21 +15,21 @@ export default function ContactSection() {
           <h3 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
             Liên hệ với chúng tôi
           </h3>
-          <div className="w-16 h-0.5 bg-white/60 mx-auto mb-4" />
+          <div className="w-16 h-[1px] bg-white/60 mx-auto mb-4" />
           <p className="text-white/80">
             Để lại thông tin, chuyên viên tư vấn sẽ liên hệ bạn trong 24h
           </p>
         </div>
 
         {submitted ? (
-          <div className="bg-white/15 backdrop-blur-sm rounded-lg p-10 text-center">
+          <div className="bg-white rounded-lg p-10 text-center">
             <p className="text-cta-amber text-2xl font-heading font-bold mb-2">Cảm ơn bạn!</p>
-            <p className="text-white/70">Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm nhất.</p>
+            <p className="text-charcoal/70">Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm nhất.</p>
           </div>
         ) : (
           <form
             onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
-            className="bg-white/10 backdrop-blur-sm rounded-lg p-8 space-y-5"
+            className="bg-white rounded-lg p-8 space-y-5"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <input
@@ -37,37 +37,37 @@ export default function ContactSection() {
                 name="name"
                 placeholder="Họ và tên *"
                 required
-                className="w-full px-4 py-3 bg-white/15 border border-white/25 rounded text-white placeholder-white/60 focus:border-cta-amber focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
               />
               <input
                 type="tel"
                 name="phone"
                 placeholder="Số điện thoại *"
                 required
-                className="w-full px-4 py-3 bg-white/15 border border-white/25 rounded text-white placeholder-white/60 focus:border-cta-amber focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
               />
             </div>
             <input
               type="email"
               name="email"
               placeholder="Email"
-              className="w-full px-4 py-3 bg-white/15 border border-white/25 rounded text-white placeholder-white/60 focus:border-cta-amber focus:outline-none transition-colors"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
             />
 
             {/* Product type selection */}
             <div>
-              <p className="text-white/80 text-sm mb-3">Sản phẩm quan tâm:</p>
+              <p className="text-charcoal/70 text-sm mb-3">Sản phẩm quan tâm:</p>
               <div className="grid grid-cols-2 gap-3">
                 {CONTACT_PRODUCT_OPTIONS.map((option) => (
                   <label
                     key={option}
-                    className="flex items-center gap-2 text-white/80 text-sm cursor-pointer hover:text-cta-amber transition-colors"
+                    className="flex items-center gap-2 text-charcoal/70 text-sm cursor-pointer hover:text-rose-beige transition-colors"
                   >
                     <input
                       type="radio"
                       name="product"
                       value={option}
-                      className="accent-cta-amber"
+                      className="accent-rose-beige"
                     />
                     {option}
                   </label>
@@ -79,7 +79,7 @@ export default function ContactSection() {
               name="message"
               placeholder="Nội dung tin nhắn"
               rows={4}
-              className="w-full px-4 py-3 bg-white/15 border border-white/25 rounded text-white placeholder-white/60 focus:border-cta-amber focus:outline-none transition-colors resize-none"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors resize-none"
             />
 
             <Button type="submit" className="w-full">Gửi thông tin</Button>
@@ -87,10 +87,10 @@ export default function ContactSection() {
         )}
 
         <div className="mt-8 text-center">
-          <p className="text-white/60 text-sm mb-2">Hoặc liên hệ trực tiếp</p>
+          <p className="text-white/70 text-sm mb-2">Hoặc liên hệ trực tiếp</p>
           <a
             href={`tel:${CONTACT_INFO.hotline}`}
-            className="text-cta-amber text-2xl font-heading font-bold hover:underline"
+            className="text-white text-2xl font-heading font-bold hover:underline"
           >
             {CONTACT_INFO.hotline}
           </a>

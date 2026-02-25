@@ -20,8 +20,10 @@ export default function Header() {
       }`}
     >
       {/* Top bar - hotline */}
-      <div className="hidden md:block bg-rose-beige text-white text-xs py-1">
-        <div className="container mx-auto flex justify-end gap-4">
+      <div className={`hidden md:block text-white text-[11px] py-1 transition-colors duration-300 ${
+        scrolled ? 'bg-rose-beige/90' : 'bg-black/30'
+      }`}>
+        <div className="container mx-auto flex justify-end gap-6 px-4">
           <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-white/80 transition-colors">
             Hotline: {CONTACT_INFO.hotline}
           </a>
@@ -32,23 +34,23 @@ export default function Header() {
       </div>
 
       {/* Main nav */}
-      <div className="container mx-auto flex items-center justify-between py-3">
+      <div className="container mx-auto flex items-center justify-between py-2 px-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <img
             src="/images/misc/coastal-logo-identity.png"
             alt={SITE_NAME}
-            className="h-10 w-auto"
+            className={`w-auto transition-all duration-300 ${scrolled ? 'h-9' : 'h-11'}`}
           />
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`px-3 py-2 text-[17.6px] font-heading font-bold transition-colors whitespace-nowrap uppercase tracking-wide ${
+              className={`px-2 xl:px-2.5 py-2 text-[13px] font-heading font-bold transition-colors whitespace-nowrap uppercase tracking-wide ${
                 scrolled
                   ? 'text-charcoal/80 hover:text-cta-orange'
                   : 'text-white/90 hover:text-cta-orange'
