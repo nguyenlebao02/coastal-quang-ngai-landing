@@ -9,7 +9,7 @@ export default function HeroSection() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero/hero-banner.jpg')" }}
+        style={{ backgroundImage: "url('/images/hero/hero-banner-coastal-aerial.jpg')" }}
       />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-navy/50" />

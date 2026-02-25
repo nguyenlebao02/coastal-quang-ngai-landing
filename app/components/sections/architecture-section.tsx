@@ -1,31 +1,37 @@
-import SectionWrapper from '@/app/components/ui/section-wrapper';
+'use client';
 
-const interiorGallery = {
-  semiDetached: {
-    title: 'Biệt thự song lập',
-    main: '/images/interior/semi-detached-villa-interior-1.jpg',
-    thumbs: [
-      '/images/interior/semi-detached-villa-interior-2.jpg',
-      '/images/interior/semi-detached-villa-interior-3.jpg',
-      '/images/interior/semi-detached-villa-interior-4.jpg',
-    ],
-  },
-  detached: {
-    title: 'Biệt thự đơn lập',
-    main: '/images/interior/detached-villa-interior-1.jpg',
-    thumbs: [
-      '/images/interior/detached-villa-interior-3.jpg',
-      '/images/interior/detached-villa-interior-4.jpg',
-    ],
-  },
-};
+import { useState } from 'react';
+import SectionWrapper from '@/app/components/ui/section-wrapper';
+import Lightbox from '@/app/components/ui/lightbox';
+
+const interiorShowcase = [
+  { src: '/images/interior/interior-showcase-1.jpg', alt: 'Nội thất cao cấp' },
+  { src: '/images/interior/interior-showcase-3.webp', alt: 'Nội thất phòng khách' },
+  { src: '/images/interior/interior-showcase-2.webp', alt: 'Nội thất phòng ngủ' },
+];
+
+const semiDetachedImages = [
+  { src: '/images/interior/semi-detached-villa-interior-1.jpg', alt: 'Biệt thự song lập - Phòng khách' },
+  { src: '/images/interior/semi-detached-villa-interior-2.jpg', alt: 'Biệt thự song lập - Phòng bếp' },
+  { src: '/images/interior/semi-detached-villa-interior-3.jpg', alt: 'Biệt thự song lập - Phòng ngủ' },
+  { src: '/images/interior/semi-detached-villa-interior-4.jpg', alt: 'Biệt thự song lập - Phòng tắm' },
+];
+
+const detachedImages = [
+  { src: '/images/interior/detached-villa-interior-1.jpg', alt: 'Biệt thự đơn lập - Tổng quan' },
+  { src: '/images/interior/detached-villa-interior-3.jpg', alt: 'Biệt thự đơn lập - Phòng khách' },
+  { src: '/images/interior/detached-villa-interior-4.jpg', alt: 'Biệt thự đơn lập - Phòng ngủ' },
+];
 
 export default function ArchitectureSection() {
+  const [lightbox, setLightbox] = useState<{ images: typeof interiorShowcase; index: number } | null>(null);
+
+  const openLightbox = (images: typeof interiorShowcase, index: number) => {
+    setLightbox({ images, index });
+  };
+
   return (
-    <SectionWrapper
-      id="ban-giao"
-      className="relative bg-cover bg-center"
-    >
+    <SectionWrapper id="ban-giao" className="relative bg-cover bg-center">
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/backgrounds/bg-interior-section.jpg')" }}
@@ -45,79 +51,89 @@ export default function ArchitectureSection() {
           <div className="gold-line mb-6" />
         </div>
 
-        {/* Interior showcase images */}
+        {/* Interior showcase - clickable lightbox gallery */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-          <div className="md:col-span-2">
+          <div
+            className="md:col-span-2 cursor-pointer group overflow-hidden rounded-lg"
+            onClick={() => openLightbox(interiorShowcase, 0)}
+          >
             <img
-              src="/images/interior/interior-showcase-1.jpg"
-              alt="Nội thất cao cấp"
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
+              src={interiorShowcase[0].src}
+              alt={interiorShowcase[0].alt}
+              className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
           <div className="flex flex-col gap-4">
-            <img
-              src="/images/interior/interior-showcase-3.webp"
-              alt="Nội thất phòng khách"
-              className="w-full h-[calc(50%-0.5rem)] object-cover rounded-lg"
-            />
-            <img
-              src="/images/interior/interior-showcase-2.webp"
-              alt="Nội thất phòng ngủ"
-              className="w-full h-[calc(50%-0.5rem)] object-cover rounded-lg"
-            />
+            {interiorShowcase.slice(1).map((img, i) => (
+              <div
+                key={i}
+                className="cursor-pointer group overflow-hidden rounded-lg flex-1"
+                onClick={() => openLightbox(interiorShowcase, i + 1)}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Semi-detached villa */}
+        {/* Semi-detached villa gallery */}
         <div className="mb-12">
           <h3 className="font-serif text-2xl text-gold mb-6 text-center">
-            {interiorGallery.semiDetached.title}
+            Biệt thự song lập
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <img
-              src={interiorGallery.semiDetached.main}
-              alt={interiorGallery.semiDetached.title}
-              className="w-full h-72 object-cover rounded-lg"
-            />
-            <div className="grid grid-cols-2 gap-4">
-              {interiorGallery.semiDetached.thumbs.map((img, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {semiDetachedImages.map((img, i) => (
+              <div
+                key={i}
+                className="cursor-pointer group overflow-hidden rounded-lg"
+                onClick={() => openLightbox(semiDetachedImages, i)}
+              >
                 <img
-                  key={i}
-                  src={img}
-                  alt={`${interiorGallery.semiDetached.title} ${i + 2}`}
-                  className="w-full h-full object-cover rounded-lg"
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-40 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Detached villa */}
+        {/* Detached villa gallery */}
         <div>
           <h3 className="font-serif text-2xl text-gold mb-6 text-center">
-            {interiorGallery.detached.title}
+            Biệt thự đơn lập
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="md:col-span-2">
-              <img
-                src={interiorGallery.detached.main}
-                alt={interiorGallery.detached.title}
-                className="w-full h-72 object-cover rounded-lg"
-              />
-            </div>
-            <div className="grid grid-rows-2 gap-4">
-              {interiorGallery.detached.thumbs.map((img, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {detachedImages.map((img, i) => (
+              <div
+                key={i}
+                className="cursor-pointer group overflow-hidden rounded-lg"
+                onClick={() => openLightbox(detachedImages, i)}
+              >
                 <img
-                  key={i}
-                  src={img}
-                  alt={`${interiorGallery.detached.title} ${i + 2}`}
-                  className="w-full h-full object-cover rounded-lg"
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-40 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
+
+      {/* Lightbox modal */}
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          isOpen={true}
+          startIndex={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </SectionWrapper>
   );
 }
