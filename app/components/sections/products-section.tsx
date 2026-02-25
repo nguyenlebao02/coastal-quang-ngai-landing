@@ -11,10 +11,10 @@ export default function ProductsSection() {
             alt="Loại hình sản phẩm"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
             Loại hình sản phẩm
           </h2>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -31,7 +31,7 @@ export default function ProductsSection() {
                 />
               </div>
               <div className="p-4 text-center">
-                <h3 className="text-terracotta-dark font-heading text-lg font-bold">{product.name}</h3>
+                <h3 className="text-charcoal font-heading text-lg font-bold">{product.name}</h3>
               </div>
             </div>
           ))}

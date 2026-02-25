@@ -39,10 +39,10 @@ export default function ArchitectureSection() {
             alt="Bàn giao full nội thất"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
             Bàn giao full nội thất
           </h2>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
         </div>
 
         {/* Interior showcase */}
@@ -76,7 +76,7 @@ export default function ArchitectureSection() {
 
         {/* Semi-detached villa gallery */}
         <div className="mb-10">
-          <h3 className="font-heading text-xl text-terracotta-dark mb-6 text-center font-bold uppercase">
+          <h3 className="font-heading text-xl text-charcoal mb-6 text-center font-bold uppercase">
             Biệt thự song lập
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -98,7 +98,7 @@ export default function ArchitectureSection() {
 
         {/* Detached villa gallery */}
         <div>
-          <h3 className="font-heading text-xl text-terracotta-dark mb-6 text-center font-bold uppercase">
+          <h3 className="font-heading text-xl text-charcoal mb-6 text-center font-bold uppercase">
             Biệt thự đơn lập
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

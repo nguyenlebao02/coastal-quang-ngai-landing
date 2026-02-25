@@ -6,13 +6,13 @@ export default function OverviewSection() {
     <SectionWrapper id="tong-quan" className="bg-cream-gradient">
       <div className="container mx-auto">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold text-center mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold text-center mb-2 uppercase">
             Thông tin dự án
           </h2>
-          <div className="terracotta-line mb-8" />
+          <div className="rose-line mb-8" />
 
           {/* Project info table */}
-          <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-terracotta/10">
+          <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-rose-beige/20">
             {PROJECT_INFO.map((item, i) => (
               <div
                 key={item.label}
@@ -20,7 +20,7 @@ export default function OverviewSection() {
                   i % 2 === 0 ? 'bg-gray-50/50' : 'bg-white'
                 }`}
               >
-                <div className="w-1/3 px-6 py-3 text-terracotta text-sm font-heading font-bold border-l-2 border-terracotta">
+                <div className="w-1/3 px-6 py-3 text-rose-beige text-sm font-heading font-bold border-l-2 border-rose-beige">
                   {item.label}
                 </div>
                 <div className="w-2/3 px-6 py-3 text-charcoal text-sm">

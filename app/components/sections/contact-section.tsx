@@ -13,7 +13,7 @@ export default function ContactSection() {
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-8">
           <h3 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
-            Liên hệ với chúng tôi để được tư vấn và hỗ trợ tốt nhất
+            Liên hệ với chúng tôi
           </h3>
           <div className="w-16 h-0.5 bg-white/60 mx-auto mb-4" />
           <p className="text-white/80">

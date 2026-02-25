@@ -19,10 +19,10 @@ export default function AmenitiesSection() {
             alt="Hệ tiện ích giàu giá trị"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
             Hệ tiện ích đẳng cấp
           </h2>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
         </div>
 
         {/* Main carousel */}
@@ -46,7 +46,7 @@ export default function AmenitiesSection() {
               onClick={() => setActiveIndex(i)}
               className={`overflow-hidden rounded transition-all duration-200 ${
                 i === activeIndex
-                  ? 'ring-2 ring-terracotta scale-105'
+                  ? 'ring-2 ring-rose-beige scale-105'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -55,7 +55,7 @@ export default function AmenitiesSection() {
                 alt={amenity.name}
                 className="w-full h-14 md:h-20 object-cover"
               />
-              <p className="text-[10px] md:text-xs text-center py-1 bg-navy text-white truncate px-1">
+              <p className="text-[10px] md:text-xs text-center py-1 bg-rose-beige text-white truncate px-1">
                 {amenity.name}
               </p>
             </button>

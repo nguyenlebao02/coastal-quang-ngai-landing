@@ -7,10 +7,10 @@ export default function IntroductionSection() {
     <SectionWrapper id="gioi-thieu" className="bg-cream-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-8">
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2">
             Giới thiệu Coastal Quảng Ngãi
           </h2>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
           <p className="text-charcoal/70 max-w-3xl mx-auto text-sm leading-relaxed">
             Coastal Quảng Ngãi là dự án đô thị sinh thái biển đẳng cấp, quy mô 93.9 HA tại TP. Quảng Ngãi.
             Với tầm nhìn kiến tạo một biểu tượng đô thị mới, dự án mang đến không gian sống hoàn hảo
@@ -51,7 +51,7 @@ export default function IntroductionSection() {
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
-              <h3 className="font-heading text-lg font-bold text-terracotta-dark mb-2">{item.title}</h3>
+              <h3 className="font-heading text-lg font-bold text-charcoal mb-2">{item.title}</h3>
               <p className="text-charcoal/70 text-sm">{item.description}</p>
             </div>
           ))}

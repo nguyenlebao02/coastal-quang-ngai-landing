@@ -40,6 +40,11 @@ p, li, span, td {
   @apply w-16 h-0.5 bg-terracotta mx-auto;
 }
 
+/* Rose beige accent line - matching original site headings */
+.rose-line {
+  @apply w-16 h-0.5 bg-rose-beige mx-auto;
+}
+
 /* Section padding standard - matching original 30px top/bottom */
 .section-padding {
   @apply py-8 md:py-12;

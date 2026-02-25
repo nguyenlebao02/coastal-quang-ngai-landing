@@ -7,7 +7,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="font-heading text-xl text-cta-amber mb-4 font-bold uppercase">{SITE_NAME}</h3>
+            <img
+              src="/images/misc/coastal-logo-identity.png"
+              alt={SITE_NAME}
+              className="h-12 mb-4 brightness-0 invert"
+            />
+            <h3 className="font-heading text-xl text-cta-amber mb-2 font-bold uppercase">{SITE_NAME}</h3>
             <p className="text-white/70 text-sm leading-relaxed">
               Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
             </p>

@@ -31,10 +31,10 @@ export default function LocationSection() {
             alt="Vị trí hội tụ"
             className="h-8 mx-auto mb-4"
           />
-          <h3 className="font-heading text-xl md:text-2xl text-terracotta-dark font-bold mb-2 uppercase">
+          <h3 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">
             Vị trí Coastal Quảng Ngãi
           </h3>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -53,15 +53,15 @@ export default function LocationSection() {
               <div key={item.title} className="flex items-start gap-4">
                 <img src={item.icon} alt="" className="w-8 h-8 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-terracotta font-heading font-bold text-lg mb-1">{item.title}</h3>
+                  <h3 className="text-rose-beige font-heading font-bold text-lg mb-1">{item.title}</h3>
                   <p className="text-charcoal/70 text-sm">{item.description}</p>
                 </div>
               </div>
             ))}
 
             {/* Investment potential */}
-            <div className="bg-white/60 rounded-lg p-6 mt-4 border border-terracotta/10">
-              <h4 className="text-terracotta-dark font-heading font-bold mb-2">Tiềm năng tăng giá</h4>
+            <div className="bg-white/60 rounded-lg p-6 mt-4 border border-rose-beige/20">
+              <h4 className="text-charcoal font-heading font-bold mb-2">Tiềm năng tăng giá</h4>
               <p className="text-charcoal/70 text-sm">
                 Quảng Ngãi đang trở thành điểm nóng đầu tư bất động sản với hạ tầng giao thông
                 phát triển mạnh mẽ, thu hút các tập đoàn lớn và dự án FDI.

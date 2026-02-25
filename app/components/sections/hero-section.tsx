@@ -11,7 +11,7 @@ export default function HeroSection() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/images/hero/hero-banner-coastal-aerial.jpg')" }}
       />
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
@@ -19,16 +19,18 @@ export default function HeroSection() {
         <img
           src="/images/misc/coastal-logo-identity.png"
           alt="Coastal Quảng Ngãi"
-          className="h-16 md:h-20 mx-auto mb-6"
+          className="h-20 md:h-28 mx-auto mb-6"
         />
-        <h1 className="font-heading text-4xl md:text-[44.8px] lg:text-6xl text-white font-bold leading-tight mb-3 uppercase tracking-[2px]">
+        <h1 className="font-heading text-4xl md:text-5xl lg:text-[64px] text-white font-bold leading-tight mb-3 uppercase tracking-[3px]">
           COASTAL QUẢNG NGÃI
         </h1>
-        <p className="text-white/80 text-sm md:text-base mb-6 font-heading uppercase tracking-wider">
+        <p className="text-white/90 text-base md:text-lg mb-2 font-heading uppercase tracking-wider">
           Biểu tượng đô thị sinh thái biển
         </p>
-        <div className="gold-line mb-8" />
-        <Button href="#lien-he">Đăng ký tư vấn</Button>
+        <p className="text-white/70 text-sm md:text-base mb-8">
+          Đô thị nghệ thuật văn hóa - Du thuyền hạng sang bên vịnh
+        </p>
+        <Button href="#lien-he" className="text-base px-10 py-4">Đăng ký tư vấn</Button>
       </div>
 
       {/* Scroll indicator */}
