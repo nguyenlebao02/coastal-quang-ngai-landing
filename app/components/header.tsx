@@ -36,7 +36,7 @@ export default function Header() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <img
-            src="/images/misc/logo.png"
+            src="/images/misc/coastal-logo-identity.png"
             alt={SITE_NAME}
             className="h-10 w-auto"
           />
