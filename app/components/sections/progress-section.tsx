@@ -10,10 +10,10 @@ export default function ProgressSection() {
             alt="Hình ảnh & video thực tế"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-heading text-2xl md:text-3xl text-terracotta-dark font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
             Tiến độ thi công
           </h2>
-          <div className="terracotta-line mb-6" />
+          <div className="rose-line mb-6" />
           <p className="text-charcoal/70 max-w-2xl mx-auto">
             Cập nhật hình ảnh thực tế tiến độ thi công dự án Coastal Quảng Ngãi
           </p>
