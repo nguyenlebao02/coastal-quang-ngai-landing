@@ -16,16 +16,16 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-navy shadow-lg' : 'bg-navy/90'
+        scrolled ? 'bg-white/95 shadow-lg backdrop-blur-sm' : 'bg-transparent'
       }`}
     >
       {/* Top bar - hotline */}
-      <div className="hidden md:block bg-navy-dark text-white/80 text-xs py-1">
+      <div className="hidden md:block bg-rose-beige text-white text-xs py-1">
         <div className="container mx-auto flex justify-end gap-4">
-          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-terracotta transition-colors">
+          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-white/80 transition-colors">
             Hotline: {CONTACT_INFO.hotline}
           </a>
-          <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-terracotta transition-colors">
+          <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white/80 transition-colors">
             {CONTACT_INFO.email}
           </a>
         </div>
@@ -48,7 +48,11 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-[17.6px] font-heading font-bold text-white/80 hover:text-terracotta transition-colors whitespace-nowrap uppercase tracking-wide"
+              className={`px-3 py-2 text-[17.6px] font-heading font-bold transition-colors whitespace-nowrap uppercase tracking-wide ${
+                scrolled
+                  ? 'text-charcoal/80 hover:text-cta-orange'
+                  : 'text-white/90 hover:text-cta-orange'
+              }`}
             >
               {item.label}
             </a>
@@ -57,7 +61,7 @@ export default function Header() {
 
         {/* Mobile menu button */}
         <button
-          className="lg:hidden text-white p-2"
+          className={`lg:hidden p-2 ${scrolled ? 'text-charcoal' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Menu"
         >
@@ -73,19 +77,19 @@ export default function Header() {
 
       {/* Mobile nav */}
       {isOpen && (
-        <nav className="lg:hidden bg-navy-dark border-t border-white/10">
+        <nav className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="block px-6 py-3 text-sm font-heading font-bold text-white/80 hover:text-terracotta hover:bg-white/5 transition-colors uppercase"
+              className="block px-6 py-3 text-sm font-heading font-bold text-charcoal/80 hover:text-cta-orange hover:bg-cream/30 transition-colors uppercase"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
             </a>
           ))}
-          <div className="px-6 py-3 border-t border-white/10">
-            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-terracotta text-sm font-semibold">
+          <div className="px-6 py-3 border-t border-gray-100">
+            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-cta-orange text-sm font-semibold">
               {CONTACT_INFO.hotline}
             </a>
           </div>

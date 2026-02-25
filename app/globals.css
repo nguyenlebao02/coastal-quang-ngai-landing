@@ -6,9 +6,13 @@
   --navy: #0B3D5C;
   --gold: #D4AF37;
   --cream: #F0E6DC;
-  --charcoal: #333333;
+  --charcoal: #212121;
   --terracotta: #B7401D;
   --terracotta-dark: #5B2519;
+  --rose-beige: #C39F93;
+  --rose-pink: #F9E4E8;
+  --ocean-blue: #1B76A8;
+  --cta-orange: #FF5722;
 }
 
 html {
@@ -43,5 +47,15 @@ p, li, span, td {
 
 /* Cream gradient background matching original */
 .bg-cream-gradient {
-  background: linear-gradient(rgb(237, 227, 217), rgb(255, 255, 255));
+  background: linear-gradient(180deg, #F0E6DC 0%, #FFFFFF 100%);
+}
+
+/* Rose beige section background - matching original #C39F93 sections */
+.bg-rose-section {
+  background-color: #C39F93;
+}
+
+/* Rose pink accent background */
+.bg-rose-pink-section {
+  background-color: #F9E4E8;
 }
