@@ -31,24 +31,18 @@ export default function ArchitectureSection() {
   };
 
   return (
-    <SectionWrapper id="ban-giao" className="relative bg-cover bg-center">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/backgrounds/bg-interior-section.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-navy/85" />
-
-      <div className="relative z-10 container mx-auto">
+    <SectionWrapper id="ban-giao" className="bg-cream-gradient">
+      <div className="container mx-auto">
         <div className="text-center mb-10">
           <img
             src="/images/misc/title-full-interior-delivery.png"
             alt="Bàn giao full nội thất"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-heading text-2xl md:text-3xl text-white font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2 uppercase">
             Bàn giao full nội thất
           </h2>
-          <div className="gold-line mb-6" />
+          <div className="terracotta-line mb-6" />
         </div>
 
         {/* Interior showcase */}
@@ -82,7 +76,7 @@ export default function ArchitectureSection() {
 
         {/* Semi-detached villa gallery */}
         <div className="mb-10">
-          <h3 className="font-heading text-xl text-gold mb-6 text-center font-bold uppercase">
+          <h3 className="font-heading text-xl text-terracotta-dark mb-6 text-center font-bold uppercase">
             Biệt thự song lập
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -104,7 +98,7 @@ export default function ArchitectureSection() {
 
         {/* Detached villa gallery */}
         <div>
-          <h3 className="font-heading text-xl text-gold mb-6 text-center font-bold uppercase">
+          <h3 className="font-heading text-xl text-terracotta-dark mb-6 text-center font-bold uppercase">
             Biệt thự đơn lập
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">

@@ -3,37 +3,27 @@ import { PROJECT_INFO } from '@/app/lib/constants';
 
 export default function OverviewSection() {
   return (
-    <SectionWrapper
-      id="tong-quan"
-      className="relative bg-cover bg-center bg-no-repeat"
-    >
-      {/* Background */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/backgrounds/bg-tong-quan.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-navy/80" />
-
-      <div className="relative z-10 container mx-auto">
+    <SectionWrapper id="tong-quan" className="bg-cream-gradient">
+      <div className="container mx-auto">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-2xl md:text-3xl text-white text-center mb-2 font-bold uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold text-center mb-2 uppercase">
             Thông tin dự án
           </h2>
-          <div className="gold-line mb-10" />
+          <div className="terracotta-line mb-8" />
 
           {/* Project info table */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden">
+          <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-terracotta/10">
             {PROJECT_INFO.map((item, i) => (
               <div
                 key={item.label}
-                className={`flex items-center border-b border-white/10 last:border-b-0 ${
-                  i % 2 === 0 ? 'bg-white/5' : ''
+                className={`flex items-center border-b border-gray-100 last:border-b-0 ${
+                  i % 2 === 0 ? 'bg-gray-50/50' : 'bg-white'
                 }`}
               >
-                <div className="w-1/3 px-6 py-4 text-gold text-sm font-medium border-l-2 border-gold">
+                <div className="w-1/3 px-6 py-3 text-terracotta text-sm font-heading font-bold border-l-2 border-terracotta">
                   {item.label}
                 </div>
-                <div className="w-2/3 px-6 py-4 text-white text-sm">
+                <div className="w-2/3 px-6 py-3 text-charcoal text-sm">
                   {item.value}
                 </div>
               </div>
@@ -45,7 +35,7 @@ export default function OverviewSection() {
             <img
               src="/images/hero/project-render.jpg"
               alt="Phối cảnh dự án Coastal Quảng Ngãi"
-              className="w-full rounded-lg shadow-xl"
+              className="w-full rounded-lg shadow-lg"
             />
           </div>
         </div>
