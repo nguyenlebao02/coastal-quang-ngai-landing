@@ -9,12 +9,18 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <SectionWrapper id="lien-he" className="bg-navy">
-      <div className="container mx-auto max-w-3xl">
-        <div className="text-center mb-10">
-          <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
-            Liên hệ tư vấn
-          </h2>
+    <SectionWrapper id="lien-he" className="relative bg-cover bg-center">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: "url('/images/backgrounds/bg-cta-dark.jpg')" }}
+      />
+      <div className="absolute inset-0 bg-navy/85" />
+
+      <div className="relative z-10 container mx-auto max-w-3xl">
+        <div className="text-center mb-8">
+          <h3 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
+            Liên hệ với chúng tôi để được tư vấn và hỗ trợ tốt nhất
+          </h3>
           <div className="gold-line mb-4" />
           <p className="text-white/70">
             Để lại thông tin, chuyên viên tư vấn sẽ liên hệ bạn trong 24h
@@ -23,7 +29,7 @@ export default function ContactSection() {
 
         {submitted ? (
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-10 text-center">
-            <p className="text-gold text-2xl font-serif mb-2">Cảm ơn bạn!</p>
+            <p className="text-gold text-2xl font-heading font-bold mb-2">Cảm ơn bạn!</p>
             <p className="text-white/70">Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm nhất.</p>
           </div>
         ) : (
@@ -90,7 +96,7 @@ export default function ContactSection() {
           <p className="text-white/60 text-sm mb-2">Hoặc liên hệ trực tiếp</p>
           <a
             href={`tel:${CONTACT_INFO.hotline}`}
-            className="text-gold text-2xl font-serif font-bold hover:underline"
+            className="text-gold text-2xl font-heading font-bold hover:underline"
           >
             {CONTACT_INFO.hotline}
           </a>

@@ -13,12 +13,15 @@ const config: Config = {
         gold: '#D4AF37',
         'gold-light': '#E0C465',
         'gold-dark': '#C9A961',
-        cream: '#F8F7F3',
+        cream: '#F0E6DC',
+        'cream-light': '#F8F7F3',
         charcoal: '#333333',
+        terracotta: '#B7401D',
+        'terracotta-dark': '#5B2519',
       },
       fontFamily: {
-        serif: ['var(--font-playfair)', 'Playfair Display', 'serif'],
-        sans: ['var(--font-inter)', 'Inter', 'sans-serif'],
+        heading: ['var(--font-alumni)', 'Alumni Sans', 'sans-serif'],
+        sans: ['var(--font-pathway)', 'Pathway Extreme', 'sans-serif'],
       },
       container: {
         center: true,

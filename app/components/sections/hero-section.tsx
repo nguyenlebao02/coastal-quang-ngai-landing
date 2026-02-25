@@ -12,18 +12,19 @@ export default function HeroSection() {
         style={{ backgroundImage: "url('/images/hero/hero-banner-coastal-aerial.jpg')" }}
       />
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-navy/50" />
+      <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="gold-line mb-6" />
-        <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
-          Biểu tượng đô thị sinh thái biển
-          <br />
-          <span className="text-gold">đẳng cấp tại Quảng Ngãi</span>
+        <h1 className="font-heading text-4xl md:text-6xl lg:text-7xl text-white font-bold leading-tight mb-4 uppercase tracking-[2px]">
+          COASTAL QUẢNG NGÃI
         </h1>
-        <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-          Coastal Quảng Ngãi - Dự án đô thị sinh thái biển quy mô 93.9 HA từ Haus Group
+        <p className="text-white/80 text-lg md:text-xl mb-2 font-heading uppercase tracking-wide">
+          Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
+        </p>
+        <div className="gold-line mb-8" />
+        <p className="text-white/70 text-base md:text-lg mb-8 max-w-2xl mx-auto">
+          Dự án đô thị sinh thái biển quy mô 93.9 HA từ Haus Group
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href="#lien-he">Đăng ký tư vấn</Button>

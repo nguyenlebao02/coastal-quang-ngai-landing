@@ -119,7 +119,7 @@ export default function Carousel({
       {/* Caption overlay */}
       {showCaption && items[current]?.label && (
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy/80 to-transparent p-6">
-          <h3 className="text-white font-serif text-xl md:text-2xl">
+          <h3 className="text-white font-heading font-bold text-xl md:text-2xl uppercase">
             {items[current].label}
           </h3>
         </div>

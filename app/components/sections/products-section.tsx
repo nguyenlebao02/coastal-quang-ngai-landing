@@ -14,13 +14,13 @@ export default function ProductsSection() {
       <div className="absolute inset-0 bg-navy/85" />
 
       <div className="relative z-10 container mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <img
             src="/images/misc/title-product-types.png"
             alt="Loại hình sản phẩm"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl text-white font-bold mb-2 uppercase">
             Loại hình sản phẩm
           </h2>
           <div className="gold-line mb-6" />
@@ -40,14 +40,14 @@ export default function ProductsSection() {
                 />
               </div>
               <div className="p-4 text-center">
-                <h3 className="text-gold font-serif text-lg">{product.name}</h3>
+                <h3 className="text-gold font-heading text-lg font-bold">{product.name}</h3>
               </div>
             </div>
           ))}
         </div>
 
         {/* Lost in Nature concept */}
-        <div className="mt-12">
+        <div className="mt-10">
           <img
             src="/images/products/lost-in-nature-concept.jpg"
             alt="Lost in Nature - Thiết kế hòa mình vào thiên nhiên"

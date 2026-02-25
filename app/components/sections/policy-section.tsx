@@ -13,42 +13,36 @@ export default function PolicySection() {
   return (
     <SectionWrapper
       id="chinh-sach"
-      className="relative bg-cover bg-center"
+      className="bg-cream-gradient"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/backgrounds/bg-cta-light.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-navy/85" />
-
-      <div className="relative z-10 container mx-auto">
-        <div className="text-center mb-12">
+      <div className="container mx-auto">
+        <div className="text-center mb-10">
           <img
             src="/images/misc/sales-policy-infographic.png"
             alt="Chính sách bán hàng"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
-            Chính sách bán hàng
-          </h2>
-          <div className="gold-line mb-6" />
+          <h3 className="font-heading text-xl md:text-2xl text-terracotta font-medium mb-2 uppercase">
+            Chính sách bán hàng Coastal Quảng Ngãi
+          </h3>
+          <div className="terracotta-line mb-6" />
         </div>
 
         {/* Policy highlights */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
           {SALES_POLICIES.map((policy) => (
             <div
               key={policy.title}
-              className="bg-white/10 backdrop-blur-sm rounded-lg p-4 text-center border border-gold/20"
+              className="bg-white rounded-lg p-4 text-center border border-terracotta/10 shadow-sm"
             >
-              <p className="text-gold font-serif text-2xl font-bold mb-1">{policy.value}</p>
-              <p className="text-white/80 text-sm">{policy.title}</p>
+              <p className="text-terracotta font-heading text-2xl font-bold mb-1">{policy.value}</p>
+              <p className="text-charcoal/70 text-sm">{policy.title}</p>
             </div>
           ))}
         </div>
 
         {/* Policy image */}
-        <div className="mb-12">
+        <div className="mb-10">
           <img
             src="/images/interior/detached-villa-interior-2.jpg"
             alt="Nội thất mẫu"
@@ -58,19 +52,19 @@ export default function PolicySection() {
 
         {/* Payment timeline */}
         <div>
-          <h3 className="font-serif text-2xl text-gold text-center mb-8">
+          <h3 className="font-heading text-xl text-terracotta-dark text-center mb-8 font-bold uppercase">
             Tiến độ thanh toán
           </h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             {paymentSteps.map((step, i) => (
               <div key={step.phase} className="flex items-center gap-4">
-                <div className="bg-gold/20 border border-gold rounded-lg p-4 text-center min-w-[140px]">
-                  <p className="text-gold font-bold text-xl">{step.percent}</p>
-                  <p className="text-white font-semibold text-sm">{step.phase}</p>
-                  <p className="text-white/60 text-xs">{step.note}</p>
+                <div className="bg-white border border-terracotta/20 rounded-lg p-4 text-center min-w-[140px] shadow-sm">
+                  <p className="text-terracotta font-bold text-xl">{step.percent}</p>
+                  <p className="text-charcoal font-semibold text-sm">{step.phase}</p>
+                  <p className="text-charcoal/50 text-xs">{step.note}</p>
                 </div>
                 {i < paymentSteps.length - 1 && (
-                  <svg className="w-6 h-6 text-gold hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-terracotta hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 )}

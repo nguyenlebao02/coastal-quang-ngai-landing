@@ -3,11 +3,11 @@ import { SITE_NAME, CONTACT_INFO, NAV_ITEMS } from '@/app/lib/constants';
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
-      <div className="container mx-auto py-12">
+      <div className="container mx-auto py-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="font-serif text-xl text-gold mb-4">{SITE_NAME}</h3>
+            <h3 className="font-heading text-xl text-gold mb-4 font-bold uppercase">{SITE_NAME}</h3>
             <p className="text-white/70 text-sm leading-relaxed">
               Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
             </p>
@@ -16,7 +16,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-gold text-sm font-semibold uppercase tracking-wider mb-4">
+            <h4 className="text-gold text-sm font-heading font-bold uppercase tracking-wider mb-4">
               Liên kết
             </h4>
             <ul className="space-y-2">
@@ -24,7 +24,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-white/70 text-sm hover:text-gold transition-colors"
+                    className="text-white/70 text-sm hover:text-terracotta transition-colors"
                   >
                     {item.label}
                   </a>
@@ -35,7 +35,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-gold text-sm font-semibold uppercase tracking-wider mb-4">
+            <h4 className="text-gold text-sm font-heading font-bold uppercase tracking-wider mb-4">
               Liên hệ
             </h4>
             <div className="space-y-3 text-sm text-white/70">
@@ -47,7 +47,7 @@ export default function Footer() {
               </p>
               <p>
                 <span className="text-white">Email: </span>
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition-colors">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-terracotta transition-colors">
                   {CONTACT_INFO.email}
                 </a>
               </p>

@@ -16,7 +16,7 @@ export default function OverviewSection() {
 
       <div className="relative z-10 container mx-auto">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-3xl md:text-4xl text-white text-center mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl text-white text-center mb-2 font-bold uppercase">
             Thông tin dự án
           </h2>
           <div className="gold-line mb-10" />

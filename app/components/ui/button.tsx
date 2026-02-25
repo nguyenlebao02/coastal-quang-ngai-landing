@@ -17,7 +17,7 @@ type ButtonProps = AsButton | AsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-gold text-navy font-semibold hover:bg-gold-dark shadow-md hover:shadow-lg',
+    'bg-terracotta text-white font-semibold hover:bg-terracotta-dark shadow-md hover:shadow-lg',
   outline:
     'bg-transparent border-2 border-navy text-navy hover:bg-navy hover:text-white',
 };
@@ -28,7 +28,7 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-block px-8 py-3 text-sm uppercase tracking-wider transition-all duration-200 text-center';
+    'inline-block px-8 py-3 text-sm font-heading uppercase tracking-wider transition-all duration-200 text-center rounded';
   const styles = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   if ('href' in props && props.href) {

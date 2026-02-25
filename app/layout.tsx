@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Alumni_Sans, Pathway_Extreme } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({
-  subsets: ['latin', 'latin-ext'],
-  variable: '--font-inter',
+const alumniSans = Alumni_Sans({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  variable: '--font-alumni',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800'],
 });
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
+const pathwayExtreme = Pathway_Extreme({
+  subsets: ['latin', 'latin-ext', 'vietnamese'],
+  variable: '--font-pathway',
   display: 'swap',
 });
 
@@ -40,7 +41,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="vi" className={`${alumniSans.variable} ${pathwayExtreme.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

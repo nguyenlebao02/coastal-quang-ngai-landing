@@ -22,10 +22,10 @@ export default function Header() {
       {/* Top bar - hotline */}
       <div className="hidden md:block bg-navy-dark text-white/80 text-xs py-1">
         <div className="container mx-auto flex justify-end gap-4">
-          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-gold transition-colors">
+          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-terracotta transition-colors">
             Hotline: {CONTACT_INFO.hotline}
           </a>
-          <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gold transition-colors">
+          <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-terracotta transition-colors">
             {CONTACT_INFO.email}
           </a>
         </div>
@@ -48,7 +48,7 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="px-3 py-2 text-sm text-white/90 hover:text-gold transition-colors whitespace-nowrap"
+              className="px-3 py-2 text-[17.6px] font-heading font-bold text-white/80 hover:text-terracotta transition-colors whitespace-nowrap uppercase tracking-wide"
             >
               {item.label}
             </a>
@@ -78,14 +78,14 @@ export default function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="block px-6 py-3 text-sm text-white/90 hover:text-gold hover:bg-white/5 transition-colors"
+              className="block px-6 py-3 text-sm font-heading font-bold text-white/80 hover:text-terracotta hover:bg-white/5 transition-colors uppercase"
               onClick={() => setIsOpen(false)}
             >
               {item.label}
             </a>
           ))}
           <div className="px-6 py-3 border-t border-white/10">
-            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-gold text-sm font-semibold">
+            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-terracotta text-sm font-semibold">
               {CONTACT_INFO.hotline}
             </a>
           </div>

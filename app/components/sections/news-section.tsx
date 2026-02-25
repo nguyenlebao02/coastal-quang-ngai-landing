@@ -3,20 +3,20 @@ import { NEWS_ITEMS } from '@/app/lib/constants';
 
 export default function NewsSection() {
   return (
-    <SectionWrapper id="tin-tuc" className="bg-cream">
+    <SectionWrapper id="tin-tuc" className="bg-cream-gradient">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-2">
+        <div className="text-center mb-10">
+          <h2 className="font-heading text-2xl md:text-3xl text-terracotta-dark font-bold mb-2 uppercase">
             Tin tức dự án
           </h2>
-          <div className="gold-line mb-6" />
+          <div className="terracotta-line mb-6" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {NEWS_ITEMS.map((item) => (
             <article
               key={item.slug}
-              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="overflow-hidden">
                 <img
@@ -26,10 +26,10 @@ export default function NewsSection() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="font-serif text-navy text-lg leading-snug line-clamp-2 group-hover:text-gold transition-colors">
+                <h3 className="font-heading font-bold text-terracotta-dark text-lg leading-snug line-clamp-2 group-hover:text-terracotta transition-colors">
                   {item.title}
                 </h3>
-                <span className="inline-block mt-3 text-sm text-gold font-medium">
+                <span className="inline-block mt-3 text-sm text-terracotta font-medium">
                   Xem thêm →
                 </span>
               </div>

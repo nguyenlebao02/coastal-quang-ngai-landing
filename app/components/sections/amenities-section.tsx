@@ -11,21 +11,21 @@ export default function AmenitiesSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <SectionWrapper id="tien-ich" className="bg-white">
+    <SectionWrapper id="tien-ich" className="bg-cream-gradient">
       <div className="container mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <img
             src="/images/misc/title-rich-amenity-system.png"
             alt="Hệ tiện ích giàu giá trị"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-serif text-3xl md:text-4xl text-navy mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl text-terracotta font-bold mb-2 uppercase">
             Hệ tiện ích đẳng cấp
           </h2>
-          <div className="gold-line mb-6" />
+          <div className="terracotta-line mb-6" />
         </div>
 
-        {/* Main carousel - giống Flickity trên trang gốc */}
+        {/* Main carousel */}
         <Carousel
           items={carouselItems}
           autoPlay={5000}
@@ -46,7 +46,7 @@ export default function AmenitiesSection() {
               onClick={() => setActiveIndex(i)}
               className={`overflow-hidden rounded transition-all duration-200 ${
                 i === activeIndex
-                  ? 'ring-2 ring-gold scale-105'
+                  ? 'ring-2 ring-terracotta scale-105'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >

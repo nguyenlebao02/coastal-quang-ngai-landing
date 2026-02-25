@@ -4,29 +4,23 @@ export default function LayoutSection() {
   return (
     <SectionWrapper
       id="layout"
-      className="relative bg-cover bg-center"
+      className="bg-cream-gradient"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/images/backgrounds/bg-layout-section.jpg')" }}
-      />
-      <div className="absolute inset-0 bg-navy/85" />
-
-      <div className="relative z-10 container mx-auto">
-        <div className="text-center mb-12">
+      <div className="container mx-auto">
+        <div className="text-center mb-10">
           <img
             src="/images/misc/typical-layout-plan.png"
             alt="Layout điển hình"
             className="h-12 mx-auto mb-4"
           />
-          <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
+          <h2 className="font-heading text-2xl md:text-3xl text-terracotta-dark font-bold mb-2 uppercase">
             Layout điển hình
           </h2>
-          <div className="gold-line mb-6" />
+          <div className="terracotta-line mb-6" />
         </div>
 
         {/* 4-KEY layout plan */}
-        <div className="bg-white/5 backdrop-blur-sm rounded-lg p-4">
+        <div className="bg-white rounded-lg p-4 shadow-sm">
           <img
             src="/images/misc/four-key-solutions.png"
             alt="Mặt bằng 4-KEY Coastal Quảng Ngãi"

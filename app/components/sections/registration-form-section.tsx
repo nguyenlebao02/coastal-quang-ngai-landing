@@ -20,9 +20,9 @@ export default function RegistrationFormSection() {
       <div className="absolute inset-0 bg-navy/85" />
 
       <div className="relative z-10 container mx-auto max-w-2xl text-center">
-        <h2 className="font-serif text-3xl md:text-4xl text-white mb-2">
-          Đăng ký nhận thông tin
-        </h2>
+        <h3 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
+          Đăng ký tham quan dự án
+        </h3>
         <div className="gold-line mb-4" />
         <p className="text-white/70 mb-8">
           Để lại thông tin để nhận bảng giá và chính sách ưu đãi mới nhất

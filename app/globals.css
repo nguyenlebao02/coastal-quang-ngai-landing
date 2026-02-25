@@ -5,8 +5,10 @@
 :root {
   --navy: #0B3D5C;
   --gold: #D4AF37;
-  --cream: #F8F7F3;
+  --cream: #F0E6DC;
   --charcoal: #333333;
+  --terracotta: #B7401D;
+  --terracotta-dark: #5B2519;
 }
 
 html {
@@ -29,7 +31,17 @@ p, li, span, td {
   @apply w-16 h-0.5 bg-gold mx-auto;
 }
 
-/* Section padding standard */
+/* Terracotta accent line */
+.terracotta-line {
+  @apply w-16 h-0.5 bg-terracotta mx-auto;
+}
+
+/* Section padding standard - matching original 30px top/bottom */
 .section-padding {
-  @apply py-16 md:py-24;
+  @apply py-8 md:py-12;
+}
+
+/* Cream gradient background matching original */
+.bg-cream-gradient {
+  background: linear-gradient(rgb(237, 227, 217), rgb(255, 255, 255));
 }
