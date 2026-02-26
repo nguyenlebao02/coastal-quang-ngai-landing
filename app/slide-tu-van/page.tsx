@@ -162,7 +162,7 @@ export default function SlideTuVanPage() {
           <p className="section-label" style={{ color: '#D4AF37' }}>Quy mô ấn tượng</p>
           <h2 className="slide-heading" style={{ color: '#FFF' }}>Những con số nổi bật</h2>
           <div className="accent-line-gold" />
-          <div className="grid-4 stagger" style={{ marginTop: 40 }}>
+          <div className="grid-4 stagger" style={{ marginTop: 24 }}>
             <div className="stat-box animate-fade-up"><div className="stat-number stat-number--gold">93.9</div><div className="stat-label" style={{ color: 'rgba(255,255,255,0.5)' }}>Hecta quy mô</div></div>
             <div className="stat-box animate-fade-up"><div className="stat-number stat-number--white">15+</div><div className="stat-label" style={{ color: 'rgba(255,255,255,0.5)' }}>Tiện ích cao cấp</div></div>
             <div className="stat-box animate-fade-up"><div className="stat-number stat-number--gold">4</div><div className="stat-label" style={{ color: 'rgba(255,255,255,0.5)' }}>Loại hình biệt thự</div></div>
@@ -177,9 +177,9 @@ export default function SlideTuVanPage() {
           <p className="section-label">Vị trí chiến lược</p>
           <h2 className="slide-heading">Cận thị · Cận giang · Cận lộ</h2>
           <div className="accent-line" />
-          <div className="grid-2" style={{ marginTop: 30 }}>
+          <div className="grid-2" style={{ marginTop: 16 }}>
             <div>
-              <div className="grid-3 stagger" style={{ gap: 20 }}>
+              <div className="grid-3 stagger" style={{ gap: 16 }}>
                 <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">📍</span><h3 style={{ fontSize: 15 }}>Cận thị · Cận giang · Cận lộ</h3><p style={{ fontSize: 13 }}>Kết nối trung tâm TP, sông Trà Khúc và giao thông huyết mạch</p></div>
                 <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">⏱️</span><h3 style={{ fontSize: 15 }}>5 phút → Trung tâm</h3><p style={{ fontSize: 13 }}>Kết nối nhanh khu thương mại và dịch vụ TP. Quảng Ngãi</p></div>
                 <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">🏖️</span><h3 style={{ fontSize: 15 }}>10 phút → Biển</h3><p style={{ fontSize: 13 }}>Gần bãi biển Mỹ Khê, sân bay Chu Lai, điểm du lịch nổi tiếng</p></div>
@@ -201,7 +201,7 @@ export default function SlideTuVanPage() {
           <p className="section-label" style={{ color: '#D4AF37' }}>Tiện ích</p>
           <h2 className="slide-heading" style={{ color: '#FFF', marginBottom: 16 }}>Hệ tiện ích đẳng cấp</h2>
           <div className="accent-line-gold" />
-          <div className="amenity-grid stagger" style={{ marginTop: 30 }}>
+          <div className="amenity-grid stagger" style={{ marginTop: 16 }}>
             {[['🎭','Nhà hát Opera'],['🎵','QT Âm nhạc'],['🏗️','CT Biểu tượng'],['🪸','CV San hô'],['⛵','Bến Du thuyền'],['🏠','Yacht Clubhouse'],['🏢','TT Hội nghị'],['🏡','Boutique House'],['🎠','SC Trẻ em'],['🎪','KVC Trẻ em'],['🏊','HB Trẻ em'],['🌊','Hồ Cảnh quan'],['🏸','Khu Thể thao'],['🏓','Sân Pickleball'],['🏊‍♂️','HB Trung tâm']].map(([icon, name], i) => (
               <div key={i} className="amenity-item animate-fade-up"><span className="icon">{icon}</span><span className="name">{name}</span></div>
             ))}
@@ -215,7 +215,7 @@ export default function SlideTuVanPage() {
           <p className="section-label">Sản phẩm</p>
           <h2 className="slide-heading">Loại hình sản phẩm</h2>
           <div className="accent-line" />
-          <p className="slide-body" style={{ margin: '0 auto 36px' }}>Thiết kế hòa mình vào thiên nhiên — Lost in Nature</p>
+          <p className="slide-body" style={{ margin: '0 auto 24px' }}>Thiết kế hòa mình vào thiên nhiên — Lost in Nature</p>
           <div className="product-grid stagger">
             {[['🏘️','Central Villa','Biệt thự trung tâm, vị trí đắc địa','#E8D5CE','#F0E6DC'],['🌳','Nature Villa','Biệt thự thiên nhiên, hòa mình cây xanh','#D4E8D0','#E8F0E6'],['🏞️','Hidden Villa','Biệt thự ẩn mình, riêng tư tuyệt đối','#D0D8E8','#E6ECF0'],['🔑','Multikey','Thiết kế thông minh, linh hoạt đầu tư','#E8E0D0','#F0ECE6']].map(([icon, title, desc, c1, c2], i) => (
               <div key={i} className="product-card animate-fade-up">
@@ -233,10 +233,10 @@ export default function SlideTuVanPage() {
           <p className="section-label">Bàn giao</p>
           <h2 className="slide-heading">Bàn giao full nội thất</h2>
           <div className="accent-line" />
-          <div className="grid-2" style={{ marginTop: 30, alignItems: 'center' }}>
+          <div className="grid-2" style={{ marginTop: 20, alignItems: 'center' }}>
             <div style={{ textAlign: 'left' }}>
-              <p className="slide-body" style={{ marginBottom: 30 }}>Mỗi căn biệt thự được bàn giao hoàn thiện nội thất cao cấp, sẵn sàng cho gia chủ chuyển vào sinh sống ngay.</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <p className="slide-body" style={{ marginBottom: 20 }}>Mỗi căn biệt thự được bàn giao hoàn thiện nội thất cao cấp, sẵn sàng cho gia chủ chuyển vào sinh sống ngay.</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {[['🛋️','Phòng khách','Thiết kế sang trọng, ánh sáng tự nhiên'],['🍳','Phòng bếp','Trang bị thiết bị hiện đại'],['🛏️','Phòng ngủ','Không gian nghỉ ngơi thoải mái'],['🚿','Phòng tắm','Thiết bị vệ sinh cao cấp']].map(([icon, title, desc], i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
                     <span style={{ fontSize: 24 }}>{icon}</span>
@@ -246,7 +246,7 @@ export default function SlideTuVanPage() {
               </div>
             </div>
             <div>
-              <div className="card" style={{ padding: 0, overflow: 'hidden', borderRadius: 20, height: 360, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg,#F0E6DC,#F9E4E8)' }}>
+              <div className="card" style={{ padding: 0, overflow: 'hidden', borderRadius: 20, height: 280, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg,#F0E6DC,#F9E4E8)' }}>
                 <div style={{ textAlign: 'center' }}>
                   <span style={{ fontSize: 80, display: 'block', marginBottom: 16 }}>🏠</span>
                   <p style={{ fontSize: 16, color: '#0B3D5C', fontWeight: 600 }}>Full nội thất cao cấp</p>
@@ -264,11 +264,11 @@ export default function SlideTuVanPage() {
           <p className="section-label">Chính sách</p>
           <h2 className="slide-heading">Chính sách bán hàng hấp dẫn</h2>
           <div className="accent-line" />
-          <div className="policy-row stagger" style={{ marginTop: 30 }}>
+          <div className="policy-row stagger" style={{ marginTop: 20 }}>
             {[['50 Tr','Đặt cọc'],['10%','Chiết khấu'],['70%','Hỗ trợ vay NH'],['100 Tr','Gói nội thất']].map(([val, label], i) => (
               <div key={i} className="policy-card animate-fade-up"><div className="value">{val}</div><div className="label">{label}</div></div>
             ))}
-            <div className="policy-card animate-fade-up"><div className="value" style={{ fontSize: 22 }}>Mercedes</div><div className="label">Bốc thăm quà tặng</div></div>
+            <div className="policy-card animate-fade-up"><div className="value" style={{ fontSize: 20 }}>Mercedes</div><div className="label">Bốc thăm quà tặng</div></div>
           </div>
         </div>
       </div>
@@ -279,12 +279,12 @@ export default function SlideTuVanPage() {
           <p className="section-label">Thanh toán</p>
           <h2 className="slide-heading">Tiến độ thanh toán linh hoạt</h2>
           <div className="accent-line" />
-          <div className="grid-2" style={{ marginTop: 30, alignItems: 'center' }}>
+          <div className="grid-2" style={{ marginTop: 16, alignItems: 'center' }}>
             <div>
               {[['15%','#FF5722','Đợt 1 — Ký HĐMB','Thanh toán khi ký hợp đồng mua bán',18],['2-3%','#C39F93','Đợt 2-8 — Theo tiến độ','2-3%/tháng theo tiến độ xây dựng',14],['25%','#FF5722','Nhận nhà — Bàn giao','Thanh toán khi nhận bàn giao căn hộ',16],['5%','#0B3D5C','Đợt cuối — Cấp sổ','Thanh toán khi được cấp sổ đỏ',18]].map(([pct, bg, title, desc, fs], i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '14px 0', borderBottom: i < 3 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
-                  <div style={{ width: 48, height: 48, background: bg as string, color: '#fff', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: fs as number, flexShrink: 0 }}>{pct}</div>
-                  <div style={{ textAlign: 'left' }}><strong style={{ color: '#0B3D5C' }}>{title}</strong><p style={{ fontSize: 13, color: '#6B7280' }}>{desc}</p></div>
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '10px 0', borderBottom: i < 3 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
+                  <div style={{ width: 42, height: 42, background: bg as string, color: '#fff', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: (fs as number) - 2, flexShrink: 0 }}>{pct}</div>
+                  <div style={{ textAlign: 'left' }}><strong style={{ color: '#0B3D5C', fontSize: 14 }}>{title}</strong><p style={{ fontSize: 12, color: '#6B7280' }}>{desc}</p></div>
                 </div>
               ))}
             </div>
@@ -299,11 +299,11 @@ export default function SlideTuVanPage() {
           <p className="section-label" style={{ color: '#D4AF37' }}>Đầu tư</p>
           <h2 className="slide-heading" style={{ color: '#FFF' }}>Tiềm năng tăng giá vượt trội</h2>
           <div className="accent-line-gold" />
-          <div className="grid-2" style={{ marginTop: 30, alignItems: 'center' }}>
-            <div className="chart-container" style={{ width: '100%', maxWidth: 500 }}><canvas id="growthChart" /></div>
+          <div className="grid-2" style={{ marginTop: 16, alignItems: 'center' }}>
+            <div className="chart-container" style={{ width: '100%', maxWidth: 480 }}><canvas id="growthChart" /></div>
             <div style={{ textAlign: 'left' }}>
               {[['✅ Sổ đỏ lâu dài','Quyền sở hữu vĩnh viễn, an tâm đầu tư dài hạn'],['✅ Hạ tầng phát triển','Giao thông, khu công nghiệp, FDI tăng mạnh tại Quảng Ngãi'],['✅ Bàn giao 2027-2028','Timeline rõ ràng, thanh toán linh hoạt theo tiến độ']].map(([title, desc], i) => (
-                <div key={i} className="card-dark" style={{ marginBottom: i < 2 ? 20 : 0, textAlign: 'left', padding: 24 }}>
+                <div key={i} className="card-dark" style={{ marginBottom: i < 2 ? 14 : 0, textAlign: 'left', padding: 20 }}>
                   <h3 style={{ fontSize: 16, marginBottom: 8 }}>{title}</h3><p>{desc}</p>
                 </div>
               ))}
@@ -355,18 +355,18 @@ const slideStyles = `
   body{background:var(--slide-bg);color:var(--text-primary);font-family:'Inter',sans-serif;overflow:hidden}
   h1,h2,h3{font-family:'Playfair Display',serif}
 
-  .sl{position:absolute;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 80px;opacity:0;visibility:hidden;transition:opacity 0.5s ease;background:var(--slide-bg);overflow-y:auto}
+  .sl{position:absolute;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:50px 80px 70px;opacity:0;visibility:hidden;transition:opacity 0.5s ease;background:var(--slide-bg);overflow-y:auto}
   .sl.active{opacity:1;visibility:visible}
 
-  .slide-title{font-size:clamp(40px,6vw,72px);font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:16px}
+  .slide-title{font-size:clamp(40px,6vw,72px);font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:12px}
   .slide-subtitle{font-size:clamp(18px,2.5vw,28px);color:var(--rose-beige);font-weight:400;letter-spacing:3px;text-transform:uppercase}
-  .section-label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--rose-beige);margin-bottom:12px;font-weight:600}
-  .slide-heading{font-size:clamp(32px,4vw,54px);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:24px}
-  .slide-body{font-size:clamp(16px,1.8vw,20px);color:var(--text-muted);line-height:1.7;max-width:800px}
+  .section-label{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--rose-beige);margin-bottom:8px;font-weight:600}
+  .slide-heading{font-size:clamp(28px,3.5vw,46px);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:12px}
+  .slide-body{font-size:clamp(15px,1.6vw,18px);color:var(--text-muted);line-height:1.6;max-width:800px}
 
-  .accent-line{width:60px;height:2px;background:var(--rose-beige);margin:20px auto}
-  .accent-line-gold{width:60px;height:2px;background:var(--gold);margin:20px auto}
-  .logo-badge{font-size:14px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:30px}
+  .accent-line{width:60px;height:2px;background:var(--rose-beige);margin:12px auto}
+  .accent-line-gold{width:60px;height:2px;background:var(--gold);margin:12px auto}
+  .logo-badge{font-size:14px;letter-spacing:6px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
 
   .slide--dark{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 100%);color:var(--text-light)}
   .slide--dark .slide-heading{color:#FFF}.slide--dark .slide-body{color:rgba(255,255,255,0.7)}.slide--dark .section-label{color:var(--gold)}
@@ -374,52 +374,52 @@ const slideStyles = `
   .slide--rose{background:linear-gradient(135deg,var(--rose-pink) 0%,#FFF 60%)}
   .slide--hero{background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 50%,var(--ocean-blue) 100%);color:var(--text-light)}
 
-  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;max-width:1100px;text-align:left}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;width:100%;max-width:1100px}
-  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;max-width:1100px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;width:100%;max-width:1100px;text-align:left}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%;max-width:1100px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;max-width:1100px}
 
-  .card{background:#FFF;border-radius:12px;padding:32px 28px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:transform 0.3s}
+  .card{background:#FFF;border-radius:12px;padding:24px 20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,0.06);transition:transform 0.3s}
   .card:hover{transform:translateY(-4px)}
-  .card-dark{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:32px 28px;text-align:center;backdrop-filter:blur(10px)}
-  .card h3{font-size:18px;color:var(--navy);margin-bottom:10px;font-family:'Inter',sans-serif;font-weight:600}
+  .card-dark{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:24px 20px;text-align:center;backdrop-filter:blur(10px)}
+  .card h3{font-size:16px;color:var(--navy);margin-bottom:8px;font-family:'Inter',sans-serif;font-weight:600}
   .card-dark h3{color:#FFF}
-  .card p,.card-dark p{font-size:14px;color:var(--text-muted);line-height:1.6}
+  .card p,.card-dark p{font-size:13px;color:var(--text-muted);line-height:1.5}
   .card-dark p{color:rgba(255,255,255,0.6)}
-  .card-icon{font-size:36px;margin-bottom:16px;display:block}
+  .card-icon{font-size:30px;margin-bottom:10px;display:block}
 
-  .stat-box{text-align:center;padding:24px}
-  .stat-number{font-size:clamp(36px,5vw,56px);font-weight:700;font-family:'Playfair Display',serif;line-height:1;margin-bottom:8px}
+  .stat-box{text-align:center;padding:16px}
+  .stat-number{font-size:clamp(32px,4.5vw,50px);font-weight:700;font-family:'Playfair Display',serif;line-height:1;margin-bottom:6px}
   .stat-number--gold{color:var(--gold)}.stat-number--white{color:#FFF}.stat-number--navy{color:var(--navy)}
   .stat-label{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--text-muted)}
 
   .data-table{width:100%;max-width:900px;border-collapse:collapse;text-align:left}
-  .data-table th{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-beige);padding:12px 20px;border-bottom:2px solid var(--rose-beige);font-weight:600}
-  .data-table td{padding:14px 20px;font-size:16px;border-bottom:1px solid rgba(0,0,0,0.06)}
+  .data-table th{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose-beige);padding:10px 20px;border-bottom:2px solid var(--rose-beige);font-weight:600}
+  .data-table td{padding:10px 20px;font-size:15px;border-bottom:1px solid rgba(0,0,0,0.06)}
   .data-table tr:last-child td{border-bottom:none}
   .highlight-value{color:var(--cta-orange);font-weight:700}
 
-  .amenity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;width:100%;max-width:1100px}
-  .amenity-item{background:rgba(255,255,255,0.08);border-radius:10px;padding:18px 12px;text-align:center;border:1px solid rgba(255,255,255,0.1)}
-  .amenity-item .icon{font-size:28px;margin-bottom:8px;display:block}
-  .amenity-item .name{font-size:12px;color:rgba(255,255,255,0.8);line-height:1.4}
+  .amenity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:100%;max-width:1100px}
+  .amenity-item{background:rgba(255,255,255,0.08);border-radius:10px;padding:14px 10px;text-align:center;border:1px solid rgba(255,255,255,0.1)}
+  .amenity-item .icon{font-size:24px;margin-bottom:6px;display:block}
+  .amenity-item .name{font-size:11px;color:rgba(255,255,255,0.8);line-height:1.3}
 
-  .policy-row{display:flex;gap:24px;width:100%;max-width:1100px;justify-content:center}
-  .policy-card{flex:1;background:#FFF;border-radius:16px;padding:28px 20px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.06);border-top:3px solid var(--rose-beige)}
-  .policy-card .value{font-size:28px;font-weight:700;color:var(--cta-orange);font-family:'Playfair Display',serif;margin-bottom:6px}
-  .policy-card .label{font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
+  .policy-row{display:flex;gap:16px;width:100%;max-width:1100px;justify-content:center}
+  .policy-card{flex:1;background:#FFF;border-radius:14px;padding:20px 16px;text-align:center;box-shadow:0 4px 24px rgba(0,0,0,0.06);border-top:3px solid var(--rose-beige)}
+  .policy-card .value{font-size:24px;font-weight:700;color:var(--cta-orange);font-family:'Playfair Display',serif;margin-bottom:4px}
+  .policy-card .label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}
 
-  .chart-container{width:100%;max-width:550px;height:300px}
+  .chart-container{width:100%;max-width:480px;height:260px}
 
   .cta-hotline{font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--gold);letter-spacing:4px;margin:20px 0;font-family:'Inter',sans-serif}
   .cta-button{display:inline-block;background:var(--cta-orange);color:#FFF;padding:16px 48px;border-radius:8px;font-size:16px;font-weight:600;text-transform:uppercase;letter-spacing:2px;text-decoration:none;margin-top:20px;cursor:pointer;transition:background 0.3s;border:none}
   .cta-button:hover{background:#E64A19}
 
-  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;max-width:1100px}
-  .product-card{background:#FFF;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);text-align:center;transition:transform 0.3s}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;max-width:1100px}
+  .product-card{background:#FFF;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.08);text-align:center;transition:transform 0.3s}
   .product-card:hover{transform:translateY(-6px)}
-  .product-visual{height:140px;display:flex;align-items:center;justify-content:center;font-size:48px}
-  .product-card h3{font-size:16px;font-weight:600;color:var(--navy);padding:16px 12px 4px;font-family:'Inter',sans-serif}
-  .product-card p{font-size:13px;color:var(--text-muted);padding:0 12px 20px}
+  .product-visual{height:110px;display:flex;align-items:center;justify-content:center;font-size:42px}
+  .product-card h3{font-size:15px;font-weight:600;color:var(--navy);padding:12px 12px 2px;font-family:'Inter',sans-serif}
+  .product-card p{font-size:12px;color:var(--text-muted);padding:0 12px 16px}
 
   @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
   .sl.active .animate-fade-up{animation:fadeUp 0.6s ease-out forwards}
