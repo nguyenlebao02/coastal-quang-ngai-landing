@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COASTAL QUẢNG NGÃI - Biểu Tượng Đô Thị Sinh Thái Biển</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ======================== DESIGN TOKENS ======================== */
+        :root {
+            /* Coastal Palette */
+            --navy: #0B3D5C;
+            --navy-light: #0F4F75;
+            --navy-dark: #082D44;
+            --gold: #D4AF37;
+            --gold-light: #E0C465;
+            --cream: #F0E6DC;
+            --cream-light: #F6F6F3;
+            --charcoal: #212121;
+            --rose-beige: #C39F93;
+            --rose-pink: #F9E4E8;
+            --ocean-blue: #1B76A8;
+            --cta-orange: #FF5722;
+
+            /* Slide System */
+            --slide-bg: #FEFCFA;
+            --slide-dark-bg: var(--navy-dark);
+            --text-primary: var(--charcoal);
+            --text-light: #FFFFFF;
+            --text-muted: #6B7280;
+            --accent: var(--rose-beige);
+            --accent-gold: var(--gold);
+        }
+
+        /* ======================== BASE STYLES ======================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--slide-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 80px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active { opacity: 1; visibility: visible; }
+
+        /* ======================== TYPOGRAPHY ======================== */
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        .slide-title {
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .slide-subtitle {
+            font-size: clamp(18px, 2.5vw, 28px);
+            color: var(--rose-beige);
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-label {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--rose-beige);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .slide-heading {
+            font-size: clamp(32px, 4vw, 54px);
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .slide-body {
+            font-size: clamp(16px, 1.8vw, 20px);
+            color: var(--text-muted);
+            line-height: 1.7;
+            max-width: 800px;
+        }
+
+        /* ======================== DECORATIVE ======================== */
+        .accent-line {
+            width: 60px;
+            height: 2px;
+            background: var(--rose-beige);
+            margin: 20px auto;
+        }
+
+        .accent-line-gold {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 20px auto;
+        }
+
+        .logo-badge {
+            font-size: 14px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        /* ======================== SLIDE BACKGROUNDS ======================== */
+        .slide--dark {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            color: var(--text-light);
+        }
+
+        .slide--dark .slide-heading { color: #FFFFFF; }
+        .slide--dark .slide-body { color: rgba(255,255,255,0.7); }
+        .slide--dark .section-label { color: var(--gold); }
+
+        .slide--cream {
+            background: linear-gradient(180deg, var(--cream) 0%, #FFFFFF 100%);
+        }
+
+        .slide--rose {
+            background: linear-gradient(135deg, var(--rose-pink) 0%, #FFFFFF 60%);
+        }
+
+        .slide--hero {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--ocean-blue) 100%);
+            color: var(--text-light);
+        }
+
+        /* ======================== GRID LAYOUTS ======================== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 100%;
+            max-width: 1100px;
+            text-align: left;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        /* ======================== CARDS ======================== */
+        .card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover { transform: translateY(-4px); }
+
+        .card-dark {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 32px 28px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .card-dark h3 {
+            color: #FFFFFF;
+        }
+
+        .card p, .card-dark p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .card-dark p { color: rgba(255,255,255,0.6); }
+
+        .card-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* ======================== STAT BOXES ======================== */
+        .stat-box {
+            text-align: center;
+            padding: 24px;
+        }
+
+        .stat-number {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .stat-number--gold { color: var(--gold); }
+        .stat-number--rose { color: var(--rose-beige); }
+        .stat-number--navy { color: var(--navy); }
+        .stat-number--white { color: #FFFFFF; }
+
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        .slide--dark .stat-label { color: rgba(255,255,255,0.5); }
+
+        /* ======================== TABLE ======================== */
+        .data-table {
+            width: 100%;
+            max-width: 900px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .data-table th {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--rose-beige);
+            padding: 12px 20px;
+            border-bottom: 2px solid var(--rose-beige);
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 14px 20px;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .data-table tr:last-child td { border-bottom: none; }
+
+        .highlight-value {
+            color: var(--cta-orange);
+            font-weight: 700;
+        }
+
+        /* ======================== AMENITY LIST ======================== */
+        .amenity-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .amenity-item {
+            background: rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 18px 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .amenity-item .icon { font-size: 28px; margin-bottom: 8px; display: block; }
+        .amenity-item .name {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+        }
+
+        /* ======================== POLICY CARDS ======================== */
+        .policy-row {
+            display: flex;
+            gap: 24px;
+            width: 100%;
+            max-width: 1100px;
+            justify-content: center;
+        }
+
+        .policy-card {
+            flex: 1;
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            border-top: 3px solid var(--rose-beige);
+        }
+
+        .policy-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--cta-orange);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 6px;
+        }
+
+        .policy-card .label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ======================== TIMELINE ======================== */
+        .timeline {
+            display: flex;
+            align-items: flex-start;
+            gap: 0;
+            width: 100%;
+            max-width: 900px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 22px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--rose-beige);
+        }
+
+        .timeline-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 16px; height: 16px;
+            background: var(--rose-beige);
+            border-radius: 50%;
+            margin: 14px auto 14px;
+            border: 3px solid var(--cream);
+        }
+
+        .timeline-percent {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .timeline-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
+        /* ======================== CTA SLIDE ======================== */
+        .cta-hotline {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin: 20px 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--cta-orange);
+            color: #FFFFFF;
+            padding: 16px 48px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover { background: #E64A19; }
+
+        /* ======================== PRODUCT CARDS ======================== */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .product-card {
+            background: #FFFFFF;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover { transform: translateY(-6px); }
+
+        .product-card .product-visual {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 16px 12px 4px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .product-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 0 12px 20px;
+        }
+
+        /* ======================== CHART CONTAINER ======================== */
+        .chart-container {
+            width: 100%;
+            max-width: 550px;
+            height: 300px;
+        }
+
+        /* ======================== ANIMATIONS ======================== */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .slide.active .animate-fade-up {
+            animation: fadeUp 0.6s ease-out forwards;
+        }
+
+        .slide.active .animate-scale {
+            animation: scaleIn 0.5s ease-out forwards;
+        }
+
+        .slide.active .stagger > *:nth-child(1) { animation-delay: 0.1s; }
+        .slide.active .stagger > *:nth-child(2) { animation-delay: 0.2s; }
+        .slide.active .stagger > *:nth-child(3) { animation-delay: 0.3s; }
+        .slide.active .stagger > *:nth-child(4) { animation-delay: 0.35s; }
+        .slide.active .stagger > *:nth-child(5) { animation-delay: 0.4s; }
+
+        /* ======================== NAVIGATION ======================== */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--rose-beige), var(--gold));
+            transition: width 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-controls {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid rgba(0,0,0,0.15);
+            color: var(--charcoal);
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: var(--navy);
+            color: #FFFFFF;
+            border-color: var(--navy);
+        }
+
+        .slide-counter {
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        /* ======================== FULLSCREEN HINT ======================== */
+        .fullscreen-hint {
+            position: fixed;
+            top: 12px;
+            right: 16px;
+            font-size: 11px;
+            color: rgba(0,0,0,0.3);
+            z-index: 999;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="fullscreen-hint">F11 để xem toàn màn hình</div>
+
+    <!-- ==================== SLIDE 1: COVER ==================== -->
+    <div class="slide slide--hero active">
+        <div class="animate-fade-up">
+            <div class="logo-badge">HAUS GROUP</div>
+            <h1 class="slide-title" style="color: #FFFFFF; font-size: clamp(48px, 7vw, 84px);">
+                COASTAL<br>QUẢNG NGÃI
+            </h1>
+            <div class="accent-line-gold"></div>
+            <p class="slide-subtitle" style="color: var(--gold); letter-spacing: 5px; margin-top: 16px;">
+                Biểu tượng đô thị sinh thái biển
+            </p>
+            <p style="color: rgba(255,255,255,0.5); font-size: 14px; margin-top: 30px; letter-spacing: 2px;">
+                Đô thị nghệ thuật văn hóa &bull; Du thuyền hạng sang bên vịnh
+            </p>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: TẦM NHÌN ==================== -->
+    <div class="slide slide--cream">
+        <div class="animate-fade-up">
+            <p class="section-label">Tầm nhìn</p>
+            <h2 class="slide-heading">Kiến tạo biểu tượng<br>đô thị mới tại Quảng Ngãi</h2>
+            <div class="accent-line"></div>
+            <p class="slide-body" style="margin-bottom: 40px;">
+                Dự án đô thị sinh thái biển đẳng cấp quy mô 93.9 HA — không gian sống hoàn hảo
+                kết hợp thiên nhiên, nghệ thuật và phong cách sống thượng lưu.
+            </p>
+            <div class="grid-3 stagger">
+                <div class="card animate-fade-up">
+                    <span class="card-icon">🏛️</span>
+                    <h3>Nghệ thuật văn hóa</h3>
+                    <p>Kiến trúc Địa Trung Hải kết hợp văn hóa bản địa Quảng Ngãi</p>
+                </div>
+                <div class="card animate-fade-up">
+                    <span class="card-icon">🛥️</span>
+                    <h3>Du thuyền hạng sang</h3>
+                    <p>Bến du thuyền riêng tư, trải nghiệm sống thượng lưu bên bờ biển</p>
+                </div>
+                <div class="card animate-fade-up">
+                    <span class="card-icon">🌿</span>
+                    <h3>Bảo tồn thiên nhiên</h3>
+                    <p>Hệ sinh thái xanh, bảo tồn cảnh quan tự nhiên và văn hóa địa phương</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 3: TỔNG QUAN DỰ ÁN ==================== -->
+    <div class="slide">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Tổng quan</p>
+            <h2 class="slide-heading">Thông tin dự án</h2>
+            <div class="accent-line"></div>
+            <table class="data-table" style="margin: 30px auto 0;">
+                <thead>
+                    <tr>
+                        <th>Hạng mục</th>
+                        <th>Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tên dự án</td>
+                        <td><strong>Coastal Quảng Ngãi</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Chủ đầu tư</td>
+                        <td>Haus Group</td>
+                    </tr>
+                    <tr>
+                        <td>Vị trí</td>
+                        <td>TP. Quảng Ngãi, Tỉnh Quảng Ngãi</td>
+                    </tr>
+                    <tr>
+                        <td>Quy mô</td>
+                        <td class="highlight-value">93.9 HA</td>
+                    </tr>
+                    <tr>
+                        <td>Loại hình</td>
+                        <td>Shophouse, Biệt thự, Căn hộ</td>
+                    </tr>
+                    <tr>
+                        <td>Pháp lý</td>
+                        <td class="highlight-value">Sổ đỏ lâu dài</td>
+                    </tr>
+                    <tr>
+                        <td>Bàn giao</td>
+                        <td>2027 – 2028</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 4: CON SỐ NỔI BẬT ==================== -->
+    <div class="slide slide--dark">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label" style="color: var(--gold);">Quy mô ấn tượng</p>
+            <h2 class="slide-heading" style="color: #FFFFFF;">Những con số nổi bật</h2>
+            <div class="accent-line-gold"></div>
+            <div class="grid-4 stagger" style="margin-top: 40px;">
+                <div class="stat-box animate-fade-up">
+                    <div class="stat-number stat-number--gold">93.9</div>
+                    <div class="stat-label" style="color:rgba(255,255,255,0.5);">Hecta quy mô</div>
+                </div>
+                <div class="stat-box animate-fade-up">
+                    <div class="stat-number stat-number--white">15+</div>
+                    <div class="stat-label" style="color:rgba(255,255,255,0.5);">Tiện ích cao cấp</div>
+                </div>
+                <div class="stat-box animate-fade-up">
+                    <div class="stat-number stat-number--gold">4</div>
+                    <div class="stat-label" style="color:rgba(255,255,255,0.5);">Loại hình biệt thự</div>
+                </div>
+                <div class="stat-box animate-fade-up">
+                    <div class="stat-number stat-number--white">5'</div>
+                    <div class="stat-label" style="color:rgba(255,255,255,0.5);">Đến trung tâm TP</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 5: VỊ TRÍ ==================== -->
+    <div class="slide slide--cream">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Vị trí chiến lược</p>
+            <h2 class="slide-heading">Cận thị · Cận giang · Cận lộ</h2>
+            <div class="accent-line"></div>
+            <div class="grid-2" style="margin-top: 30px;">
+                <div>
+                    <div class="grid-3 stagger" style="gap: 20px;">
+                        <div class="card animate-fade-up" style="padding: 24px 16px;">
+                            <span class="card-icon">📍</span>
+                            <h3 style="font-size:15px;">Cận thị · Cận giang · Cận lộ</h3>
+                            <p style="font-size:13px;">Kết nối trung tâm TP, sông Trà Khúc và giao thông huyết mạch</p>
+                        </div>
+                        <div class="card animate-fade-up" style="padding: 24px 16px;">
+                            <span class="card-icon">⏱️</span>
+                            <h3 style="font-size:15px;">5 phút → Trung tâm</h3>
+                            <p style="font-size:13px;">Kết nối nhanh khu thương mại và dịch vụ TP. Quảng Ngãi</p>
+                        </div>
+                        <div class="card animate-fade-up" style="padding: 24px 16px;">
+                            <span class="card-icon">🏖️</span>
+                            <h3 style="font-size:15px;">10 phút → Biển</h3>
+                            <p style="font-size:13px;">Gần bãi biển Mỹ Khê, sân bay Chu Lai, điểm du lịch nổi tiếng</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:flex; flex-direction:column; justify-content:center;">
+                    <div class="card" style="background: var(--navy); padding: 30px;">
+                        <h3 style="color: var(--gold); font-size: 16px; margin-bottom: 12px;">
+                            🔥 Tiềm năng tăng giá
+                        </h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.7;">
+                            Quảng Ngãi đang trở thành điểm nóng đầu tư BĐS với hạ tầng giao thông phát triển mạnh,
+                            thu hút các tập đoàn lớn và dự án FDI.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 6: TIỆN ÍCH ==================== -->
+    <div class="slide slide--dark">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label" style="color: var(--gold);">Tiện ích</p>
+            <h2 class="slide-heading" style="color: #FFFFFF; margin-bottom: 16px;">Hệ tiện ích đẳng cấp</h2>
+            <div class="accent-line-gold"></div>
+            <div class="amenity-grid stagger" style="margin-top: 30px;">
+                <div class="amenity-item animate-fade-up"><span class="icon">🎭</span><span class="name">Nhà hát Opera</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🎵</span><span class="name">Quảng trường Âm nhạc</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏗️</span><span class="name">Công trình Biểu tượng</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🪸</span><span class="name">Công viên San hô</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">⛵</span><span class="name">Bến Du thuyền</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏠</span><span class="name">Yacht Clubhouse</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏢</span><span class="name">TT Hội nghị</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏡</span><span class="name">Boutique House</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🎠</span><span class="name">Sân chơi Trẻ em</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🎪</span><span class="name">Khu vui chơi Bé</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏊</span><span class="name">Hồ bơi Trẻ em</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🌊</span><span class="name">Hồ Cảnh quan</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏸</span><span class="name">Khu Thể thao</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏓</span><span class="name">Sân Pickleball</span></div>
+                <div class="amenity-item animate-fade-up"><span class="icon">🏊‍♂️</span><span class="name">Hồ bơi TT</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 7: SẢN PHẨM ==================== -->
+    <div class="slide slide--rose">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Sản phẩm</p>
+            <h2 class="slide-heading">Loại hình sản phẩm</h2>
+            <div class="accent-line"></div>
+            <p class="slide-body" style="margin: 0 auto 36px;">
+                Thiết kế hòa mình vào thiên nhiên — Lost in Nature
+            </p>
+            <div class="product-grid stagger">
+                <div class="product-card animate-fade-up">
+                    <div class="product-visual" style="background: linear-gradient(135deg, #E8D5CE, #F0E6DC);">🏘️</div>
+                    <h3>Central Villa</h3>
+                    <p>Biệt thự trung tâm, vị trí đắc địa</p>
+                </div>
+                <div class="product-card animate-fade-up">
+                    <div class="product-visual" style="background: linear-gradient(135deg, #D4E8D0, #E8F0E6);">🌳</div>
+                    <h3>Nature Villa</h3>
+                    <p>Biệt thự thiên nhiên, hòa mình cây xanh</p>
+                </div>
+                <div class="product-card animate-fade-up">
+                    <div class="product-visual" style="background: linear-gradient(135deg, #D0D8E8, #E6ECF0);">🏞️</div>
+                    <h3>Hidden Villa</h3>
+                    <p>Biệt thự ẩn mình, riêng tư tuyệt đối</p>
+                </div>
+                <div class="product-card animate-fade-up">
+                    <div class="product-visual" style="background: linear-gradient(135deg, #E8E0D0, #F0ECE6);">🔑</div>
+                    <h3>Multikey</h3>
+                    <p>Thiết kế thông minh, linh hoạt đầu tư</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 8: NỘI THẤT ==================== -->
+    <div class="slide">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Bàn giao</p>
+            <h2 class="slide-heading">Bàn giao full nội thất</h2>
+            <div class="accent-line"></div>
+            <div class="grid-2" style="margin-top: 30px; align-items: center;">
+                <div style="text-align: left;">
+                    <p class="slide-body" style="margin-bottom: 30px;">
+                        Mỗi căn biệt thự được bàn giao hoàn thiện nội thất cao cấp,
+                        sẵn sàng cho gia chủ chuyển vào sinh sống ngay.
+                    </p>
+                    <div style="display:flex; flex-direction:column; gap:16px;">
+                        <div style="display:flex; align-items:center; gap:14px;">
+                            <span style="font-size:24px;">🛋️</span>
+                            <div>
+                                <strong style="color:var(--navy);">Phòng khách</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Thiết kế sang trọng, ánh sáng tự nhiên</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:14px;">
+                            <span style="font-size:24px;">🍳</span>
+                            <div>
+                                <strong style="color:var(--navy);">Phòng bếp</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Trang bị thiết bị hiện đại</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:14px;">
+                            <span style="font-size:24px;">🛏️</span>
+                            <div>
+                                <strong style="color:var(--navy);">Phòng ngủ</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Không gian nghỉ ngơi thoải mái</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:14px;">
+                            <span style="font-size:24px;">🚿</span>
+                            <div>
+                                <strong style="color:var(--navy);">Phòng tắm</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Thiết bị vệ sinh cao cấp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="card" style="padding:0; overflow:hidden; border-radius:20px; height:360px; display:flex; align-items:center; justify-content:center; background: linear-gradient(135deg, var(--cream), var(--rose-pink));">
+                        <div style="text-align:center;">
+                            <span style="font-size:80px; display:block; margin-bottom:16px;">🏠</span>
+                            <p style="font-size:16px; color:var(--navy); font-weight:600;">Full nội thất cao cấp</p>
+                            <p style="font-size:13px; color:var(--text-muted); margin-top:6px;">Biệt thự song lập & đơn lập</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 9: CHÍNH SÁCH BÁN HÀNG ==================== -->
+    <div class="slide slide--cream">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Chính sách</p>
+            <h2 class="slide-heading">Chính sách bán hàng hấp dẫn</h2>
+            <div class="accent-line"></div>
+            <div class="policy-row stagger" style="margin-top: 30px;">
+                <div class="policy-card animate-fade-up">
+                    <div class="value">50 Tr</div>
+                    <div class="label">Đặt cọc</div>
+                </div>
+                <div class="policy-card animate-fade-up">
+                    <div class="value">10%</div>
+                    <div class="label">Chiết khấu</div>
+                </div>
+                <div class="policy-card animate-fade-up">
+                    <div class="value">70%</div>
+                    <div class="label">Hỗ trợ vay NH</div>
+                </div>
+                <div class="policy-card animate-fade-up">
+                    <div class="value">100 Tr</div>
+                    <div class="label">Gói nội thất</div>
+                </div>
+                <div class="policy-card animate-fade-up">
+                    <div class="value" style="font-size:22px;">Mercedes</div>
+                    <div class="label">Bốc thăm quà tặng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 10: TIẾN ĐỘ THANH TOÁN ==================== -->
+    <div class="slide">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label">Thanh toán</p>
+            <h2 class="slide-heading">Tiến độ thanh toán linh hoạt</h2>
+            <div class="accent-line"></div>
+            <div class="grid-2" style="margin-top: 30px; align-items: center;">
+                <div>
+                    <div class="timeline" style="flex-direction:column; gap:0;">
+                        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(0,0,0,0.06);">
+                            <div style="width:48px; height:48px; background:var(--cta-orange); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">15%</div>
+                            <div style="text-align:left;">
+                                <strong style="color:var(--navy);">Đợt 1 — Ký HĐMB</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Thanh toán khi ký hợp đồng mua bán</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(0,0,0,0.06);">
+                            <div style="width:48px; height:48px; background:var(--rose-beige); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;">2-3%</div>
+                            <div style="text-align:left;">
+                                <strong style="color:var(--navy);">Đợt 2-8 — Theo tiến độ</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">2-3%/tháng theo tiến độ xây dựng</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:16px; padding:14px 0; border-bottom:1px solid rgba(0,0,0,0.06);">
+                            <div style="width:48px; height:48px; background:var(--cta-orange); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:16px;">25%</div>
+                            <div style="text-align:left;">
+                                <strong style="color:var(--navy);">Nhận nhà — Bàn giao</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Thanh toán khi nhận bàn giao căn hộ</p>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:16px; padding:14px 0;">
+                            <div style="width:48px; height:48px; background:var(--navy); color:#fff; border-radius:12px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;">5%</div>
+                            <div style="text-align:left;">
+                                <strong style="color:var(--navy);">Đợt cuối — Cấp sổ</strong>
+                                <p style="font-size:13px; color:var(--text-muted);">Thanh toán khi được cấp sổ đỏ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="chart-container" style="margin: 0 auto;">
+                        <canvas id="paymentChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 11: TIỀM NĂNG ĐẦU TƯ ==================== -->
+    <div class="slide slide--dark">
+        <div class="animate-fade-up" style="width: 100%;">
+            <p class="section-label" style="color: var(--gold);">Đầu tư</p>
+            <h2 class="slide-heading" style="color: #FFFFFF;">Tiềm năng tăng giá vượt trội</h2>
+            <div class="accent-line-gold"></div>
+            <div class="grid-2" style="margin-top: 30px; align-items: center;">
+                <div class="chart-container" style="width:100%; max-width:500px;">
+                    <canvas id="growthChart"></canvas>
+                </div>
+                <div style="text-align: left;">
+                    <div class="card-dark" style="margin-bottom: 20px; text-align:left; padding:24px;">
+                        <h3 style="font-size:16px; margin-bottom:8px;">✅ Sổ đỏ lâu dài</h3>
+                        <p>Quyền sở hữu vĩnh viễn, an tâm đầu tư dài hạn</p>
+                    </div>
+                    <div class="card-dark" style="margin-bottom: 20px; text-align:left; padding:24px;">
+                        <h3 style="font-size:16px; margin-bottom:8px;">✅ Hạ tầng phát triển</h3>
+                        <p>Giao thông, khu công nghiệp, FDI tăng mạnh tại Quảng Ngãi</p>
+                    </div>
+                    <div class="card-dark" style="text-align:left; padding:24px;">
+                        <h3 style="font-size:16px; margin-bottom:8px;">✅ Bàn giao 2027-2028</h3>
+                        <p>Timeline rõ ràng, thanh toán linh hoạt theo tiến độ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 12: CTA / LIÊN HỆ ==================== -->
+    <div class="slide slide--hero">
+        <div class="animate-fade-up">
+            <div class="logo-badge">HAUS GROUP</div>
+            <h2 class="slide-heading" style="color: #FFFFFF; font-size: clamp(36px, 5vw, 60px);">
+                Đăng ký tư vấn ngay
+            </h2>
+            <div class="accent-line-gold"></div>
+            <p style="color: rgba(255,255,255,0.6); font-size: 18px; margin-top: 10px; max-width: 600px; line-height: 1.7;">
+                Để lại thông tin, chuyên viên tư vấn sẽ liên hệ bạn trong 24h
+            </p>
+            <div class="cta-hotline">089 999 0917</div>
+            <p style="color: rgba(255,255,255,0.4); font-size: 14px; letter-spacing: 1px; margin-bottom: 20px;">
+                info@coastal.com.vn &bull; TP. Quảng Ngãi
+            </p>
+            <a class="cta-button" href="#">Đăng ký tư vấn</a>
+            <div style="margin-top: 40px; display: flex; gap: 24px; justify-content: center;">
+                <span style="color: rgba(255,255,255,0.4); font-size: 13px;">Facebook</span>
+                <span style="color: rgba(255,255,255,0.4); font-size: 13px;">YouTube</span>
+                <span style="color: rgba(255,255,255,0.4); font-size: 13px;">Zalo</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== NAVIGATION ==================== -->
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">&#8592;</button>
+        <span class="slide-counter"><span id="current">1</span> / <span id="total">12</span></span>
+        <button class="nav-btn" onclick="nextSlide()">&#8594;</button>
+    </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        // Slide Navigation
+        let current = 1;
+        const total = document.querySelectorAll('.slide').length;
+        document.getElementById('total').textContent = total;
+
+        function showSlide(n) {
+            if (n < 1) n = 1;
+            if (n > total) n = total;
+            current = n;
+            document.querySelectorAll('.slide').forEach((s, i) => {
+                s.classList.toggle('active', i === n - 1);
+            });
+            document.getElementById('current').textContent = n;
+            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
+
+            // Initialize charts when their slide becomes visible
+            if (n === 10) initPaymentChart();
+            if (n === 11) initGrowthChart();
+        }
+
+        function nextSlide() { showSlide(current + 1); }
+        function prevSlide() { showSlide(current - 1); }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+        });
+
+        // Click navigation (skip nav controls and CTA)
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-controls') && !e.target.closest('.cta-button')) {
+                nextSlide();
+            }
+        });
+
+        showSlide(1);
+
+        // ==================== CHARTS ====================
+
+        let paymentChartInstance = null;
+        let growthChartInstance = null;
+
+        function initPaymentChart() {
+            if (paymentChartInstance) return;
+            const ctx = document.getElementById('paymentChart');
+            if (!ctx) return;
+            paymentChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Đợt 1 (Ký HĐMB)', 'Đợt 2-8 (Tiến độ)', 'Nhận nhà', 'Cấp sổ'],
+                    datasets: [{
+                        data: [15, 55, 25, 5],
+                        backgroundColor: ['#FF5722', '#C39F93', '#0B3D5C', '#D4AF37'],
+                        borderColor: '#FFFFFF',
+                        borderWidth: 3,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '55%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#6B7280',
+                                font: { size: 12, family: 'Inter' },
+                                padding: 16,
+                                usePointStyle: true,
+                                pointStyleWidth: 12
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function initGrowthChart() {
+            if (growthChartInstance) return;
+            const ctx = document.getElementById('growthChart');
+            if (!ctx) return;
+            growthChartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2024', '2025', '2026', '2027', '2028', '2029'],
+                    datasets: [{
+                        label: 'Giá trị BĐS (% tăng)',
+                        data: [100, 112, 128, 148, 170, 195],
+                        borderColor: '#D4AF37',
+                        backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: '#D4AF37',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointRadius: 5,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { color: 'rgba(255,255,255,0.5)', font: { size: 12 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: {
+                                color: 'rgba(255,255,255,0.5)',
+                                font: { size: 12 },
+                                callback: function(val) { return val + '%'; }
+                            },
+                            min: 80,
+                            max: 220
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
