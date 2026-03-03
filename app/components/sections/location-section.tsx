@@ -41,7 +41,7 @@ export default function LocationSection() {
           {/* Map */}
           <div>
             <img
-              src="/images/location/location-map.png"
+              src="/images/location/location-map.jpg"
               alt="Bản đồ vị trí Coastal Quảng Ngãi"
               className="w-full rounded-lg shadow-xl"
             />
