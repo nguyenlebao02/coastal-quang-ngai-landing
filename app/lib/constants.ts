@@ -16,7 +16,7 @@ export const NAV_ITEMS = [
 export const SITE_NAME = 'COASTAL QUẢNG NGÃI';
 
 export const CONTACT_INFO = {
-  hotline: '089 999 0917',
+  hotline: '098 624 3450',
   email: 'info@coastal.com.vn',
   address: 'Quảng Ngãi, Việt Nam',
 } as const;

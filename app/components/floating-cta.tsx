@@ -18,7 +18,7 @@ export default function FloatingCta() {
 
       {/* Zalo button */}
       <a
-        href="https://zalo.me/0899990917"
+        href="https://zalo.me/0986243450"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 transition-colors"

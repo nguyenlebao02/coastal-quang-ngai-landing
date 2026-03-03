@@ -18,7 +18,7 @@ const pathwayExtreme = Pathway_Extreme({
 export const metadata: Metadata = {
   title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
   description:
-    'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi. Shophouse, Biệt thự, Căn hộ từ Haus Group. Hotline: 089 999 0917',
+    'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi. Shophouse, Biệt thự, Căn hộ từ Haus Group. Hotline: 098 624 3450',
   keywords: [
     'Coastal Quảng Ngãi',
     'Haus Quảng Ngãi',

@@ -319,7 +319,7 @@ export default function SlideTuVanPage() {
           <h2 className="slide-heading" style={{ color: '#FFF', fontSize: 'clamp(36px,5vw,60px)' }}>Đăng ký tư vấn ngay</h2>
           <div className="accent-line-gold" />
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 18, marginTop: 10, maxWidth: 600, lineHeight: 1.7 }}>Để lại thông tin, chuyên viên tư vấn sẽ liên hệ bạn trong 24h</p>
-          <div className="cta-hotline">089 999 0917</div>
+          <div className="cta-hotline">098 624 3450</div>
           <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: 14, letterSpacing: 1, marginBottom: 20 }}>info@coastal.com.vn &bull; TP. Quảng Ngãi</p>
           <span className="cta-button">Đăng ký tư vấn</span>
           <div style={{ marginTop: 40, display: 'flex', gap: 24, justifyContent: 'center' }}>
