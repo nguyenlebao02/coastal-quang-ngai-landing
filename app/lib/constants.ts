@@ -18,7 +18,7 @@ export const SITE_NAME = 'COASTAL QUẢNG NGÃI';
 export const CONTACT_INFO = {
   hotline: '098 624 3450',
   email: 'info@coastal.com.vn',
-  address: 'Quảng Ngãi, Việt Nam',
+  address: '88 Hùng Vương, Trần Phú, Quảng Ngãi',
 } as const;
 
 /* Project overview data */
