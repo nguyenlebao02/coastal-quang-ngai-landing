@@ -17,7 +17,7 @@ export default function HeroSection() {
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         {/* Logo */}
         <img
-          src="/images/misc/coastal-logo-identity.png"
+          src="/images/misc/coastal-logo-white.png"
           alt="Coastal Quảng Ngãi"
           className="h-20 md:h-28 mx-auto mb-6"
         />

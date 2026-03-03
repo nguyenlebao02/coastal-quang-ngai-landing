@@ -8,9 +8,9 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <img
-              src="/images/misc/coastal-logo-identity.png"
+              src="/images/misc/coastal-logo-white.png"
               alt={SITE_NAME}
-              className="h-12 mb-4 brightness-0 invert"
+              className="h-12 mb-4"
             />
             <h3 className="font-heading text-lg text-rose-beige mb-2 font-bold uppercase">{SITE_NAME}</h3>
             <p className="text-white/60 text-sm leading-relaxed">
