@@ -83,13 +83,13 @@ export default function ArchitectureSection() {
             {semiDetachedImages.map((img, i) => (
               <div
                 key={i}
-                className="cursor-pointer group overflow-hidden rounded-lg"
+                className="cursor-pointer group overflow-hidden rounded-lg h-40 md:h-56"
                 onClick={() => openLightbox(semiDetachedImages, i)}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-40 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             ))}
@@ -105,13 +105,13 @@ export default function ArchitectureSection() {
             {detachedImages.map((img, i) => (
               <div
                 key={i}
-                className="cursor-pointer group overflow-hidden rounded-lg"
+                className="cursor-pointer group overflow-hidden rounded-lg h-40 md:h-56"
                 onClick={() => openLightbox(detachedImages, i)}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-40 md:h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             ))}
