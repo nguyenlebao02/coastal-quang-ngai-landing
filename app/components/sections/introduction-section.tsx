@@ -23,7 +23,7 @@ export default function IntroductionSection() {
           <div className="relative w-full overflow-hidden rounded-lg shadow-lg" style={{ paddingBottom: '56.25%' }}>
             <iframe
               className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/VIDEO_ID"
+              src="https://www.youtube.com/embed/RV5eoU2sv7s?start=66"
               title="Coastal Quảng Ngãi - Giới thiệu dự án"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
