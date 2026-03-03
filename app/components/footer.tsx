@@ -16,7 +16,7 @@ export default function Footer() {
             <p className="text-white/60 text-sm leading-relaxed">
               Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
             </p>
-            <p className="text-white/60 text-sm mt-2">{CONTACT_INFO.address}</p>
+            <p className="text-white/60 text-sm mt-2">Địa chỉ: {CONTACT_INFO.address}</p>
             {/* Social icons */}
             <div className="flex gap-3 mt-4">
               <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-rose-beige transition-colors" aria-label="Facebook">
