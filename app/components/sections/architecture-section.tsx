@@ -40,7 +40,7 @@ export default function ArchitectureSection() {
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
-            Bàn giao full nội thất
+            Thiết kế nội thất cao cấp
           </h2>
           <div className="rose-line mb-6" />
         </div>
