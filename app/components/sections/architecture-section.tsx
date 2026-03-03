@@ -46,22 +46,22 @@ export default function ArchitectureSection() {
         </div>
 
         {/* Interior showcase */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 md:h-[500px]">
           <div
-            className="md:col-span-2 cursor-pointer group overflow-hidden rounded-lg"
+            className="md:col-span-2 cursor-pointer group overflow-hidden rounded-lg h-64 md:h-full"
             onClick={() => openLightbox(interiorShowcase, 0)}
           >
             <img
               src={interiorShowcase[0].src}
               alt={interiorShowcase[0].alt}
-              className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 h-64 md:h-full">
             {interiorShowcase.slice(1).map((img, i) => (
               <div
                 key={i}
-                className="cursor-pointer group overflow-hidden rounded-lg flex-1"
+                className="cursor-pointer group overflow-hidden rounded-lg flex-1 min-h-0"
                 onClick={() => openLightbox(interiorShowcase, i + 1)}
               >
                 <img
