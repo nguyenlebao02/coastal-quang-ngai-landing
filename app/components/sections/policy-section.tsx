@@ -23,7 +23,7 @@ export default function PolicySection() {
             className="h-12 mx-auto mb-4"
           />
           <h3 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">
-            Chính sách bán hàng Coastal Quảng Ngãi
+            Chính sách bán hàng Coastal Quảng Ngãi (Dự kiến)
           </h3>
           <div className="rose-line mb-6" />
         </div>
