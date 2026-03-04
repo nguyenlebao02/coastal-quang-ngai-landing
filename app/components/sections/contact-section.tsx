@@ -5,7 +5,7 @@ import SectionWrapper from '@/app/components/ui/section-wrapper';
 import Button from '@/app/components/ui/button';
 import { CONTACT_PRODUCT_OPTIONS, CONTACT_INFO } from '@/app/lib/constants';
 
-const WEBHOOK_URL = 'https://legacyghomes-legacy-homes-crm.tose.sh/api/webhooks/landing/8e78d400-df3e-479f-8556-405785d28942';
+const WEBHOOK_URL = 'https://crm.legacyhomes.com.vn/api/webhooks/landing/8e78d400-df3e-479f-8556-405785d28942';
 
 /* Extract UTM params from URL query string */
 function getUtmParams(): Record<string, string> {
