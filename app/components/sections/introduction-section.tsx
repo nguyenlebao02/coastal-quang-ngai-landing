@@ -32,7 +32,7 @@ export default function IntroductionSection() {
         </div>
 
         {/* Master plan image */}
-        <div className="mb-10 max-w-4xl mx-auto">
+        <div className="mb-10 max-w-2xl mx-auto">
           <img
             src="/images/hero/project-overview-masterplan.png"
             alt="Tổng quan dự án"
