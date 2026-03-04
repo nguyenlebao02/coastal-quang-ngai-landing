@@ -38,7 +38,7 @@ export default function Header() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
           <img
-            src="/images/misc/coastal-logo-color.png"
+            src="/images/misc/coastal-logo-identity.png"
             alt={SITE_NAME}
             className={`w-auto transition-all duration-300 ${scrolled ? 'h-9' : 'h-11'}`}
           />
