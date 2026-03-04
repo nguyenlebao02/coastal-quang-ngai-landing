@@ -44,10 +44,12 @@ export default function ContactSection() {
     const payload: Record<string, string> = {
       name: (formData.get('name') as string).trim(),
       phone: (formData.get('phone') as string).replace(/[\s-]/g, ''),
-      email: (formData.get('email') as string).trim(),
-      notes,
       ...utmParams,
     };
+
+    const email = (formData.get('email') as string).trim();
+    if (email) payload.email = email;
+    if (notes) payload.notes = notes;
 
     try {
       const res = await fetch(WEBHOOK_URL, {
@@ -105,8 +107,8 @@ export default function ContactSection() {
                 name="phone"
                 placeholder="Số điện thoại *"
                 required
-                pattern="(\+84|0)\d{9,10}"
-                title="Số điện thoại Việt Nam (VD: 0901234567)"
+                pattern="[\d\s\-+]{9,15}"
+                title="Số điện thoại (VD: 0901234567)"
                 className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
               />
             </div>
