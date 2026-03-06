@@ -1,0 +1,20 @@
+node_modules
+.next
+.git
+plans/
+docs/
+scripts/
+*.md
+!README.md
+compare-sites.js
+detailed-compare.js
+.tose.json
+.claude
+
+# Root-level screenshots
+clone-*.png
+cmp-*.png
+detail-*.png
+fix-*.png
+original-*.png
+screenshot-*.png
