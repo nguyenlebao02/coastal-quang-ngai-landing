@@ -18,7 +18,7 @@ export default function NewsSection() {
             <Link
               key={item.slug}
               href={`/tin-tuc/${item.slug}/`}
-              className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="group block cursor-pointer bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="overflow-hidden">
                 <img
