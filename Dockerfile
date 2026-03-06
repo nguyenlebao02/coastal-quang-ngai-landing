@@ -4,7 +4,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 ENV NEXT_PUBLIC_BLOG_API_URL=https://haus-coastal-blog-api.hauscoastal.workers.dev
-RUN npm run build:next
+RUN npm run build
 
 FROM node:18-alpine AS runner
 WORKDIR /app
