@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import SectionWrapper from '@/app/components/ui/section-wrapper';
 import { NEWS_ITEMS } from '@/app/lib/constants';
 
@@ -14,8 +15,9 @@ export default function NewsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {NEWS_ITEMS.map((item) => (
-            <article
+            <Link
               key={item.slug}
+              href={`/tin-tuc/${item.slug}/`}
               className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             >
               <div className="overflow-hidden">
@@ -33,7 +35,7 @@ export default function NewsSection() {
                   Xem thêm →
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
       </div>
