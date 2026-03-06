@@ -7,9 +7,11 @@ export default function NewsSection() {
     <SectionWrapper id="tin-tuc" className="bg-cream-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
-            Tin tức dự án
-          </h2>
+          <Link href="/tin-tuc/" className="inline-block hover:opacity-80 transition-opacity">
+            <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
+              Tin tức dự án
+            </h2>
+          </Link>
           <div className="rose-line mb-6" />
         </div>
 
