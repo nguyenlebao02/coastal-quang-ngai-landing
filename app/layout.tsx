@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Alumni_Sans, Pathway_Extreme } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
+
+const GA_ID = 'G-HHW4ZZ4BN2';
 
 const alumniSans = Alumni_Sans({
   subsets: ['latin', 'latin-ext', 'vietnamese'],
@@ -44,6 +47,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi" className={`${alumniSans.variable} ${pathwayExtreme.variable}`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </head>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
