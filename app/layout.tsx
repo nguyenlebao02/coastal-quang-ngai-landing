@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
   description:
-    'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi. Shophouse, Biệt thự, Căn hộ từ Haus Group. Hotline: 098 624 3450',
+    'Dự án Coastal Quảng Ngãi 93.9ha - Đô thị sinh thái biển đẳng cấp. Biệt thự biển, Shophouse, Căn hộ ven biển Quảng Ngãi. Sổ đỏ lâu dài. CĐT Haus Group. Hotline: 098 624 3450',
   authors: [{ name: 'Haus Group' }],
   keywords: [
     'Coastal Quảng Ngãi',
@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     'biệt thự biển Quảng Ngãi',
     'đô thị sinh thái biển',
     'bất động sản Quảng Ngãi',
+    'shophouse Quảng Ngãi',
+    'dự án Quảng Ngãi',
+    'nhà đất Quảng Ngãi',
+    'Haus Group',
+    'khu đô thị mới Quảng Ngãi',
   ],
   alternates: { canonical: '/' },
   icons: { apple: '/images/misc/coastal-logo-color.png' },
@@ -38,12 +43,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
     description:
-      'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi.',
+      'Dự án Coastal Quảng Ngãi 93.9ha - Biệt thự biển, Shophouse, Căn hộ ven biển. Sổ đỏ lâu dài. CĐT Haus Group.',
     type: 'website',
     locale: 'vi_VN',
     siteName: 'Coastal Quảng Ngãi',
     url: SITE_URL,
-    images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi' }],
+    images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp' }],
   },
 };
 

@@ -74,6 +74,46 @@ export default function Home() {
           },
         }) }}
       />
+      {/* FAQPage JSON-LD — targets long-tail search queries */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: [
+            {
+              '@type': 'Question',
+              name: 'Dự án Coastal Quảng Ngãi ở đâu?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi tọa lạc tại TP. Quảng Ngãi, Tỉnh Quảng Ngãi, do Haus Group phát triển với quy mô 93.9 ha. Vị trí đắc địa ven biển, kết nối trung tâm thành phố và các tuyến giao thông huyết mạch.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Coastal Quảng Ngãi có những loại hình sản phẩm nào?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Coastal Quảng Ngãi cung cấp đa dạng sản phẩm: Central Villa (biệt thự trung tâm), Nature Villa (biệt thự sinh thái), Hidden Villa (biệt thự ẩn mình), Multikey (căn hộ thông minh), Shophouse thương mại và Nhà phố.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Pháp lý dự án Coastal Quảng Ngãi như thế nào?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi có pháp lý sổ đỏ lâu dài, đảm bảo quyền sở hữu vĩnh viễn cho cư dân. Chủ đầu tư Haus Group cam kết hoàn thiện pháp lý đầy đủ trước khi bàn giao.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Khi nào Coastal Quảng Ngãi bàn giao?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Dự kiến Coastal Quảng Ngãi bàn giao giai đoạn 1 trong năm 2027-2028. Tiến độ xây dựng được cập nhật thường xuyên trên website.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Chính sách bán hàng Coastal Quảng Ngãi có gì ưu đãi?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Coastal Quảng Ngãi áp dụng chính sách ưu đãi: đặt cọc chỉ 50 triệu, chiết khấu lên đến 10%, hỗ trợ vay ngân hàng 70%, gói nội thất 100 triệu, và cơ hội bốc thăm Mercedes.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Tiện ích tại Coastal Quảng Ngãi gồm những gì?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Hệ tiện ích đẳng cấp: Nhà hát Opera, Quảng trường âm nhạc, Bến du thuyền, Yacht Clubhouse, Hồ bơi trung tâm, Sân Pickleball, Khu vui chơi trẻ em, Công viên san hô, Trung tâm hội nghị và nhiều tiện ích khác.' },
+            },
+          ],
+        }) }}
+      />
       <Header />
       <main id="main-content">
         <HeroSection />
