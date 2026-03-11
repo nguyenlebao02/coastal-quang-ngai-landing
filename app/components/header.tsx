@@ -1,17 +1,37 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { NAV_ITEMS, SITE_NAME, CONTACT_INFO } from '@/app/lib/constants';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const closeMenu = useCallback(() => setIsOpen(false), []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen, closeMenu]);
+
+  /* Lock body scroll when mobile menu is open */
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [isOpen]);
 
   return (
     <header
@@ -24,7 +44,7 @@ export default function Header() {
         scrolled ? 'bg-rose-beige/90' : 'bg-black/30'
       }`}>
         <div className="container mx-auto flex justify-end gap-6 px-4">
-          <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:text-white/80 transition-colors">
+          <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="hover:text-white/80 transition-colors">
             Hotline: {CONTACT_INFO.hotline}
           </a>
           <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-white/80 transition-colors">
@@ -36,13 +56,15 @@ export default function Header() {
       {/* Main nav */}
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <img
             src="/images/misc/coastal-logo-identity.png"
             alt={SITE_NAME}
+            width={160}
+            height={44}
             className={`w-auto transition-all duration-300 ${scrolled ? 'h-9' : 'h-11'}`}
           />
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex items-center gap-0">
@@ -65,7 +87,8 @@ export default function Header() {
         <button
           className={`lg:hidden p-2 ${scrolled ? 'text-charcoal' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Menu"
+          aria-label={isOpen ? 'Đóng menu' : 'Mở menu'}
+          aria-expanded={isOpen}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isOpen ? (
@@ -77,25 +100,32 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile nav */}
+      {/* Mobile nav with overlay */}
       {isOpen && (
-        <nav className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="block px-6 py-3 text-sm font-heading font-bold text-charcoal/80 hover:text-cta-orange hover:bg-cream/30 transition-colors uppercase"
-              onClick={() => setIsOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-          <div className="px-6 py-3 border-t border-gray-100">
-            <a href={`tel:${CONTACT_INFO.hotline}`} className="text-cta-orange text-sm font-semibold">
-              {CONTACT_INFO.hotline}
-            </a>
-          </div>
-        </nav>
+        <>
+          <div
+            className="lg:hidden fixed inset-0 top-0 bg-black/30 z-40"
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
+          <nav className="lg:hidden bg-white border-t border-gray-100 shadow-lg relative z-50">
+            {NAV_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block px-6 py-3 text-sm font-heading font-bold text-charcoal/80 hover:text-cta-orange hover:bg-cream/30 transition-colors uppercase"
+                onClick={closeMenu}
+              >
+                {item.label}
+              </a>
+            ))}
+            <div className="px-6 py-3 border-t border-gray-100">
+              <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="text-cta-orange text-sm font-semibold">
+                {CONTACT_INFO.hotline}
+              </a>
+            </div>
+          </nav>
+        </>
       )}
     </header>
   );

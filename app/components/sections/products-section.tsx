@@ -27,6 +27,7 @@ export default function ProductsSection() {
                 <img
                   src={product.image}
                   alt={product.name}
+                  loading="lazy"
                   className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
@@ -42,6 +43,7 @@ export default function ProductsSection() {
           <img
             src="/images/products/lost-in-nature-concept.jpg"
             alt="Lost in Nature - Thiết kế hòa mình vào thiên nhiên"
+            loading="lazy"
             className="w-full rounded-lg shadow-lg"
           />
         </div>

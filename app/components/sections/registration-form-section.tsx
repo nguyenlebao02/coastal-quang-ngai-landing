@@ -4,19 +4,9 @@ import { useState, useEffect } from 'react';
 import SectionWrapper from '@/app/components/ui/section-wrapper';
 import Button from '@/app/components/ui/button';
 import { CONTACT_INFO } from '@/app/lib/constants';
+import { getUtmParams, submitFormToWebhook } from '@/app/lib/form-utils';
 
-const WEBHOOK_URL = 'https://crm.legacyhomes.com.vn/api/webhooks/landing/8e78d400-df3e-479f-8556-405785d28942';
-
-function getUtmParams(): Record<string, string> {
-  if (typeof window === 'undefined') return {};
-  const params = new URLSearchParams(window.location.search);
-  const utm: Record<string, string> = {};
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((key) => {
-    const val = params.get(key);
-    if (val) utm[key] = val;
-  });
-  return utm;
-}
+const INPUT_CLASS = 'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors';
 
 export default function RegistrationFormSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -34,6 +24,10 @@ export default function RegistrationFormSection() {
     setError('');
 
     const formData = new FormData(e.currentTarget);
+
+    /* Honeypot check */
+    if (formData.get('website')) return;
+
     const payload: Record<string, string> = {
       name: (formData.get('name') as string).trim(),
       phone: (formData.get('phone') as string).replace(/[\s-]/g, ''),
@@ -45,17 +39,7 @@ export default function RegistrationFormSection() {
     if (email) payload.email = email;
 
     try {
-      const res = await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Gửi thất bại');
-      }
-
+      await submitFormToWebhook(payload);
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Có lỗi xảy ra, vui lòng thử lại.');
@@ -72,9 +56,9 @@ export default function RegistrationFormSection() {
       <div className="absolute inset-0 bg-rose-beige" />
 
       <div className="relative z-10 container mx-auto max-w-2xl text-center">
-        <h3 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
+        <h2 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
           Đăng ký tham quan dự án
-        </h3>
+        </h2>
         <div className="w-16 h-[1px] bg-white/60 mx-auto mb-4" />
         <p className="text-white/80 mb-8">
           Để lại thông tin để nhận bảng giá và chính sách ưu đãi mới nhất
@@ -90,28 +74,21 @@ export default function RegistrationFormSection() {
             onSubmit={handleSubmit}
             className="bg-white rounded-lg p-8 space-y-4"
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Họ và tên"
-              required
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Số điện thoại"
-              required
-              pattern="[\d\s\-+]{9,15}"
-              title="Số điện thoại (VD: 0901234567)"
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors"
-            />
+            {/* Honeypot — hidden from real users */}
+            <input type="text" name="website" autoComplete="off" className="hidden" tabIndex={-1} aria-hidden="true" />
+
+            <div>
+              <label htmlFor="reg-name" className="sr-only">Họ và tên</label>
+              <input id="reg-name" type="text" name="name" placeholder="Họ và tên" required maxLength={100} className={INPUT_CLASS} />
+            </div>
+            <div>
+              <label htmlFor="reg-phone" className="sr-only">Số điện thoại</label>
+              <input id="reg-phone" type="tel" name="phone" placeholder="Số điện thoại" required pattern="[\d\s\-+]{9,15}" title="Số điện thoại (VD: 0901234567)" maxLength={15} className={INPUT_CLASS} />
+            </div>
+            <div>
+              <label htmlFor="reg-email" className="sr-only">Email</label>
+              <input id="reg-email" type="email" name="email" placeholder="Email" maxLength={254} className={INPUT_CLASS} />
+            </div>
 
             {error && (
               <p className="text-red-500 text-sm">{error}</p>
@@ -124,7 +101,7 @@ export default function RegistrationFormSection() {
         )}
 
         <p className="text-white mt-6 text-lg font-semibold">
-          Hotline: <a href={`tel:${CONTACT_INFO.hotline}`} className="hover:underline">{CONTACT_INFO.hotline}</a>
+          Hotline: <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="hover:underline">{CONTACT_INFO.hotline}</a>
         </p>
       </div>
     </SectionWrapper>

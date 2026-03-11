@@ -17,6 +17,7 @@ export default function AmenitiesSection() {
           <img
             src="/images/misc/title-rich-amenity-system.png"
             alt="Hệ tiện ích giàu giá trị"
+            loading="lazy"
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
@@ -67,6 +68,7 @@ export default function AmenitiesSection() {
           <img
             src="/images/amenities/amenity-legend.jpg"
             alt="Chú thích tiện ích"
+            loading="lazy"
             className="w-full rounded-lg"
           />
         </div>
@@ -76,6 +78,7 @@ export default function AmenitiesSection() {
           <img
             src="/images/hero/hero-intro-coastal.jpg"
             alt="Tổng quan tiện ích Coastal Quảng Ngãi"
+            loading="lazy"
             className="w-full rounded-lg shadow-lg"
           />
         </div>

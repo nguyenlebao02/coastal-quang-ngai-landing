@@ -31,9 +31,9 @@ export default function LocationSection() {
             alt="Vị trí hội tụ"
             className="h-8 mx-auto mb-4"
           />
-          <h3 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">
+          <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">
             Vị trí Coastal Quảng Ngãi
-          </h3>
+          </h2>
           <div className="rose-line mb-6" />
         </div>
 
@@ -43,6 +43,7 @@ export default function LocationSection() {
             <img
               src="/images/location/location-map.jpg"
               alt="Bản đồ vị trí Coastal Quảng Ngãi"
+              loading="lazy"
               className="w-full rounded-lg shadow-xl"
             />
           </div>
@@ -53,7 +54,7 @@ export default function LocationSection() {
               <div key={item.title} className="flex items-start gap-4">
                 <img src={item.icon} alt="" className="w-8 h-8 mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-rose-beige font-heading font-bold text-lg mb-1">{item.title}</h3>
+                  <h4 className="text-rose-beige font-heading font-bold text-lg mb-1">{item.title}</h4>
                   <p className="text-charcoal/70 text-sm">{item.description}</p>
                 </div>
               </div>

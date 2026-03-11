@@ -1,14 +1,23 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { CONTACT_INFO } from '@/app/lib/constants';
 
 export default function FloatingCta() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShowScrollTop(window.scrollY > 300);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
       {/* Phone button */}
       <a
-        href={`tel:${CONTACT_INFO.hotline}`}
-        className="w-14 h-14 bg-cta-orange rounded-full flex items-center justify-center shadow-lg hover:brightness-110 transition-all animate-pulse"
+        href={`tel:${CONTACT_INFO.hotlineRaw}`}
+        className="w-14 h-14 bg-cta-orange rounded-full flex items-center justify-center shadow-lg hover:brightness-110 transition-all animate-pulse motion-reduce:animate-none"
         aria-label="Gọi hotline"
       >
         <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -18,7 +27,7 @@ export default function FloatingCta() {
 
       {/* Zalo button */}
       <a
-        href="https://zalo.me/0986243450"
+        href={CONTACT_INFO.zaloUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-blue-500 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-600 transition-colors"
@@ -29,16 +38,18 @@ export default function FloatingCta() {
         </svg>
       </a>
 
-      {/* Scroll to top */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="w-14 h-14 bg-charcoal rounded-full flex items-center justify-center shadow-lg hover:bg-charcoal/80 transition-colors border border-white/10"
-        aria-label="Lên đầu trang"
-      >
-        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-        </svg>
-      </button>
+      {/* Scroll to top — hidden when near top */}
+      {showScrollTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="w-14 h-14 bg-charcoal rounded-full flex items-center justify-center shadow-lg hover:bg-charcoal/80 transition-colors border border-white/10"
+          aria-label="Lên đầu trang"
+        >
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

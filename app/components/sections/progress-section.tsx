@@ -25,6 +25,7 @@ export default function ProgressSection() {
             <img
               src="/images/hero/coastal-overview-aerial.jpg"
               alt="Tiến độ thi công tổng thể"
+              loading="lazy"
               className="w-full h-64 md:h-80 object-cover"
             />
           </div>
@@ -32,6 +33,7 @@ export default function ProgressSection() {
             <img
               src="/images/hero/hero-banner-coastal-aerial.jpg"
               alt="Tiến độ thi công chi tiết"
+              loading="lazy"
               className="w-full h-64 md:h-80 object-cover"
             />
           </div>

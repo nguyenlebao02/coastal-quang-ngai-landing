@@ -35,6 +35,7 @@ export default function OverviewSection() {
             <img
               src="/images/hero/coastal-overview-aerial.jpg"
               alt="Phối cảnh dự án Coastal Quảng Ngãi"
+              loading="lazy"
               className="w-full rounded-lg shadow-lg"
             />
           </div>

@@ -17,8 +17,10 @@ export const SITE_NAME = 'COASTAL QUẢNG NGÃI';
 
 export const CONTACT_INFO = {
   hotline: '098 624 3450',
+  hotlineRaw: '0986243450',
   email: 'hauscoastal@gmail.com',
   address: 'Văn phòng tư vấn Dự án Haus Coastal Quảng Ngãi: 88 Hùng Vương, Phường Nghĩa Lộ, Tỉnh Quảng Ngãi',
+  zaloUrl: 'https://zalo.me/0986243450',
 } as const;
 
 /* Project overview data */

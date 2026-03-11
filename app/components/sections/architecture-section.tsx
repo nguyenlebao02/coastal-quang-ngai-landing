@@ -49,23 +49,33 @@ export default function ArchitectureSection() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10">
           <div
             className="col-span-2 cursor-pointer group overflow-hidden rounded-lg aspect-[16/9]"
+            role="button"
+            tabIndex={0}
             onClick={() => openLightbox(interiorShowcase, 0)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(interiorShowcase, 0); } }}
+            aria-label={`Xem ảnh: ${interiorShowcase[0].alt}`}
           >
             <img
               src={interiorShowcase[0].src}
               alt={interiorShowcase[0].alt}
+              loading="lazy"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
           {interiorShowcase.slice(1).map((img, i) => (
             <div
-              key={i}
+              key={img.src}
               className="cursor-pointer group overflow-hidden rounded-lg aspect-[4/3]"
+              role="button"
+              tabIndex={0}
               onClick={() => openLightbox(interiorShowcase, i + 1)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(interiorShowcase, i + 1); } }}
+              aria-label={`Xem ảnh: ${img.alt}`}
             >
               <img
                 src={img.src}
                 alt={img.alt}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -80,13 +90,18 @@ export default function ArchitectureSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {semiDetachedImages.map((img, i) => (
               <div
-                key={i}
+                key={img.src}
                 className="cursor-pointer group overflow-hidden rounded-lg aspect-[4/3]"
+                role="button"
+                tabIndex={0}
                 onClick={() => openLightbox(semiDetachedImages, i)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(semiDetachedImages, i); } }}
+                aria-label={`Xem ảnh: ${img.alt}`}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -102,13 +117,18 @@ export default function ArchitectureSection() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {detachedImages.map((img, i) => (
               <div
-                key={i}
+                key={img.src}
                 className="cursor-pointer group overflow-hidden rounded-lg aspect-[4/3]"
+                role="button"
+                tabIndex={0}
                 onClick={() => openLightbox(detachedImages, i)}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(detachedImages, i); } }}
+                aria-label={`Xem ảnh: ${img.alt}`}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

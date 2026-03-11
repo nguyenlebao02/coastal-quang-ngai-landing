@@ -55,3 +55,16 @@ coverage/
 *.orig
 
 .vercel
+
+# Development screenshots & scripts
+/clone-*.png
+/cmp-*.png
+/detail-*.png
+/original-*.png
+/screenshot-*.png
+/fix-*.png
+compare-sites.js
+detailed-compare.js
+.tose.json
+tsconfig.tsbuildinfo
+scripts/

@@ -16,6 +16,7 @@ const pathwayExtreme = Pathway_Extreme({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hauscoastal.com.vn'),
   title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
   description:
     'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi. Shophouse, Biệt thự, Căn hộ từ Haus Group. Hotline: 098 624 3450',
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
       'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi.',
     type: 'website',
     locale: 'vi_VN',
+    images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi' }],
   },
 };
 

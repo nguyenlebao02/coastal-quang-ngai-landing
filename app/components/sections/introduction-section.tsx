@@ -36,6 +36,7 @@ export default function IntroductionSection() {
           <img
             src="/images/hero/project-overview-masterplan.png"
             alt="Tổng quan dự án"
+            loading="lazy"
             className="w-full rounded-lg"
           />
         </div>
@@ -48,6 +49,7 @@ export default function IntroductionSection() {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

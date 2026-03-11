@@ -9,7 +9,7 @@ RUN npm run build
 FROM node:18-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
-ENV REVALIDATE_SECRET=haus-coastal-revalidate-2026
+# REVALIDATE_SECRET and WEBHOOK_URL must be passed at runtime via --env or secrets manager
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public

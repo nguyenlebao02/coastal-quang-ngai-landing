@@ -1,8 +1,19 @@
 import Link from 'next/link';
 import SectionWrapper from '@/app/components/ui/section-wrapper';
 import { NEWS_ITEMS } from '@/app/lib/constants';
+import { fetchPublishedPosts, resolveImageUrl } from '@/app/lib/blog-api';
 
-export default function NewsSection() {
+export default async function NewsSection() {
+  const posts = await fetchPublishedPosts();
+
+  const articles = posts.length > 0
+    ? posts.slice(0, 3).map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        image: resolveImageUrl(p.cover_image),
+      }))
+    : NEWS_ITEMS;
+
   return (
     <SectionWrapper id="tin-tuc" className="bg-cream-gradient">
       <div className="container mx-auto">
@@ -16,7 +27,7 @@ export default function NewsSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {NEWS_ITEMS.map((item) => (
+          {articles.map((item) => (
             <Link
               key={item.slug}
               href={`/tin-tuc/${item.slug}/`}
@@ -26,6 +37,7 @@ export default function NewsSection() {
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

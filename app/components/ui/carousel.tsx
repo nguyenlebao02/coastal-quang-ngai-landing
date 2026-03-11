@@ -4,21 +4,13 @@ import { useState, useEffect, useCallback, useRef, TouchEvent } from 'react';
 
 interface CarouselProps {
   items: { image: string; label?: string }[];
-  /** Auto-play interval in ms, 0 = disabled */
   autoPlay?: number;
-  /** Show prev/next arrow buttons */
   showArrows?: boolean;
-  /** Show dot indicators */
   showDots?: boolean;
-  /** Infinite loop */
   loop?: boolean;
-  /** CSS height class for slides */
   slideHeight?: string;
-  /** Callback when active slide changes */
   onSlideChange?: (index: number) => void;
-  /** Show caption overlay */
   showCaption?: boolean;
-  /** Controlled active index from parent */
   activeIndex?: number;
 }
 
@@ -38,6 +30,8 @@ export default function Carousel({
   const [isTransitioning, setIsTransitioning] = useState(false);
   const touchStart = useRef(0);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const nextRef = useRef<() => void>(() => {});
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const total = items.length;
 
@@ -55,28 +49,33 @@ export default function Carousel({
       onSlideChange?.(next);
       setTimeout(() => setIsTransitioning(false), 500);
     },
-    [isTransitioning, loop, total, onSlideChange]
+    [isTransitioning, loop, total, onSlideChange, controlledIndex]
   );
 
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
 
-  /* Auto-play */
+  useEffect(() => { nextRef.current = next; }, [next]);
+
+  /* Auto-play using ref to avoid stale closure */
   useEffect(() => {
     if (autoPlay <= 0) return;
-    autoPlayRef.current = setInterval(next, autoPlay);
+    autoPlayRef.current = setInterval(() => nextRef.current(), autoPlay);
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     };
-  }, [autoPlay, next]);
+  }, [autoPlay]);
 
-  /* Pause auto-play on hover */
   const pauseAutoPlay = () => {
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
   };
   const resumeAutoPlay = () => {
     if (autoPlay <= 0) return;
-    autoPlayRef.current = setInterval(next, autoPlay);
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => nextRef.current(), autoPlay);
   };
 
   /* Touch/swipe support */
@@ -92,13 +91,25 @@ export default function Carousel({
     resumeAutoPlay();
   };
 
+  /* Keyboard navigation */
+  const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+  }, [next, prev]);
+
   return (
     <div
+      ref={containerRef}
       className="relative overflow-hidden rounded-lg group"
       onMouseEnter={pauseAutoPlay}
       onMouseLeave={resumeAutoPlay}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
+      role="region"
+      aria-label="Carousel"
+      aria-roledescription="carousel"
     >
       {/* Slides */}
       <div
@@ -106,10 +117,11 @@ export default function Carousel({
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {items.map((item, i) => (
-          <div key={i} className={`w-full flex-shrink-0 ${slideHeight}`}>
+          <div key={item.image} className={`w-full flex-shrink-0 ${slideHeight}`}>
             <img
               src={item.image}
               alt={item.label || `Slide ${i + 1}`}
+              loading={i === 0 ? 'eager' : 'lazy'}
               className="w-full h-full object-cover"
             />
           </div>
@@ -125,13 +137,13 @@ export default function Carousel({
         </div>
       )}
 
-      {/* Arrow buttons */}
+      {/* Arrow buttons — visible on mobile, hover-reveal on desktop */}
       {showArrows && total > 1 && (
         <>
           <button
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Previous"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
+            aria-label="Slide trước"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -139,8 +151,8 @@ export default function Carousel({
           </button>
           <button
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-0 group-hover:opacity-100"
-            aria-label="Next"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/40 transition-all opacity-100 md:opacity-0 md:group-hover:opacity-100"
+            aria-label="Slide tiếp"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -159,7 +171,7 @@ export default function Carousel({
               className={`w-2.5 h-2.5 rounded-full transition-all ${
                 i === current ? 'bg-gold w-6' : 'bg-white/50 hover:bg-white/80'
               }`}
-              aria-label={`Go to slide ${i + 1}`}
+              aria-label={`Đến slide ${i + 1}`}
             />
           ))}
         </div>

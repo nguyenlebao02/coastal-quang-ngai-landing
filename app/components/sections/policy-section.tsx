@@ -22,9 +22,9 @@ export default function PolicySection() {
             alt="Chính sách bán hàng"
             className="h-12 mx-auto mb-4"
           />
-          <h3 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">
+          <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">
             Chính sách bán hàng Coastal Quảng Ngãi (Dự kiến)
-          </h3>
+          </h2>
           <div className="rose-line mb-6" />
         </div>
 
@@ -46,15 +46,14 @@ export default function PolicySection() {
           <img
             src="/images/interior/detached-villa-interior-2.jpg"
             alt="Nội thất mẫu"
+            loading="lazy"
             className="w-full h-64 md:h-80 object-cover rounded-lg"
           />
         </div>
 
         {/* Payment timeline */}
         <div>
-          <h3 className="font-heading text-xl text-charcoal text-center mb-8 font-bold uppercase">
-            Tiến độ thanh toán
-          </h3>
+          <h3 className="font-heading text-xl text-charcoal text-center mb-8 font-bold uppercase">Tiến độ thanh toán</h3>
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             {paymentSteps.map((step, i) => (
               <div key={step.phase} className="flex items-center gap-4">

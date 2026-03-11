@@ -3,9 +3,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
-import { fetchPostBySlug, resolveImageUrl, sanitizeHtml } from '@/app/lib/blog-api';
+import { fetchPublishedPosts, fetchPostBySlug, resolveImageUrl, sanitizeHtml } from '@/app/lib/blog-api';
 
 type Props = { params: Promise<{ slug: string }> };
+
+export async function generateStaticParams() {
+  const posts = await fetchPublishedPosts();
+  return posts.map((post) => ({ slug: post.slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
