@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     'Haus Group',
     'khu đô thị mới Quảng Ngãi',
   ],
+  verification: { google: 'rDKdN-qp0M3vhY3KN4J3bzAmjxKQpj0awXJMoB3YtKU' },
   alternates: { canonical: '/' },
   icons: { apple: '/images/misc/coastal-logo-color.png' },
   manifest: '/manifest.json',
