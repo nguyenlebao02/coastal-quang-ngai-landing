@@ -47,7 +47,11 @@ export function resolveImageUrl(coverImage: string): string {
   return `${BLOG_API_URL}${coverImage}`;
 }
 
-/** Sanitize HTML content using DOMPurify — safe against XSS. */
+/** Sanitize HTML content using DOMPurify — safe against XSS. Also resolves relative image URLs to blog API. */
 export function sanitizeHtml(html: string): string {
-  return DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+  const resolved = html.replace(
+    /(<img\s[^>]*src=["'])\/api\//g,
+    `$1${BLOG_API_URL}/api/`
+  );
+  return DOMPurify.sanitize(resolved, { USE_PROFILES: { html: true } });
 }
