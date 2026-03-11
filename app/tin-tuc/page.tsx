@@ -8,6 +8,13 @@ import { NEWS_ITEMS } from '@/app/lib/constants';
 export const metadata: Metadata = {
   title: 'Tin tức dự án | Coastal Quảng Ngãi',
   description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị sinh thái biển đẳng cấp.',
+  alternates: { canonical: '/tin-tuc/' },
+  openGraph: {
+    title: 'Tin tức dự án | Coastal Quảng Ngãi',
+    description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị sinh thái biển đẳng cấp.',
+    type: 'website',
+    url: 'https://hauscoastal.com.vn/tin-tuc/',
+  },
 };
 
 export default async function BlogListingPage() {
@@ -32,9 +39,28 @@ export default async function BlogListingPage() {
 
   return (
     <>
+      {/* BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: 'https://hauscoastal.com.vn/' },
+            { '@type': 'ListItem', position: 2, name: 'Tin tức' },
+          ],
+        }) }}
+      />
       <Header />
       <main className="pt-28 pb-16 min-h-screen bg-cream-gradient">
         <div className="container mx-auto">
+          {/* Visual breadcrumb */}
+          <nav aria-label="Breadcrumb" className="text-sm text-charcoal/50 mb-6">
+            <Link href="/" className="hover:text-rose-beige transition-colors">Trang chủ</Link>
+            <span className="mx-2">/</span>
+            <span className="text-charcoal/80">Tin tức</span>
+          </nav>
+
           <div className="text-center mb-10">
             <h1 className="font-heading text-3xl md:text-4xl text-rose-beige font-bold mb-2 uppercase">
               Tin tức dự án

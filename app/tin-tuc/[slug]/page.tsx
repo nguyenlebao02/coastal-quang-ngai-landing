@@ -16,15 +16,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await fetchPostBySlug(slug);
   if (!post) return { title: 'Không tìm thấy bài viết' };
+  const coverUrl = resolveImageUrl(post.cover_image);
   return {
     title: `${post.title} | Coastal Quảng Ngãi`,
     description: post.excerpt,
+    alternates: { canonical: `/tin-tuc/${slug}/` },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      images: [resolveImageUrl(post.cover_image)],
+      images: [{ url: coverUrl, width: 1200, height: 630, alt: post.title }],
       type: 'article',
       locale: 'vi_VN',
+      siteName: 'Coastal Quảng Ngãi',
+      url: `https://hauscoastal.com.vn/tin-tuc/${slug}/`,
+      publishedTime: post.created_at,
+      modifiedTime: post.updated_at,
+      authors: ['Haus Group'],
     },
   };
 }
@@ -43,6 +50,36 @@ export default async function BlogDetailPage({ params }: Props) {
 
   return (
     <>
+      {/* Article + BreadcrumbList JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Article',
+            headline: post.title,
+            description: post.excerpt,
+            image: coverUrl,
+            datePublished: post.created_at,
+            dateModified: post.updated_at,
+            author: { '@type': 'Organization', name: 'Haus Group' },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Haus Group',
+              logo: { '@type': 'ImageObject', url: 'https://hauscoastal.com.vn/images/misc/coastal-logo-identity.png' },
+            },
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: 'https://hauscoastal.com.vn/' },
+              { '@type': 'ListItem', position: 2, name: 'Tin tức', item: 'https://hauscoastal.com.vn/tin-tuc/' },
+              { '@type': 'ListItem', position: 3, name: post.title },
+            ],
+          },
+        ]) }}
+      />
       <Header />
       <main className="pt-24 pb-16 min-h-screen">
         {/* Hero cover */}
@@ -57,9 +94,17 @@ export default async function BlogDetailPage({ params }: Props) {
 
         {/* Article */}
         <article className="container mx-auto max-w-3xl -mt-16 relative z-10">
+          {/* Visual breadcrumb */}
+          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-4 px-2">
+            <Link href="/" className="hover:text-white transition-colors">Trang chủ</Link>
+            <span className="mx-2">/</span>
+            <Link href="/tin-tuc/" className="hover:text-white transition-colors">Tin tức</Link>
+            <span className="mx-2">/</span>
+            <span className="text-white/90 line-clamp-1 inline">{post.title}</span>
+          </nav>
           <div className="bg-white rounded-lg shadow-lg p-6 md:p-10">
             <div className="mb-6">
-              <span className="text-sm text-charcoal/40">{publishDate}</span>
+              <time dateTime={post.created_at} className="text-sm text-charcoal/40">{publishDate}</time>
               <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl text-navy font-bold mt-2 leading-tight">
                 {post.title}
               </h1>

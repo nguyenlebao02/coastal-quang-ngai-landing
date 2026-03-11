@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 
 const GA_ID = 'G-HHW4ZZ4BN2';
+const SITE_URL = 'https://hauscoastal.com.vn';
 
 const alumniSans = Alumni_Sans({
   subsets: ['latin', 'latin-ext', 'vietnamese'],
@@ -19,10 +20,11 @@ const pathwayExtreme = Pathway_Extreme({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://hauscoastal.com.vn'),
+  metadataBase: new URL(SITE_URL),
   title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
   description:
     'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi. Shophouse, Biệt thự, Căn hộ từ Haus Group. Hotline: 098 624 3450',
+  authors: [{ name: 'Haus Group' }],
   keywords: [
     'Coastal Quảng Ngãi',
     'Haus Quảng Ngãi',
@@ -30,12 +32,17 @@ export const metadata: Metadata = {
     'đô thị sinh thái biển',
     'bất động sản Quảng Ngãi',
   ],
+  alternates: { canonical: '/' },
+  icons: { apple: '/images/misc/coastal-logo-color.png' },
+  manifest: '/manifest.json',
   openGraph: {
     title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
     description:
       'Dự án Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi.',
     type: 'website',
     locale: 'vi_VN',
+    siteName: 'Coastal Quảng Ngãi',
+    url: SITE_URL,
     images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi' }],
   },
 };
@@ -48,6 +55,8 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${alumniSans.variable} ${pathwayExtreme.variable}`}>
       <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
@@ -60,6 +69,27 @@ export default function RootLayout({
             gtag('config', '${GA_ID}');
           `}
         </Script>
+        {/* Organization + WebSite JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Haus Group',
+              url: SITE_URL,
+              logo: `${SITE_URL}/images/misc/coastal-logo-identity.png`,
+              contactPoint: { '@type': 'ContactPoint', telephone: '+84-986-243-450', contactType: 'sales' },
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Coastal Quảng Ngãi',
+              url: SITE_URL,
+              publisher: { '@type': 'Organization', name: 'Haus Group' },
+            },
+          ]) }}
+        />
       </head>
       <body className="font-sans antialiased">{children}</body>
     </html>

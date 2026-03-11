@@ -43,8 +43,39 @@ function NewsSkeleton() {
 export default function Home() {
   return (
     <>
+      {/* Skip to content — accessibility (visually hidden until focused) */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:text-navy focus:shadow-lg focus:rounded"
+      >
+        Chuyển đến nội dung chính
+      </a>
+      {/* RealEstateListing JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'RealEstateListing',
+          name: 'Coastal Quảng Ngãi',
+          description: 'Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi - Shophouse, Biệt thự, Căn hộ',
+          url: 'https://hauscoastal.com.vn/',
+          image: 'https://hauscoastal.com.vn/images/hero/hero-banner-coastal-aerial.jpg',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '88 Hùng Vương, Phường Nghĩa Lộ',
+            addressLocality: 'Quảng Ngãi',
+            addressRegion: 'Quảng Ngãi',
+            addressCountry: 'VN',
+          },
+          offers: {
+            '@type': 'AggregateOffer',
+            priceCurrency: 'VND',
+            availability: 'https://schema.org/PreOrder',
+          },
+        }) }}
+      />
       <Header />
-      <main>
+      <main id="main-content">
         <HeroSection />
         <IntroductionSection />
         <RegistrationFormSection />
