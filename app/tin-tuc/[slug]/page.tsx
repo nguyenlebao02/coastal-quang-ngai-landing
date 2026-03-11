@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
 import { fetchPublishedPosts, fetchPostBySlug, resolveImageUrl, sanitizeHtml } from '@/app/lib/blog-api';
+import type { BlogPostListItem } from '@/app/lib/blog-api';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -38,7 +39,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
-  const post = await fetchPostBySlug(slug);
+  const [post, allPosts] = await Promise.all([
+    fetchPostBySlug(slug),
+    fetchPublishedPosts(),
+  ]);
   if (!post) notFound();
 
   const coverUrl = resolveImageUrl(post.cover_image);
@@ -47,6 +51,11 @@ export default async function BlogDetailPage({ params }: Props) {
     month: 'long',
     day: 'numeric',
   });
+
+  /* Pick up to 3 related posts (exclude current) */
+  const relatedPosts: BlogPostListItem[] = allPosts
+    .filter((p) => p.slug !== slug)
+    .slice(0, 3);
 
   return (
     <>
@@ -121,6 +130,34 @@ export default async function BlogDetailPage({ params }: Props) {
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
             />
           </div>
+
+          {/* Related articles */}
+          {relatedPosts.length > 0 && (
+            <div className="mt-10">
+              <h2 className="font-heading text-xl text-navy font-bold mb-4">Bài viết liên quan</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {relatedPosts.map((rp) => (
+                  <Link
+                    key={rp.slug}
+                    href={`/tin-tuc/${rp.slug}/`}
+                    className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <img
+                      src={resolveImageUrl(rp.cover_image)}
+                      alt={rp.title}
+                      className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="p-3">
+                      <h3 className="font-heading font-bold text-sm text-charcoal leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
+                        {rp.title}
+                      </h3>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="flex justify-between items-center mt-8 px-2">
             <Link
