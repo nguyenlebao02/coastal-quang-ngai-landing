@@ -9,6 +9,8 @@ export default function ProductsSection() {
           <img
             src="/images/misc/title-product-types.png"
             alt="Loại hình sản phẩm"
+            width={600}
+            height={180}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
@@ -28,6 +30,8 @@ export default function ProductsSection() {
                   src={product.image}
                   alt={product.name}
                   loading="lazy"
+                  width={1023}
+                  height={575}
                   className="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
@@ -44,6 +48,8 @@ export default function ProductsSection() {
             src="/images/products/lost-in-nature-concept.jpg"
             alt="Lost in Nature - Thiết kế hòa mình vào thiên nhiên"
             loading="lazy"
+            width={1920}
+            height={1012}
             className="w-full rounded-lg shadow-lg"
           />
         </div>

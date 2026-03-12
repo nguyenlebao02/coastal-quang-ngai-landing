@@ -8,6 +8,8 @@ export default function ProgressSection() {
           <img
             src="/images/misc/title-real-photos-video.png"
             alt="Hình ảnh & video thực tế"
+            width={600}
+            height={180}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
@@ -26,6 +28,8 @@ export default function ProgressSection() {
               src="/images/hero/coastal-overview-aerial.jpg"
               alt="Tiến độ thi công tổng thể"
               loading="lazy"
+              width={1920}
+              height={1012}
               className="w-full h-64 md:h-80 object-cover"
             />
           </div>
@@ -34,6 +38,8 @@ export default function ProgressSection() {
               src="/images/hero/hero-banner-coastal-aerial.jpg"
               alt="Tiến độ thi công chi tiết"
               loading="lazy"
+              width={1500}
+              height={938}
               className="w-full h-64 md:h-80 object-cover"
             />
           </div>

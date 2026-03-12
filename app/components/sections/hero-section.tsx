@@ -11,6 +11,8 @@ export default function HeroSection() {
         src="/images/hero/hero-banner-coastal-aerial.jpg"
         alt="Phối cảnh tổng thể dự án Coastal Quảng Ngãi nhìn từ trên cao"
         fetchPriority="high"
+        width={1500}
+        height={938}
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />

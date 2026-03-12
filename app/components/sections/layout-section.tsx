@@ -12,6 +12,8 @@ export default function LayoutSection() {
             src="/images/misc/typical-layout-plan.png"
             alt="Layout điển hình"
             loading="lazy"
+            width={600}
+            height={180}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
@@ -26,6 +28,8 @@ export default function LayoutSection() {
             src="/images/misc/four-key-solutions.png"
             alt="Mặt bằng 4-KEY Coastal Quảng Ngãi"
             loading="lazy"
+            width={1920}
+            height={725}
             className="w-full rounded"
           />
         </div>

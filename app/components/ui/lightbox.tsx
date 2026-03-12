@@ -96,6 +96,8 @@ export default function Lightbox({ images, isOpen, startIndex = 0, onClose }: Li
         <img
           src={images[current].src}
           alt={images[current].alt || ''}
+          width={1290}
+          height={719}
           className="max-w-full max-h-[85vh] object-contain rounded"
         />
 

@@ -20,6 +20,8 @@ export default function PolicySection() {
           <img
             src="/images/misc/sales-policy-infographic.png"
             alt="Chính sách bán hàng"
+            width={600}
+            height={180}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">
@@ -47,6 +49,8 @@ export default function PolicySection() {
             src="/images/interior/detached-villa-interior-2.jpg"
             alt="Nội thất mẫu"
             loading="lazy"
+            width={1290}
+            height={710}
             className="w-full h-64 md:h-80 object-cover rounded-lg"
           />
         </div>

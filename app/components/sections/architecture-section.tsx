@@ -5,22 +5,22 @@ import SectionWrapper from '@/app/components/ui/section-wrapper';
 import Lightbox from '@/app/components/ui/lightbox';
 
 const interiorShowcase = [
-  { src: '/images/interior/interior-showcase-1.jpg', alt: 'Nội thất cao cấp' },
-  { src: '/images/interior/interior-showcase-3.webp', alt: 'Nội thất phòng khách' },
-  { src: '/images/interior/interior-showcase-2.webp', alt: 'Nội thất phòng ngủ' },
+  { src: '/images/interior/interior-showcase-1.jpg', alt: 'Nội thất cao cấp', width: 960, height: 640 },
+  { src: '/images/interior/interior-showcase-3.webp', alt: 'Nội thất phòng khách', width: 800, height: 1192 },
+  { src: '/images/interior/interior-showcase-2.webp', alt: 'Nội thất phòng ngủ', width: 800, height: 1192 },
 ];
 
 const semiDetachedImages = [
-  { src: '/images/interior/semi-detached-villa-interior-1.jpg', alt: 'Biệt thự song lập - Phòng khách' },
-  { src: '/images/interior/semi-detached-villa-interior-2.jpg', alt: 'Biệt thự song lập - Phòng bếp' },
-  { src: '/images/interior/semi-detached-villa-interior-3.jpg', alt: 'Biệt thự song lập - Phòng ngủ' },
-  { src: '/images/interior/semi-detached-villa-interior-4.jpg', alt: 'Biệt thự song lập - Phòng tắm' },
+  { src: '/images/interior/semi-detached-villa-interior-1.jpg', alt: 'Biệt thự song lập - Phòng khách', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-2.jpg', alt: 'Biệt thự song lập - Phòng bếp', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-3.jpg', alt: 'Biệt thự song lập - Phòng ngủ', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-4.jpg', alt: 'Biệt thự song lập - Phòng tắm', width: 1279, height: 719 },
 ];
 
 const detachedImages = [
-  { src: '/images/interior/detached-villa-interior-1.jpg', alt: 'Biệt thự đơn lập - Tổng quan' },
-  { src: '/images/interior/detached-villa-interior-3.jpg', alt: 'Biệt thự đơn lập - Phòng khách' },
-  { src: '/images/interior/detached-villa-interior-4.jpg', alt: 'Biệt thự đơn lập - Phòng ngủ' },
+  { src: '/images/interior/detached-villa-interior-1.jpg', alt: 'Biệt thự đơn lập - Tổng quan', width: 1290, height: 710 },
+  { src: '/images/interior/detached-villa-interior-3.jpg', alt: 'Biệt thự đơn lập - Phòng khách', width: 1290, height: 710 },
+  { src: '/images/interior/detached-villa-interior-4.jpg', alt: 'Biệt thự đơn lập - Phòng ngủ', width: 1290, height: 710 },
 ];
 
 export default function ArchitectureSection() {
@@ -37,6 +37,8 @@ export default function ArchitectureSection() {
           <img
             src="/images/misc/title-full-interior-delivery.png"
             alt="Bàn giao full nội thất"
+            width={600}
+            height={180}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
@@ -59,6 +61,8 @@ export default function ArchitectureSection() {
               src={interiorShowcase[0].src}
               alt={interiorShowcase[0].alt}
               loading="lazy"
+              width={interiorShowcase[0].width}
+              height={interiorShowcase[0].height}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
@@ -76,6 +80,8 @@ export default function ArchitectureSection() {
                 src={img.src}
                 alt={img.alt}
                 loading="lazy"
+                width={img.width}
+                height={img.height}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -102,6 +108,8 @@ export default function ArchitectureSection() {
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
+                  width={img.width}
+                  height={img.height}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -129,6 +137,8 @@ export default function ArchitectureSection() {
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
+                  width={img.width}
+                  height={img.height}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

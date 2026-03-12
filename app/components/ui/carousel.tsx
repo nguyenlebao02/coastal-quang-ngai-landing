@@ -137,6 +137,8 @@ export default function Carousel({
               src={item.image}
               alt={item.label || `Slide ${i + 1}`}
               loading={i === 0 ? 'eager' : 'lazy'}
+              width={1279}
+              height={719}
               className="w-full h-full object-cover"
             />
           </div>

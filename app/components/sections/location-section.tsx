@@ -29,6 +29,8 @@ export default function LocationSection() {
           <img
             src="/images/misc/title-location-convergence.png"
             alt="Vị trí hội tụ"
+            width={600}
+            height={100}
             className="h-8 mx-auto mb-4"
           />
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">
@@ -44,6 +46,8 @@ export default function LocationSection() {
               src="/images/location/location-map.jpg"
               alt="Bản đồ vị trí Coastal Quảng Ngãi"
               loading="lazy"
+              width={1667}
+              height={2083}
               className="w-full rounded-lg shadow-xl"
             />
           </div>
@@ -52,7 +56,7 @@ export default function LocationSection() {
           <div className="space-y-6">
             {locationAdvantages.map((item) => (
               <div key={item.title} className="flex items-start gap-4">
-                <img src={item.icon} alt="" className="w-8 h-8 mt-1 flex-shrink-0" />
+                <img src={item.icon} alt="" width={30} height={30} className="w-8 h-8 mt-1 flex-shrink-0" />
                 <div>
                   <h4 className="text-rose-beige font-heading font-bold text-lg mb-1">{item.title}</h4>
                   <p className="text-charcoal/70 text-sm">{item.description}</p>
