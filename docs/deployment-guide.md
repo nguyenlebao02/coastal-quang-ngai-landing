@@ -1,281 +1,174 @@
-# Deployment Guide - Haus Coastal Landing + Blog
+# Deployment Guide — Haus Coastal Landing + Blog
 
-## Quick Start
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- Cloudflare account with Pages and Workers enabled
-- Git repository connected to Cloudflare Pages
-- Wrangler CLI installed globally: `npm install -g @cloudflare/wrangler`
-
-### Environment Setup
-
-**Landing Frontend (.env.local):**
-```env
-NEXT_PUBLIC_BLOG_API_URL=https://haus-coastal-blog-api.workers.dev
-```
-
-**Blog API Worker (wrangler.toml):**
-```toml
-[env.production]
-vars = { ADMIN_PASSWORD = "your-secure-password" }
-```
-
----
-
-## Deployment: Landing (Cloudflare Pages)
-
-### Automatic Deployment
-
-1. **Connect Repository**
-   - Go to Cloudflare Pages dashboard
-   - Select "Connect to Git"
-   - Choose the GitHub repository
-   - Set build command: `npm run build`
-   - Set output directory: `.vercel/output/static`
-
-2. **Automatic Builds**
-   - Any push to main branch triggers automatic build
-   - Deployment completes in ~2-3 minutes
-   - Automatic rollback available for failed deploys
-
-### Local Build & Preview
+## Quick Reference
 
 ```bash
-# Build for Cloudflare Pages
-npm run build
+# Landing — build & deploy
+npm run build                    # local build check
+docker build -t haus-coastal .   # Docker image
+tose deploy coastal-quang-ngai   # push to Tose
+tose status coastal-quang-ngai   # check status
 
-# Preview locally
-npm run preview
-
-# Access at http://localhost:8788
+# Blog API — deploy
+cd "E:/Landingpage AI/haus-coastal-blog-api"
+npx wrangler deploy --env=""     # deploy to Cloudflare Workers
+npx wrangler tail                # live logs
 ```
 
-### Verify Deployment
+## Landing (This Repo)
 
-1. Check Cloudflare Pages dashboard for build status
-2. Visit production URL: `https://your-domain.pages.dev` (or custom domain)
-3. Test blog routes:
-   - Blog listing: `/tin-tuc/`
-   - Blog post: `/tin-tuc/gioi-thieu-du-an/`
+### Stack
+Next.js 14 standalone → Docker → Tose hosting
+Production: `https://hauscoastal.com.vn`
+
+### Build
+
+```bash
+npm run build   # standalone output in .next/standalone/
+```
+
+`NEXT_PUBLIC_BLOG_API_URL` is baked at build time (set in Dockerfile).
+
+### Docker
+
+```dockerfile
+# Multi-stage: builder → runner
+FROM node:20-alpine AS builder   # npm ci + build
+FROM node:20-alpine AS runner    # copy standalone + run server.js
+EXPOSE 3000
+```
+
+Runtime env vars (NOT baked at build):
+- `WEBHOOK_URL` — contact form webhook destination
+- `REVALIDATE_SECRET` — ISR revalidation API secret
+
+### Deploy to Tose
+
+```bash
+docker build -t haus-coastal .
+tose deploy coastal-quang-ngai
+tose status coastal-quang-ngai   # verify pod is Running
+```
+
+### ISR Revalidation
+
+Blog pages auto-refresh every 60s via ISR. Manual trigger:
+```bash
+curl -X POST "https://hauscoastal.com.vn/api/revalidate/?secret=<REVALIDATE_SECRET>"
+```
+Note: `REVALIDATE_SECRET` must be set as runtime env var in Tose.
+
+### Sitemap
+
+`/sitemap.xml` generated at build time from `app/sitemap.ts`. Blog post URLs are fetched from Blog API during build. New posts appear in sitemap only after next rebuild (ISR doesn't update sitemap).
 
 ---
 
-## Deployment: Blog API (Cloudflare Workers)
+## Blog API (Separate Repo)
 
-### Setup
-
-1. **Create D1 Database**
-   ```bash
-   wrangler d1 create haus-coastal-blog
-   ```
-   Note the database ID
-
-2. **Create R2 Bucket**
-   ```bash
-   wrangler r2 bucket create haus-coastal-blog
-   ```
-
-3. **Configure wrangler.toml**
-   ```toml
-   name = "haus-coastal-blog-api"
-   type = "service"
-   account_id = "your-account-id"
-   workers_dev = true
-
-   [[d1_databases]]
-   binding = "DB"
-   database_id = "your-d1-id"
-
-   [[r2_buckets]]
-   binding = "BUCKET"
-   bucket_name = "haus-coastal-blog"
-
-   [env.production]
-   vars = { ADMIN_PASSWORD = "your-secure-password" }
-   ```
+### Stack
+Hono + Cloudflare Workers + D1 + R2
+API: `https://haus-coastal-blog-api.hauscoastal.workers.dev`
+Admin: `https://haus-coastal-blog-api.hauscoastal.workers.dev/admin/`
 
 ### Deploy
 
 ```bash
-# Deploy to production
-wrangler deploy --env production
-
-# Deploy to staging
-wrangler deploy --env staging
-
-# View logs
-wrangler tail
+cd "E:/Landingpage AI/haus-coastal-blog-api"
+npx wrangler deploy --env=""
 ```
 
-### Initialize Database
+### Secrets (via `wrangler secret put`)
+
+| Secret | Purpose |
+|--------|---------|
+| `ADMIN_PASSWORD` | Admin panel login |
+| `JWT_SECRET` | JWT token signing |
+| `GEMINI_API_KEY` | AI content generation |
 
 ```bash
-# Run migrations (if DB schema needs setup)
-wrangler d1 execute haus-coastal-blog --file ./schema.sql --remote
+npx wrangler secret put ADMIN_PASSWORD
+npx wrangler secret put JWT_SECRET
+npx wrangler secret put GEMINI_API_KEY
 ```
 
-**schema.sql:**
-```sql
-CREATE TABLE IF NOT EXISTS posts (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  slug TEXT UNIQUE NOT NULL,
-  title TEXT NOT NULL,
-  excerpt TEXT NOT NULL,
-  content TEXT NOT NULL,
-  cover_image TEXT,
-  published INTEGER DEFAULT 0,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+### Environment Vars (in `wrangler.toml`)
 
--- Insert seed data
-INSERT OR IGNORE INTO posts (slug, title, excerpt, content, cover_image, published)
-VALUES
-  ('gioi-thieu-du-an', 'Giới thiệu Dự Án Haus Coastal', '...', '...', '/images/hero.jpg', 1),
-  ('dia-chi-va-vi-tri', 'Địa chỉ và Vị trí Dự Án', '...', '...', '/images/location.jpg', 1),
-  ('co-so-va-tien-ich', 'Cơ sở và Tiện ích', '...', '...', '/images/amenities.jpg', 1);
-```
+| Var | Value |
+|-----|-------|
+| `CORS_ORIGIN` | `https://hauscoastal.com.vn` |
+| `LANDING_URL` | `https://hauscoastal.com.vn` |
+| `REVALIDATE_SECRET` | ISR revalidation secret |
 
-### Verify Deployment
+### Database Migrations
 
 ```bash
-# Test API endpoints
-curl https://haus-coastal-blog-api.workers.dev/api/posts
-curl https://haus-coastal-blog-api.workers.dev/api/posts/gioi-thieu-du-an
-
-# Check admin panel
-open https://haus-coastal-blog-api.workers.dev/admin/
+npx wrangler d1 execute haus-coastal-blog --remote --file=./migrations/XXX.sql
 ```
+
+### Cron
+
+`*/5 * * * *` — scheduled publishing check (publishes posts with `publish_at` in the past).
 
 ---
 
-## Environment Variables & Secrets
+## Verify Deployment
 
-### Landing (NEXT_PUBLIC_ variables)
+### Landing
+- [ ] `https://hauscoastal.com.vn/` loads without errors
+- [ ] Blog listing: `/tin-tuc/` shows posts
+- [ ] Blog detail: `/tin-tuc/<any-slug>/` renders content + related posts
+- [ ] Contact form submits successfully
+- [ ] Floating CTA (Zalo/phone) visible
+- [ ] Google Analytics tracking (`G-HHW4ZZ4BN2`)
+- [ ] `/sitemap.xml` and `/robots.txt` accessible
 
-- `NEXT_PUBLIC_BLOG_API_URL` - Blog API endpoint (public, in code)
+### Blog API
+- [ ] `GET /api/posts` returns post list
+- [ ] `GET /api/posts/<slug>` returns post detail
+- [ ] `/admin/` login works
+- [ ] Post create/edit/delete works
+- [ ] Image upload to R2 works
+- [ ] Scheduled publishing (cron) runs
 
-### Blog API (Cloudflare Secrets)
+---
 
-Set via Cloudflare Workers dashboard:
-- `ADMIN_PASSWORD` - Single admin password for login
-- `JWT_SECRET` - Secret for signing JWT tokens
+## Rollback
 
+### Landing (Tose)
 ```bash
-# Or via wrangler
-wrangler secret put ADMIN_PASSWORD
-wrangler secret put JWT_SECRET
+tose rollback coastal-quang-ngai    # rollback to previous deployment
 ```
-
----
-
-## Post-Deployment Checklist
-
-- [ ] Landing site loads without errors
-- [ ] Blog listing page displays posts
-- [ ] Blog detail pages render SSR correctly
-- [ ] Images load correctly from R2
-- [ ] CRM webhook form submission works
-- [ ] Admin panel accessible at `/admin/` on Workers API
-- [ ] API endpoints return correct data
-- [ ] Cache headers set properly on responses
-
----
-
-## Rollback Procedures
-
-### Landing (Cloudflare Pages)
-
-1. Go to Pages dashboard
-2. Select deployment to rollback to
-3. Click "Rollback to this deployment"
-4. Takes effect immediately (no rebuild)
 
 ### Blog API (Cloudflare Workers)
-
 ```bash
-# Redeploy previous version
-wrangler deploy --name haus-coastal-blog-api
+# Redeploy previous git commit
+git checkout <previous-commit>
+npx wrangler deploy --env=""
+git checkout master
 ```
-
----
-
-## Monitoring & Debugging
-
-### Landing Logs
-
-```bash
-# View Pages analytics in dashboard
-# Check "Analytics" tab for performance metrics
-```
-
-### API Logs
-
-```bash
-# Tail live logs
-wrangler tail
-
-# Filter by status
-wrangler tail --status 500
-
-# Filter by method
-wrangler tail --method GET
-```
-
-### Database Queries
-
-- Access D1 console via Cloudflare dashboard
-- Run SQL queries directly
-- Check query performance
-
-### Common Issues
-
-**API 404 on blog posts:**
-- Check `NEXT_PUBLIC_BLOG_API_URL` in landing env
-- Verify blog API is deployed and responding
-- Check CORS configuration in Worker
-
-**Images not loading:**
-- Verify R2 bucket is configured correctly
-- Check image paths in database
-- Test R2 URLs directly: `https://r2.example.com/...`
-
-**Admin login fails:**
-- Verify `ADMIN_PASSWORD` is set in Cloudflare Secrets
-- Check JWT_SECRET is configured
-- Clear browser cookies and retry
-
----
-
-## Performance Optimization
-
-1. **ISR Revalidation** - Blog pages cached for 60 seconds
-2. **Image Optimization** - Cloudflare auto-resize and format conversion
-3. **Edge Caching** - API responses cached at Cloudflare edge
-4. **Database Connection Pooling** - D1 manages connections efficiently
 
 ---
 
 ## Troubleshooting
 
-**Landing build fails:**
-- Check `npm run build` locally
-- Verify Next.js version compatibility
-- Check for missing environment variables
+| Problem | Check |
+|---------|-------|
+| Blog posts not showing | Blog API running? `curl https://haus-coastal-blog-api.hauscoastal.workers.dev/api/posts` |
+| Images broken | Check if path starts with `http` or `/images/`. R2 bucket accessible? |
+| Contact form 500 | `WEBHOOK_URL` env var set in Tose? |
+| ISR not refreshing | Wait 60s. Or trigger: `POST /api/revalidate/?secret=...` |
+| Admin login fails | Check `ADMIN_PASSWORD` secret: `npx wrangler secret list` |
+| AI generation fails | Gemini API blocked from CF Workers (known issue). Works from browser admin panel. |
+| CORS errors | Check `CORS_ORIGIN` in `wrangler.toml` matches `hauscoastal.com.vn` |
 
-**Blog API endpoints return 500:**
-- Check Worker logs: `wrangler tail`
-- Verify D1 database is accessible
-- Check SQL syntax in queries
+### Logs
 
-**Images missing from posts:**
-- Verify R2 bucket permissions
-- Check image paths in database
-- Test R2 URL directly
+```bash
+# Blog API live logs
+npx wrangler tail
+npx wrangler tail --status 500   # errors only
 
-**Admin panel unreachable:**
-- Check Worker is deployed to production
-- Verify custom domain DNS if using one
-- Check browser console for CORS errors
+# Landing — check Tose pod logs
+tose logs coastal-quang-ngai
+```
