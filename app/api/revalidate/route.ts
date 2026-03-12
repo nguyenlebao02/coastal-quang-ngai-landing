@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
 
   revalidatePath('/', 'page');
   revalidatePath('/tin-tuc/', 'page');
-  if (slug) {
+  if (slug && /^[a-z0-9-]+$/.test(slug)) {
     revalidatePath(`/tin-tuc/${slug}/`, 'page');
   }
 

@@ -1,9 +1,11 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package.json package-lock.json ./
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN npm ci
 COPY . .
-ENV NEXT_PUBLIC_BLOG_API_URL=https://haus-coastal-blog-api.hauscoastal.workers.dev
+ARG NEXT_PUBLIC_BLOG_API_URL=https://haus-coastal-blog-api.hauscoastal.workers.dev
+ENV NEXT_PUBLIC_BLOG_API_URL=$NEXT_PUBLIC_BLOG_API_URL
 RUN npm run build
 
 FROM node:20-alpine AS runner

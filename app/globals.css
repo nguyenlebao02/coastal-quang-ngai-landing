@@ -2,17 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Brand colors — single source of truth is tailwind.config.ts; these vars are for non-Tailwind contexts (e.g. globals.css utilities) */
 :root {
-  --navy: #0B3D5C;
-  --gold: #D4AF37;
-  --cream: #F0E6DC;
   --charcoal: #212121;
-  --terracotta: #B7401D;
-  --terracotta-dark: #5B2519;
-  --rose-beige: #C39F93;
-  --rose-pink: #F9E4E8;
-  --ocean-blue: #1B76A8;
-  --cta-orange: #FF5722;
 }
 
 html {

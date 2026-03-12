@@ -1,3 +1,4 @@
+import { cache } from 'react';
 import DOMPurify from 'isomorphic-dompurify';
 
 const BLOG_API_URL = process.env.NEXT_PUBLIC_BLOG_API_URL || 'https://haus-coastal-blog-api.hauscoastal.workers.dev';
@@ -28,7 +29,8 @@ export async function fetchPublishedPosts(): Promise<BlogPostListItem[]> {
   }
 }
 
-export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
+/** Fetch single post by slug — wrapped with React cache() to deduplicate across generateMetadata + page component */
+export const fetchPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
   try {
     const safeSlug = encodeURIComponent(slug);
     const res = await fetch(`${BLOG_API_URL}/api/posts/${safeSlug}`, { next: { revalidate: 60 } });
@@ -39,7 +41,7 @@ export async function fetchPostBySlug(slug: string): Promise<BlogPost | null> {
     console.error('[blog-api] fetchPostBySlug failed:', err);
     return null;
   }
-}
+});
 
 export function resolveImageUrl(coverImage: string): string {
   if (coverImage.startsWith('http')) return coverImage;
@@ -49,9 +51,10 @@ export function resolveImageUrl(coverImage: string): string {
 
 /** Sanitize HTML content using DOMPurify — safe against XSS. Also resolves relative image URLs to blog API. */
 export function sanitizeHtml(html: string): string {
-  const resolved = html.replace(
+  /* Sanitize first, then rewrite URLs — prevents regex from creating malformed HTML pre-sanitization */
+  const clean = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+  return clean.replace(
     /(<img\s[^>]*src=["'])\/api\//g,
     `$1${BLOG_API_URL}/api/`
   );
-  return DOMPurify.sanitize(resolved, { USE_PROFILES: { html: true } });
 }
