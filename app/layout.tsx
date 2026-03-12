@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   ],
   verification: { google: 'rDKdN-qp0M3vhY3KN4J3bzAmjxKQpj0awXJMoB3YtKU' },
   alternates: { canonical: '/' },
-  icons: { apple: '/images/misc/coastal-logo-color.png' },
+  icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
   manifest: '/manifest.json',
   openGraph: {
     title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',

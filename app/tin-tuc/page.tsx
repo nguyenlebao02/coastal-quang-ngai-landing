@@ -41,17 +41,27 @@ export default async function BlogListingPage() {
 
   return (
     <>
-      {/* BreadcrumbList JSON-LD */}
+      {/* BreadcrumbList + CollectionPage JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: `${SITE_URL}/` },
-            { '@type': 'ListItem', position: 2, name: 'Tin tức' },
-          ],
-        }) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Tin tức' },
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'CollectionPage',
+            name: 'Tin tức dự án Coastal Quảng Ngãi',
+            description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi.',
+            url: `${SITE_URL}/tin-tuc/`,
+            isPartOf: { '@type': 'WebSite', name: 'Coastal Quảng Ngãi', url: `${SITE_URL}/` },
+          },
+        ]) }}
       />
       <Header />
       <main className="pt-28 pb-16 min-h-screen bg-cream-gradient">
@@ -94,9 +104,9 @@ export default async function BlogListingPage() {
                   {item.date && (
                     <span className="text-xs text-charcoal/40 mb-2 block">{item.date}</span>
                   )}
-                  <h2 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
+                  <h3 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
                     {item.title}
-                  </h2>
+                  </h3>
                   {item.excerpt && (
                     <p className="text-sm text-charcoal/60 mt-2 line-clamp-2">{item.excerpt}</p>
                   )}

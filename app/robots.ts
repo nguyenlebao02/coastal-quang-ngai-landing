@@ -6,6 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: ['/api/', '/slide-tu-van/'],
     },
     sitemap: `${SITE_URL}/sitemap.xml`,
   };

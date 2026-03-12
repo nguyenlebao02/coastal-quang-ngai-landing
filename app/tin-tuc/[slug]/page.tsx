@@ -14,25 +14,41 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+/** Truncate text to maxLen at word boundary, append ellipsis if trimmed */
+function truncate(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  const trimmed = text.slice(0, maxLen - 1);
+  const lastSpace = trimmed.lastIndexOf(' ');
+  return (lastSpace > maxLen * 0.6 ? trimmed.slice(0, lastSpace) : trimmed) + '…';
+}
+
+/** Convert "YYYY-MM-DD HH:MM:SS" to ISO 8601 with Vietnam timezone */
+function toIso8601(dateStr: string): string {
+  if (dateStr.includes('T')) return dateStr; // already ISO
+  return dateStr.replace(' ', 'T') + '+07:00';
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = await fetchPostBySlug(slug);
   if (!post) return { title: 'Không tìm thấy bài viết' };
   const coverUrl = resolveImageUrl(post.cover_image);
+  const title = truncate(post.title, 55) + ' | Coastal Quảng Ngãi';
+  const description = truncate(post.excerpt, 155);
   return {
-    title: `${post.title} | Coastal Quảng Ngãi`,
-    description: post.excerpt,
+    title,
+    description,
     alternates: { canonical: `/tin-tuc/${slug}/` },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: truncate(post.title, 60),
+      description: truncate(post.excerpt, 155),
       images: [{ url: coverUrl, width: 1200, height: 630, alt: post.title }],
       type: 'article',
       locale: 'vi_VN',
       siteName: 'Coastal Quảng Ngãi',
       url: `${SITE_URL}/tin-tuc/${slug}/`,
-      publishedTime: post.created_at,
-      modifiedTime: post.updated_at,
+      publishedTime: toIso8601(post.created_at),
+      modifiedTime: toIso8601(post.updated_at),
       authors: ['Haus Group'],
     },
   };
@@ -70,8 +86,8 @@ export default async function BlogDetailPage({ params }: Props) {
             headline: post.title,
             description: post.excerpt,
             image: coverUrl,
-            datePublished: post.created_at,
-            dateModified: post.updated_at,
+            datePublished: toIso8601(post.created_at),
+            dateModified: toIso8601(post.updated_at),
             mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/tin-tuc/${slug}/` },
             author: { '@type': 'Organization', name: 'Haus Group' },
             publisher: {
