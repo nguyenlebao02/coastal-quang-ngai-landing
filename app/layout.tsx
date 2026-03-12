@@ -1,10 +1,11 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Alumni_Sans, Pathway_Extreme } from 'next/font/google';
 import Script from 'next/script';
+import FloatingCta from '@/app/components/floating-cta';
+import { SITE_URL } from '@/app/lib/constants';
 import './globals.css';
 
 const GA_ID = 'G-HHW4ZZ4BN2';
-const SITE_URL = 'https://hauscoastal.com.vn';
 
 const alumniSans = Alumni_Sans({
   subsets: ['latin', 'latin-ext', 'vietnamese'],
@@ -19,6 +20,12 @@ const pathwayExtreme = Pathway_Extreme({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0B3D5C',
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
@@ -26,8 +33,12 @@ export const metadata: Metadata = {
     'Dự án Coastal Quảng Ngãi 93.9ha - Đô thị sinh thái biển đẳng cấp. Biệt thự biển, Shophouse, Căn hộ ven biển Quảng Ngãi. Sổ đỏ lâu dài. CĐT Haus Group. Hotline: 098 624 3450',
   authors: [{ name: 'Haus Group' }],
   keywords: [
+    'hauscoastal',
+    'haus coastal',
+    'haus coastal quảng ngãi',
     'Coastal Quảng Ngãi',
     'Haus Quảng Ngãi',
+    'dự án coastal quảng ngãi',
     'biệt thự biển Quảng Ngãi',
     'đô thị sinh thái biển',
     'bất động sản Quảng Ngãi',
@@ -35,7 +46,9 @@ export const metadata: Metadata = {
     'dự án Quảng Ngãi',
     'nhà đất Quảng Ngãi',
     'Haus Group',
+    'dự án haus group',
     'khu đô thị mới Quảng Ngãi',
+    'coastal quang ngai',
   ],
   verification: { google: 'rDKdN-qp0M3vhY3KN4J3bzAmjxKQpj0awXJMoB3YtKU' },
   alternates: { canonical: '/' },
@@ -51,6 +64,12 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp' }],
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
+    description: 'Dự án Coastal Quảng Ngãi 93.9ha - Biệt thự biển, Shophouse, Căn hộ ven biển. Sổ đỏ lâu dài.',
+    images: ['/images/hero/hero-banner-coastal-aerial.jpg'],
+  },
 };
 
 export default function RootLayout({
@@ -63,18 +82,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_ID}');
-          `}
-        </Script>
         {/* Organization + WebSite JSON-LD */}
         <script
           type="application/ld+json"
@@ -97,7 +104,23 @@ export default function RootLayout({
           ]) }}
         />
       </head>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <FloatingCta />
+        {/* GA scripts placed in body to avoid Next.js <head> warnings */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }

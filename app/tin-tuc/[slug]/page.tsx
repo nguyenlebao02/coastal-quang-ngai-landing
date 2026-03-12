@@ -5,6 +5,7 @@ import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
 import { fetchPublishedPosts, fetchPostBySlug, resolveImageUrl, sanitizeHtml } from '@/app/lib/blog-api';
 import type { BlogPostListItem } from '@/app/lib/blog-api';
+import { SITE_URL } from '@/app/lib/constants';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       locale: 'vi_VN',
       siteName: 'Coastal Quảng Ngãi',
-      url: `https://hauscoastal.com.vn/tin-tuc/${slug}/`,
+      url: `${SITE_URL}/tin-tuc/${slug}/`,
       publishedTime: post.created_at,
       modifiedTime: post.updated_at,
       authors: ['Haus Group'],
@@ -71,19 +72,20 @@ export default async function BlogDetailPage({ params }: Props) {
             image: coverUrl,
             datePublished: post.created_at,
             dateModified: post.updated_at,
+            mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/tin-tuc/${slug}/` },
             author: { '@type': 'Organization', name: 'Haus Group' },
             publisher: {
               '@type': 'Organization',
               name: 'Haus Group',
-              logo: { '@type': 'ImageObject', url: 'https://hauscoastal.com.vn/images/misc/coastal-logo-identity.png' },
+              logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/misc/coastal-logo-identity.png` },
             },
           },
           {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',
             itemListElement: [
-              { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: 'https://hauscoastal.com.vn/' },
-              { '@type': 'ListItem', position: 2, name: 'Tin tức', item: 'https://hauscoastal.com.vn/tin-tuc/' },
+              { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: `${SITE_URL}/` },
+              { '@type': 'ListItem', position: 2, name: 'Tin tức', item: `${SITE_URL}/tin-tuc/` },
               { '@type': 'ListItem', position: 3, name: post.title },
             ],
           },
@@ -96,6 +98,9 @@ export default async function BlogDetailPage({ params }: Props) {
           <img
             src={coverUrl}
             alt={post.title}
+            width={1200}
+            height={384}
+            fetchPriority="high"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -145,6 +150,8 @@ export default async function BlogDetailPage({ params }: Props) {
                     <img
                       src={resolveImageUrl(rp.cover_image)}
                       alt={rp.title}
+                      width={400}
+                      height={128}
                       className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />

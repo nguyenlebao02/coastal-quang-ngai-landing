@@ -1,7 +1,6 @@
 import { Suspense } from 'react';
 import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
-import FloatingCta from '@/app/components/floating-cta';
 import HeroSection from '@/app/components/sections/hero-section';
 import IntroductionSection from '@/app/components/sections/introduction-section';
 import RegistrationFormSection from '@/app/components/sections/registration-form-section';
@@ -15,6 +14,7 @@ import LayoutSection from '@/app/components/sections/layout-section';
 import ProgressSection from '@/app/components/sections/progress-section';
 import NewsSection from '@/app/components/sections/news-section';
 import ContactSection from '@/app/components/sections/contact-section';
+import { SITE_URL } from '@/app/lib/constants';
 
 function NewsSkeleton() {
   return (
@@ -58,8 +58,9 @@ export default function Home() {
           '@type': 'RealEstateListing',
           name: 'Coastal Quảng Ngãi',
           description: 'Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi - Shophouse, Biệt thự, Căn hộ',
-          url: 'https://hauscoastal.com.vn/',
-          image: 'https://hauscoastal.com.vn/images/hero/hero-banner-coastal-aerial.jpg',
+          url: `${SITE_URL}/`,
+          image: `${SITE_URL}/images/hero/hero-banner-coastal-aerial.jpg`,
+          mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/` },
           address: {
             '@type': 'PostalAddress',
             streetAddress: '88 Hùng Vương, Phường Nghĩa Lộ',
@@ -71,6 +72,8 @@ export default function Home() {
             '@type': 'AggregateOffer',
             priceCurrency: 'VND',
             availability: 'https://schema.org/PreOrder',
+            lowPrice: '3000000000',
+            offerCount: '4',
           },
         }) }}
       />
@@ -111,6 +114,36 @@ export default function Home() {
               name: 'Tiện ích tại Coastal Quảng Ngãi gồm những gì?',
               acceptedAnswer: { '@type': 'Answer', text: 'Hệ tiện ích đẳng cấp: Nhà hát Opera, Quảng trường âm nhạc, Bến du thuyền, Yacht Clubhouse, Hồ bơi trung tâm, Sân Pickleball, Khu vui chơi trẻ em, Công viên san hô, Trung tâm hội nghị và nhiều tiện ích khác.' },
             },
+            {
+              '@type': 'Question',
+              name: 'Coastal Quảng Ngãi giá bao nhiêu?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Giá bán Coastal Quảng Ngãi từ 3 tỷ VNĐ tùy loại hình sản phẩm. Shophouse thương mại, Nhà phố, Biệt thự song lập và đơn lập có mức giá khác nhau. Liên hệ hotline 098 624 3450 để nhận bảng giá chi tiết mới nhất.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Chủ đầu tư Coastal Quảng Ngãi là ai?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Chủ đầu tư dự án Coastal Quảng Ngãi là Haus Group — tập đoàn phát triển bất động sản uy tín với tầm nhìn kiến tạo đô thị sinh thái biển đẳng cấp tại miền Trung Việt Nam.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Có nên mua nhà ở Quảng Ngãi không?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Quảng Ngãi đang là điểm sáng BĐS miền Trung nhờ quy hoạch hạ tầng mạnh mẽ: KCN VSIP, cao tốc Đà Nẵng - Quảng Ngãi, sân bay Chu Lai mở rộng. Giá BĐS Quảng Ngãi vẫn ở mức hợp lý so với Đà Nẵng, Quy Nhơn, tạo cơ hội đầu tư sinh lời tốt.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Đầu tư bất động sản Quảng Ngãi có lời không?',
+              acceptedAnswer: { '@type': 'Answer', text: 'BĐS Quảng Ngãi có tiềm năng tăng trưởng cao nhờ dòng vốn FDI lớn (VSIP, Dung Quất), hạ tầng giao thông phát triển và nhu cầu nhà ở tăng. Coastal Quảng Ngãi với pháp lý sổ đỏ lâu dài, vị trí ven biển là lựa chọn đầu tư an toàn.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Mua nhà Coastal Quảng Ngãi có được hỗ trợ vay ngân hàng không?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Có. Coastal Quảng Ngãi hỗ trợ vay ngân hàng lên đến 70% giá trị sản phẩm, lãi suất ưu đãi trong 24 tháng đầu. Thời gian vay tối đa 25 năm. Liên hệ tư vấn viên để được hỗ trợ thủ tục vay.' },
+            },
+            {
+              '@type': 'Question',
+              name: 'Quy hoạch Quảng Ngãi 2025-2030 có tác động gì đến bất động sản?',
+              acceptedAnswer: { '@type': 'Answer', text: 'Quy hoạch Quảng Ngãi 2025-2030 tập trung phát triển hạ tầng giao thông (mở rộng cao tốc, nâng cấp sân bay Chu Lai), khu công nghiệp (VSIP 2, Dung Quất mở rộng) và đô thị ven biển. Điều này tạo đà tăng giá mạnh cho BĐS khu vực, đặc biệt dự án quy mô lớn như Coastal Quảng Ngãi.' },
+            },
           ],
         }) }}
       />
@@ -133,7 +166,6 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-      <FloatingCta />
     </>
   );
 }

@@ -3,7 +3,9 @@ import Link from 'next/link';
 import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
 import { fetchPublishedPosts, resolveImageUrl } from '@/app/lib/blog-api';
-import { NEWS_ITEMS } from '@/app/lib/constants';
+import { NEWS_ITEMS, SITE_URL } from '@/app/lib/constants';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Tin tức dự án | Coastal Quảng Ngãi',
@@ -13,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Tin tức dự án | Coastal Quảng Ngãi',
     description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị sinh thái biển đẳng cấp.',
     type: 'website',
-    url: 'https://hauscoastal.com.vn/tin-tuc/',
+    url: `${SITE_URL}/tin-tuc/`,
   },
 };
 
@@ -46,7 +48,7 @@ export default async function BlogListingPage() {
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: 'https://hauscoastal.com.vn/' },
+            { '@type': 'ListItem', position: 1, name: 'Trang chủ', item: `${SITE_URL}/` },
             { '@type': 'ListItem', position: 2, name: 'Tin tức' },
           ],
         }) }}
@@ -82,6 +84,9 @@ export default async function BlogListingPage() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    width={400}
+                    height={192}
+                    loading="lazy"
                     className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

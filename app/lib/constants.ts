@@ -13,6 +13,7 @@ export const NAV_ITEMS = [
   { label: 'Liên hệ', href: '#lien-he' },
 ] as const;
 
+export const SITE_URL = 'https://hauscoastal.com.vn';
 export const SITE_NAME = 'COASTAL QUẢNG NGÃI';
 
 export const CONTACT_INFO = {

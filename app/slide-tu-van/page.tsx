@@ -21,7 +21,12 @@ export default function SlideTuVanPage() {
 
   return (
     <>
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" strategy="lazyOnload" />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"
+        integrity="sha384-F4E6gJnO3VJzOmzBO9wNQMkXk4C/aFxS7FKjR/s8mYBGSBjVHNGpJMQy87WZMLR"
+        crossOrigin="anonymous"
+        strategy="lazyOnload"
+      />
 
       {/* Progress Bar */}
       <div className="progress-bar" id="progressBar" />
