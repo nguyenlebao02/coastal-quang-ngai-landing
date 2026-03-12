@@ -7,10 +7,10 @@ export default function ProductsSection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <img
-            src="/images/misc/title-product-types.png"
+            src="/images/misc/title-product-types.webp"
             alt="Loại hình sản phẩm"
-            width={600}
-            height={180}
+            width={800}
+            height={447}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">

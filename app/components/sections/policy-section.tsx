@@ -18,10 +18,10 @@ export default function PolicySection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <img
-            src="/images/misc/sales-policy-infographic.png"
+            src="/images/misc/sales-policy-infographic.webp"
             alt="Chính sách bán hàng"
-            width={600}
-            height={180}
+            width={800}
+            height={447}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">

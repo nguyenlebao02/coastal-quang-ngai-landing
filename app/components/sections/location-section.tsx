@@ -27,10 +27,10 @@ export default function LocationSection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <img
-            src="/images/misc/title-location-convergence.png"
+            src="/images/misc/title-location-convergence.webp"
             alt="Vị trí hội tụ"
-            width={600}
-            height={100}
+            width={800}
+            height={447}
             className="h-8 mx-auto mb-4"
           />
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">

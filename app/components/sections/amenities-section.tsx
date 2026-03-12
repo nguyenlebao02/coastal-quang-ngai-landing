@@ -15,11 +15,11 @@ export default function AmenitiesSection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <img
-            src="/images/misc/title-rich-amenity-system.png"
+            src="/images/misc/title-rich-amenity-system.webp"
             alt="Hệ tiện ích giàu giá trị"
             loading="lazy"
-            width={600}
-            height={180}
+            width={800}
+            height={447}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
