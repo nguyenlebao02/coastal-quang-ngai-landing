@@ -26,8 +26,11 @@ export default function ContactSection() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    /* Honeypot check */
-    if (formData.get('website')) return;
+    /* Honeypot check — reset state before returning */
+    if (formData.get('website')) {
+      setSubmitting(false);
+      return;
+    }
 
     const product = formData.get('product') as string;
     const message = formData.get('message') as string;
@@ -128,7 +131,7 @@ export default function ContactSection() {
             </div>
 
             {error && (
-              <p className="text-red-500 text-sm text-center">{error}</p>
+              <p role="alert" className="text-red-500 text-sm text-center">{error}</p>
             )}
 
             <Button type="submit" className="w-full" disabled={submitting}>

@@ -108,7 +108,24 @@ export default function Header() {
             onClick={closeMenu}
             aria-hidden="true"
           />
-          <nav className="lg:hidden bg-white border-t border-gray-100 shadow-lg relative z-50">
+          <nav
+            className="lg:hidden bg-white border-t border-gray-100 shadow-lg relative z-50"
+            onKeyDown={(e) => {
+              /* Focus trap: keep Tab cycling within mobile menu */
+              if (e.key !== 'Tab') return;
+              const focusable = e.currentTarget.querySelectorAll<HTMLElement>('a, button');
+              if (focusable.length === 0) return;
+              const first = focusable[0];
+              const last = focusable[focusable.length - 1];
+              if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+              } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+              }
+            }}
+          >
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}

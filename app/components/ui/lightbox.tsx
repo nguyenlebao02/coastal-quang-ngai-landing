@@ -11,6 +11,7 @@ interface LightboxProps {
 
 export default function Lightbox({ images, isOpen, startIndex = 0, onClose }: LightboxProps) {
   const [current, setCurrent] = useState(startIndex);
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -36,12 +37,29 @@ export default function Lightbox({ images, isOpen, startIndex = 0, onClose }: Li
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   }, [images.length]);
 
+  /* Keyboard navigation + focus trap */
   useEffect(() => {
     if (!isOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
       else if (e.key === 'ArrowRight') next();
       else if (e.key === 'ArrowLeft') prev();
+      else if (e.key === 'Tab') {
+        /* Focus trap: keep focus within the lightbox dialog */
+        const focusable = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'button, [href], [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable || focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -51,6 +69,7 @@ export default function Lightbox({ images, isOpen, startIndex = 0, onClose }: Li
 
   return (
     <div
+      ref={dialogRef}
       className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center"
       onClick={onClose}
       role="dialog"

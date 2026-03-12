@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import { SITE_NAME, CONTACT_INFO, NAV_ITEMS } from '@/app/lib/constants';
 
+/* Copyright year — fixed at build time to avoid hydration mismatch at year boundary */
+const CURRENT_YEAR = new Date().getFullYear();
+
 export default function Footer() {
   return (
     <footer className="bg-[#1a1a1a] text-white">
@@ -19,7 +22,7 @@ export default function Footer() {
             <p className="text-white/60 text-sm leading-relaxed">
               Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
             </p>
-            <p className="text-white/60 text-sm mt-2">Địa chỉ: {CONTACT_INFO.address}</p>
+            <p className="text-white/60 text-sm mt-2">{CONTACT_INFO.address}</p>
           </div>
 
           {/* Quick links */}
@@ -65,7 +68,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/10 mt-8 pt-6 text-center text-xs text-white/30">
-          © {new Date().getFullYear()} {SITE_NAME}. Tất cả quyền được bảo lưu.
+          © {CURRENT_YEAR} {SITE_NAME}. Tất cả quyền được bảo lưu.
         </div>
       </div>
     </footer>

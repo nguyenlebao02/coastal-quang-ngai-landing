@@ -11,23 +11,28 @@ export default function OverviewSection() {
           </h2>
           <div className="rose-line mb-8" />
 
-          {/* Project info table */}
+          {/* Project info table — semantic <table> for screen reader accessibility */}
           <div className="bg-white rounded-lg overflow-hidden shadow-sm border border-rose-beige/20">
-            {PROJECT_INFO.map((item, i) => (
-              <div
-                key={item.label}
-                className={`flex items-center border-b border-gray-100 last:border-b-0 ${
-                  i % 2 === 0 ? 'bg-gray-50/50' : 'bg-white'
-                }`}
-              >
-                <div className="w-1/3 px-6 py-3 text-rose-beige text-sm font-heading font-bold border-l-2 border-rose-beige">
-                  {item.label}
-                </div>
-                <div className="w-2/3 px-6 py-3 text-charcoal text-sm">
-                  {item.value}
-                </div>
-              </div>
-            ))}
+            <table className="w-full">
+              <caption className="sr-only">Thông tin tổng quan dự án Coastal Quảng Ngãi</caption>
+              <tbody>
+                {PROJECT_INFO.map((item, i) => (
+                  <tr
+                    key={item.label}
+                    className={`border-b border-gray-100 last:border-b-0 ${
+                      i % 2 === 0 ? 'bg-gray-50/50' : 'bg-white'
+                    }`}
+                  >
+                    <th scope="row" className="w-1/3 px-6 py-3 text-rose-beige text-sm font-heading font-bold border-l-2 border-rose-beige text-left">
+                      {item.label}
+                    </th>
+                    <td className="w-2/3 px-6 py-3 text-charcoal text-sm">
+                      {item.value}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
           {/* Project render image */}

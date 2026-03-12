@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ReactNode } from 'react';
 
@@ -26,6 +26,10 @@ export default function SectionWrapper({
   direction = 'up',
 }: SectionWrapperProps) {
   const { ref, inView } = useInView({ threshold: 0.15, triggerOnce: true });
+  const prefersReducedMotion = useReducedMotion();
+
+  /* Respect prefers-reduced-motion: fade only, no translation */
+  const effectiveDirection = prefersReducedMotion ? 'none' : direction;
 
   return (
     <motion.section
@@ -34,8 +38,8 @@ export default function SectionWrapper({
       className={`section-padding ${className}`}
       initial="hidden"
       animate={inView ? 'visible' : 'hidden'}
-      variants={variants[direction]}
-      transition={{ duration: 0.7, ease: 'easeOut' }}
+      variants={variants[effectiveDirection]}
+      transition={{ duration: prefersReducedMotion ? 0.3 : 0.7, ease: 'easeOut' }}
     >
       {children}
     </motion.section>

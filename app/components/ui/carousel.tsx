@@ -57,6 +57,19 @@ export default function Carousel({
 
   useEffect(() => { nextRef.current = next; }, [next]);
 
+  const pauseAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+      autoPlayRef.current = null;
+    }
+  }, []);
+
+  const resumeAutoPlay = useCallback(() => {
+    if (autoPlay <= 0) return;
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+    autoPlayRef.current = setInterval(() => nextRef.current(), autoPlay);
+  }, [autoPlay]);
+
   /* Auto-play using ref to avoid stale closure */
   useEffect(() => {
     if (autoPlay <= 0) return;
@@ -66,17 +79,19 @@ export default function Carousel({
     };
   }, [autoPlay]);
 
-  const pauseAutoPlay = () => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-      autoPlayRef.current = null;
-    }
-  };
-  const resumeAutoPlay = () => {
+  /* Pause auto-play when tab is hidden to prevent jarring jumps on return */
+  useEffect(() => {
     if (autoPlay <= 0) return;
-    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
-    autoPlayRef.current = setInterval(() => nextRef.current(), autoPlay);
-  };
+    const onVisibility = () => {
+      if (document.hidden) {
+        pauseAutoPlay();
+      } else {
+        resumeAutoPlay();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, [autoPlay, pauseAutoPlay, resumeAutoPlay]);
 
   /* Touch/swipe support */
   const onTouchStart = (e: TouchEvent) => {

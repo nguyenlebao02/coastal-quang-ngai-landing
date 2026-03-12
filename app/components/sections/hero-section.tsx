@@ -6,10 +6,12 @@ export default function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/hero/hero-banner-coastal-aerial.jpg')" }}
+      {/* Background image — uses <img> for LCP, crawlability, and fetchpriority support */}
+      <img
+        src="/images/hero/hero-banner-coastal-aerial.jpg"
+        alt="Phối cảnh tổng thể dự án Coastal Quảng Ngãi nhìn từ trên cao"
+        fetchPriority="high"
+        className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
 
@@ -19,6 +21,8 @@ export default function HeroSection() {
         <img
           src="/images/misc/coastal-logo-white.png"
           alt="Coastal Quảng Ngãi"
+          width={224}
+          height={80}
           className="h-20 md:h-28 mx-auto mb-6"
         />
         <h1 className="font-heading text-4xl md:text-5xl lg:text-[64px] text-white font-bold leading-tight mb-4 uppercase tracking-[4px]">

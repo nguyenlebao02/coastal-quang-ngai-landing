@@ -25,8 +25,11 @@ export default function RegistrationFormSection() {
 
     const formData = new FormData(e.currentTarget);
 
-    /* Honeypot check */
-    if (formData.get('website')) return;
+    /* Honeypot check — reset state before returning */
+    if (formData.get('website')) {
+      setSubmitting(false);
+      return;
+    }
 
     const payload: Record<string, string> = {
       name: (formData.get('name') as string).trim(),
@@ -91,7 +94,7 @@ export default function RegistrationFormSection() {
             </div>
 
             {error && (
-              <p className="text-red-500 text-sm">{error}</p>
+              <p role="alert" className="text-red-500 text-sm">{error}</p>
             )}
 
             <Button type="submit" className="w-full" disabled={submitting}>
