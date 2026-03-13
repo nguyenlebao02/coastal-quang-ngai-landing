@@ -49,12 +49,12 @@ export function resolveImageUrl(coverImage: string): string {
   return `${BLOG_API_URL}${coverImage}`;
 }
 
-/** Sanitize HTML content using DOMPurify — safe against XSS. Also resolves relative image URLs to blog API. */
+/** Sanitize HTML content using DOMPurify — safe against XSS. Also resolves relative image URLs and strips Pexels captions. */
 export function sanitizeHtml(html: string): string {
   /* Sanitize first, then rewrite URLs — prevents regex from creating malformed HTML pre-sanitization */
   const clean = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
-  return clean.replace(
-    /(<img\s[^>]*src=["'])\/api\//g,
-    `$1${BLOG_API_URL}/api/`
-  );
+  return clean
+    .replace(/(<img\s[^>]*src=["'])\/api\//g, `$1${BLOG_API_URL}/api/`)
+    /* Strip <figcaption> with Pexels stock photo alt texts (e.g. "Ảnh lưu trữ miễn phí về...") */
+    .replace(/<figcaption[^>]*>.*?<\/figcaption>/gi, '');
 }
