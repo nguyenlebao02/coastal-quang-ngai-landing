@@ -14,7 +14,7 @@ export default function AmenitiesSection() {
     <SectionWrapper id="tien-ich" className="bg-cream-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <p className="font-heading text-sm md:text-base text-gold font-bold uppercase tracking-[0.25em] mb-4">
+          <p className="font-heading text-base md:text-lg text-gold font-bold uppercase tracking-[0.25em] mb-4">
             Hệ tiện ích &ldquo;giàu&rdquo; giá trị
           </p>
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
