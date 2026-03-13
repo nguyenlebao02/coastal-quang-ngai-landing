@@ -26,13 +26,9 @@ export default function LocationSection() {
     >
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <img
-            src="/images/misc/title-location-convergence.webp"
-            alt="Vị trí hội tụ"
-            width={800}
-            height={339}
-            className="h-8 mx-auto mb-4"
-          />
+          <p className="font-heading text-sm md:text-base text-gold font-bold uppercase tracking-[0.25em] mb-4">
+            Vị trí hội tụ
+          </p>
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-bold mb-2 uppercase">
             Vị trí Coastal Quảng Ngãi
           </h2>
