@@ -38,7 +38,7 @@ export default function OverviewSection() {
           {/* Project render image */}
           <div className="mt-8">
             <img
-              src="/images/hero/coastal-overview-aerial.jpg"
+              src="/images/hero/coastal-overview-aerial.webp"
               alt="Phối cảnh dự án Coastal Quảng Ngãi"
               loading="lazy"
               width={1920}

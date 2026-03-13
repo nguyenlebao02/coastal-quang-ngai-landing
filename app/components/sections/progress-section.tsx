@@ -21,7 +21,7 @@ export default function ProgressSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="overflow-hidden rounded-lg shadow-sm">
             <img
-              src="/images/hero/coastal-overview-aerial.jpg"
+              src="/images/hero/coastal-overview-aerial.webp"
               alt="Tiến độ thi công tổng thể"
               loading="lazy"
               width={1920}

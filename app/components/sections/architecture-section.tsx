@@ -11,16 +11,16 @@ const interiorShowcase = [
 ];
 
 const semiDetachedImages = [
-  { src: '/images/interior/semi-detached-villa-interior-1.jpg', alt: 'Biệt thự song lập - Phòng khách', width: 1279, height: 719 },
-  { src: '/images/interior/semi-detached-villa-interior-2.jpg', alt: 'Biệt thự song lập - Phòng bếp', width: 1279, height: 719 },
-  { src: '/images/interior/semi-detached-villa-interior-3.jpg', alt: 'Biệt thự song lập - Phòng ngủ', width: 1279, height: 719 },
-  { src: '/images/interior/semi-detached-villa-interior-4.jpg', alt: 'Biệt thự song lập - Phòng tắm', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-1.webp', alt: 'Biệt thự song lập - Phòng khách', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-2.webp', alt: 'Biệt thự song lập - Phòng bếp', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-3.webp', alt: 'Biệt thự song lập - Phòng ngủ', width: 1279, height: 719 },
+  { src: '/images/interior/semi-detached-villa-interior-4.webp', alt: 'Biệt thự song lập - Phòng tắm', width: 1279, height: 719 },
 ];
 
 const detachedImages = [
-  { src: '/images/interior/detached-villa-interior-1.jpg', alt: 'Biệt thự đơn lập - Tổng quan', width: 1290, height: 710 },
-  { src: '/images/interior/detached-villa-interior-3.jpg', alt: 'Biệt thự đơn lập - Phòng khách', width: 1290, height: 710 },
-  { src: '/images/interior/detached-villa-interior-4.jpg', alt: 'Biệt thự đơn lập - Phòng ngủ', width: 1290, height: 710 },
+  { src: '/images/interior/detached-villa-interior-1.webp', alt: 'Biệt thự đơn lập - Tổng quan', width: 1290, height: 710 },
+  { src: '/images/interior/detached-villa-interior-3.webp', alt: 'Biệt thự đơn lập - Phòng khách', width: 1290, height: 710 },
+  { src: '/images/interior/detached-villa-interior-4.webp', alt: 'Biệt thự đơn lập - Phòng ngủ', width: 1290, height: 710 },
 ];
 
 export default function ArchitectureSection() {

@@ -41,7 +41,7 @@ export default function ProductsSection() {
         {/* Lost in Nature concept */}
         <div className="mt-10">
           <img
-            src="/images/products/lost-in-nature-concept.jpg"
+            src="/images/products/lost-in-nature-concept.webp"
             alt="Lost in Nature - Thiết kế hòa mình vào thiên nhiên"
             loading="lazy"
             width={1920}

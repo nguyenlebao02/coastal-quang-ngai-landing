@@ -91,7 +91,7 @@ export default function RootLayout({
               '@type': 'Organization',
               name: 'Haus Group',
               url: SITE_URL,
-              logo: `${SITE_URL}/images/misc/coastal-logo-identity.png`,
+              logo: `${SITE_URL}/images/misc/coastal-logo-identity.webp`,
               contactPoint: { '@type': 'ContactPoint', telephone: '+84-986-243-450', contactType: 'sales' },
             },
             {

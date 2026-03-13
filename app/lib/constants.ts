@@ -40,17 +40,17 @@ export const INTRO_HIGHLIGHTS = [
   {
     title: 'Bất động sản nghệ thuật văn hóa',
     description: 'Kiến trúc Địa Trung Hải kết hợp văn hóa bản địa, tạo nên không gian sống đẳng cấp.',
-    image: '/images/amenities/art-culture-real-estate.png',
+    image: '/images/amenities/art-culture-real-estate.webp',
   },
   {
     title: 'Bất động sản du thuyền hạng sang bên vịnh',
     description: 'Bến du thuyền riêng tư, trải nghiệm sống thượng lưu bên bờ biển.',
-    image: '/images/amenities/luxury-yacht-real-estate.png',
+    image: '/images/amenities/luxury-yacht-real-estate.webp',
   },
   {
     title: 'Bất động sản tôn vinh văn hóa truyền thống, bảo tồn thiên nhiên',
     description: 'Hệ sinh thái xanh, bảo tồn cảnh quan thiên nhiên và giá trị văn hóa Quảng Ngãi.',
-    image: '/images/amenities/heritage-nature-real-estate.png',
+    image: '/images/amenities/heritage-nature-real-estate.webp',
   },
 ] as const;
 
@@ -81,20 +81,20 @@ export const SALES_POLICIES = [
 
 /* Amenity items for gallery */
 export const AMENITIES = [
-  { name: 'Nhà hát Opera', image: '/images/amenities/opera-house.jpg' },
-  { name: 'Quảng trường âm nhạc', image: '/images/amenities/music-square.jpg' },
-  { name: 'Công trình biểu tượng', image: '/images/amenities/iconic-building.jpg' },
-  { name: 'Công viên san hô', image: '/images/amenities/coral-park.jpg' },
-  { name: 'Bến du thuyền', image: '/images/amenities/yacht-marina.jpg' },
-  { name: 'Yacht Clubhouse', image: '/images/amenities/yacht-clubhouse.jpg' },
-  { name: 'Trung tâm hội nghị', image: '/images/amenities/conference-center.jpg' },
-  { name: 'Boutique House', image: '/images/amenities/boutique-house.jpg' },
-  { name: 'Sân chơi trẻ em', image: '/images/amenities/children-playground.jpg' },
-  { name: 'Khu vui chơi cho bé', image: '/images/amenities/kids-play-area.jpg' },
-  { name: 'Hồ bơi trẻ em', image: '/images/amenities/children-swimming-pool.jpg' },
-  { name: 'Hồ cảnh quan', image: '/images/amenities/landscape-lake.jpg' },
-  { name: 'Khu thể thao', image: '/images/amenities/sports-area.jpg' },
-  { name: 'Sân Pickleball', image: '/images/amenities/pickleball-courts.jpg' },
+  { name: 'Nhà hát Opera', image: '/images/amenities/opera-house.webp' },
+  { name: 'Quảng trường âm nhạc', image: '/images/amenities/music-square.webp' },
+  { name: 'Công trình biểu tượng', image: '/images/amenities/iconic-building.webp' },
+  { name: 'Công viên san hô', image: '/images/amenities/coral-park.webp' },
+  { name: 'Bến du thuyền', image: '/images/amenities/yacht-marina.webp' },
+  { name: 'Yacht Clubhouse', image: '/images/amenities/yacht-clubhouse.webp' },
+  { name: 'Trung tâm hội nghị', image: '/images/amenities/conference-center.webp' },
+  { name: 'Boutique House', image: '/images/amenities/boutique-house.webp' },
+  { name: 'Sân chơi trẻ em', image: '/images/amenities/children-playground.webp' },
+  { name: 'Khu vui chơi cho bé', image: '/images/amenities/kids-play-area.webp' },
+  { name: 'Hồ bơi trẻ em', image: '/images/amenities/children-swimming-pool.webp' },
+  { name: 'Hồ cảnh quan', image: '/images/amenities/landscape-lake.webp' },
+  { name: 'Khu thể thao', image: '/images/amenities/sports-area.webp' },
+  { name: 'Sân Pickleball', image: '/images/amenities/pickleball-courts.webp' },
   { name: 'Hồ bơi trung tâm', image: '/images/amenities/central-swimming-pool.jpg' },
 ] as const;
 

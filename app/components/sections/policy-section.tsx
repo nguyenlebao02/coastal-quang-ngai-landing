@@ -42,7 +42,7 @@ export default function PolicySection() {
         {/* Policy image */}
         <div className="mb-10">
           <img
-            src="/images/interior/detached-villa-interior-2.jpg"
+            src="/images/interior/detached-villa-interior-2.webp"
             alt="Nội thất mẫu"
             loading="lazy"
             width={1290}

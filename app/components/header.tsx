@@ -58,7 +58,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <img
-            src="/images/misc/coastal-logo-identity.png"
+            src="/images/misc/coastal-logo-identity.webp"
             alt={SITE_NAME}
             width={160}
             height={44}

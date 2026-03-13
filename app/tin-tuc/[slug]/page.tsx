@@ -93,7 +93,7 @@ export default async function BlogDetailPage({ params }: Props) {
             publisher: {
               '@type': 'Organization',
               name: 'Haus Group',
-              logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/misc/coastal-logo-identity.png` },
+              logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/misc/coastal-logo-identity.webp` },
             },
           },
           {

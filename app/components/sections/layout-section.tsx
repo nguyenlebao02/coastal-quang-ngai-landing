@@ -20,7 +20,7 @@ export default function LayoutSection() {
         {/* 4-KEY layout plan */}
         <div className="bg-white rounded-lg p-4 shadow-sm">
           <img
-            src="/images/misc/four-key-solutions.png"
+            src="/images/misc/four-key-solutions.webp"
             alt="Mặt bằng 4-KEY Coastal Quảng Ngãi"
             loading="lazy"
             width={1920}
