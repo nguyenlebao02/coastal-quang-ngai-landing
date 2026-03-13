@@ -21,7 +21,7 @@ export default function PolicySection() {
             src="/images/misc/sales-policy-infographic.webp"
             alt="Chính sách bán hàng"
             width={800}
-            height={447}
+            height={339}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">

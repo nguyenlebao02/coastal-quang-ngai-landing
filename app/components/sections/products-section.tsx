@@ -10,7 +10,7 @@ export default function ProductsSection() {
             src="/images/misc/title-product-types.webp"
             alt="Loại hình sản phẩm"
             width={800}
-            height={447}
+            height={339}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">

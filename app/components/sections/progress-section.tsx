@@ -9,7 +9,7 @@ export default function ProgressSection() {
             src="/images/misc/title-real-photos-video.webp"
             alt="Hình ảnh & video thực tế"
             width={800}
-            height={447}
+            height={339}
             className="h-12 mx-auto mb-4"
           />
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
