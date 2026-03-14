@@ -1,73 +1,38 @@
 import SectionWrapper from '@/app/components/ui/section-wrapper';
-import Button from '@/app/components/ui/button';
-import { INTRO_HIGHLIGHTS } from '@/app/lib/constants';
 
 export default function IntroductionSection() {
   return (
-    <SectionWrapper id="gioi-thieu" className="bg-cream-gradient">
-      <div className="container mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2">
-            Coastal Quảng Ngãi
-          </h2>
-          <div className="rose-line mb-6" />
-          <p className="text-charcoal/70 max-w-3xl mx-auto text-sm leading-relaxed">
-            Coastal Quảng Ngãi là biểu tượng thứ 2 mà nhà sáng lập HAUS kiến tạo tại Việt Nam,
-            sau thành công của Haus Dalat. Dự án đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung,
-            quy mô 93,9 ha với mật độ xây dựng chỉ 14%, mang đến 1.111 sản phẩm đa dạng —
-            tất cả đều được bảo chứng bởi HAUS.
-          </p>
-        </div>
+    <SectionWrapper id="gioi-thieu" className="!py-0">
+      <div className="bg-cta-orange relative overflow-hidden">
+        <div className="container mx-auto px-6 py-16 md:py-20 lg:py-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left — italic text, Cormorant Garamond style */}
+            <div>
+              <p className="text-white text-lg md:text-xl lg:text-[22px] italic leading-relaxed mb-6 font-medium">
+                Coastal Quảng Ngãi là biểu tượng thứ 2 nhà sáng lập Haus kiến tạo tại Việt Nam
+                sau thành công của Haus Dalat.
+              </p>
+              <p className="text-white text-lg md:text-xl lg:text-[22px] italic leading-relaxed font-medium">
+                Nếu ví Haus Dalat mang đến &ldquo;ngôi nhà của giấc mơ&rdquo; giữa cao nguyên,
+                thì Coastal chính là miền sinh thái ấn tượng của miền Trung - nơi mỗi ngày
+                đều là những trải nghiệm sống thực sự trọn vẹn.
+              </p>
+            </div>
 
-        {/* Video embed */}
-        <div className="max-w-4xl mx-auto mb-10">
-          <div className="relative w-full overflow-hidden rounded-lg shadow-lg" style={{ paddingBottom: '56.25%' }}>
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="https://www.youtube.com/embed/RV5eoU2sv7s?start=66"
-              title="Coastal Quảng Ngãi - Giới thiệu dự án"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-          </div>
-        </div>
-
-        {/* Master plan image — ảnh chuẩn từ reference */}
-        <div className="mb-10 max-w-2xl mx-auto">
-          <img
-            src="/images/hero/project-masterplan-reference.jpg"
-            alt="Quy hoạch tổng thể dự án Coastal Quảng Ngãi"
-            loading="lazy"
-            width={800}
-            height={500}
-            className="w-full rounded-lg"
-          />
-        </div>
-
-        {/* 3 highlight cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {INTRO_HIGHLIGHTS.map((item) => (
-            <div key={item.title} className="group bg-white rounded-lg overflow-hidden shadow-sm">
-              <div className="overflow-hidden">
+            {/* Right — composite reference image (same as dongtayland.vn) */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-[550px]">
                 <img
-                  src={item.image}
-                  alt={item.title}
-                  loading="lazy"
-                  width={960}
+                  src="/images/hero/gioi-thieu-reference.png"
+                  alt="Giới thiệu dự án Coastal Quảng Ngãi"
+                  width={550}
                   height={640}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  className="w-full h-auto"
                 />
               </div>
-              <div className="p-4 text-center">
-                <h3 className="font-heading text-lg font-bold text-charcoal mb-2">{item.title}</h3>
-                <p className="text-charcoal/60 text-sm">{item.description}</p>
-              </div>
             </div>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Button href="#lien-he">Tải bảng giá</Button>
+          </div>
         </div>
       </div>
     </SectionWrapper>

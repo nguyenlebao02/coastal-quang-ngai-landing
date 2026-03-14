@@ -36,25 +36,6 @@ export const PROJECT_INFO = [
   { label: 'Pháp lý', value: 'Sổ hồng sở hữu lâu dài' },
 ] as const;
 
-/* Introduction highlights */
-export const INTRO_HIGHLIGHTS = [
-  {
-    title: 'Bất động sản nghệ thuật văn hóa',
-    description: 'Kiến trúc Địa Trung Hải kết hợp văn hóa bản địa, tạo nên không gian sống đẳng cấp.',
-    image: '/images/amenities/art-culture-real-estate.webp',
-  },
-  {
-    title: 'Bất động sản du thuyền hạng sang bên vịnh',
-    description: 'Bến du thuyền riêng tư, trải nghiệm sống thượng lưu bên bờ biển.',
-    image: '/images/amenities/luxury-yacht-real-estate.webp',
-  },
-  {
-    title: 'Bất động sản tôn vinh văn hóa truyền thống, bảo tồn thiên nhiên',
-    description: 'Hệ sinh thái xanh, bảo tồn cảnh quan thiên nhiên và giá trị văn hóa Quảng Ngãi.',
-    image: '/images/amenities/heritage-nature-real-estate.webp',
-  },
-] as const;
-
 /* Product types — chuẩn theo dongtayland.vn */
 export const PRODUCT_TYPES = [
   {
