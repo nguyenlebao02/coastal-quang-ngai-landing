@@ -8,14 +8,14 @@ export default function IntroductionSection() {
       <div className="container mx-auto">
         <div className="text-center mb-8">
           <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2">
-            Giới thiệu Coastal Quảng Ngãi
+            Coastal Quảng Ngãi
           </h2>
           <div className="rose-line mb-6" />
           <p className="text-charcoal/70 max-w-3xl mx-auto text-sm leading-relaxed">
-            Khám phá sự giao thoa kỳ diệu giữa hơi thở của biển, nhịp sống của sông
-            và sự phồn vinh của đô thị. Coastal Quảng Ngãi – dự án đô thị biển đẳng cấp quốc tế
-            đầu tiên tại miền Trung, quy mô 93,9 ha với mật độ xây dựng chỉ 14%,
-            mang đến 1.111 sản phẩm đa dạng – tất cả đều được bảo chứng bởi HAUS.
+            Coastal Quảng Ngãi là biểu tượng thứ 2 mà nhà sáng lập HAUS kiến tạo tại Việt Nam,
+            sau thành công của Haus Dalat. Dự án đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung,
+            quy mô 93,9 ha với mật độ xây dựng chỉ 14%, mang đến 1.111 sản phẩm đa dạng —
+            tất cả đều được bảo chứng bởi HAUS.
           </p>
         </div>
 
