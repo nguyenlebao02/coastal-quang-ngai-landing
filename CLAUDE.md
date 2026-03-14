@@ -9,7 +9,7 @@ Landing page + Blog system for **Haus Coastal Quảng Ngãi** — real estate ma
 | Repo | Stack | Deploy Target |
 |------|-------|---------------|
 | **This repo** (Landing) | Next.js 14, React 18, Tailwind 3.4, Framer Motion | Docker standalone on Tose |
-| **haus-coastal-blog-api** (separate repo at `E:/Landingpage AI/haus-coastal-blog-api`) | Hono, Cloudflare Workers, D1, R2, Gemini | Cloudflare Workers |
+| **haus-coastal-blog-api** (separate repo at `E:/Landingpage AI/haus-coastal-blog-api`) | Hono, Cloudflare Workers, D1, R2, Workers AI | Cloudflare Workers |
 
 Production URL: `https://hauscoastal.com.vn`
 
@@ -32,13 +32,22 @@ No test framework is configured. Validate with `npm run lint` and `npm run build
 - When Blog API is unavailable, blog pages return empty arrays (graceful fallback)
 
 ### Homepage Structure
-Homepage (`app/page.tsx`) composes 12 section components sequentially:
-`Hero → Introduction → RegistrationForm → Overview → Location → Amenities → Architecture → Policy → Products → Layout → Progress → News → Contact`
+Homepage (`app/page.tsx`) composes section components sequentially:
+`Hero → Introduction → Overview → Location → Partners → Products → Planning → Operations → Amenities → Policy → Potential → RegistrationForm → Progress → News → Contact`
 
 Each section is a standalone component in `app/components/sections/`. Sections use `SectionWrapper` (client component with Framer Motion + Intersection Observer) for scroll-triggered animations and ID-based anchor linking.
 
 ### Navigation & Anchors
-Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#vi-tri`, `#tien-ich`, `#ban-giao`, `#chinh-sach`, `#san-pham`, `#layout`, `#tien-do`, `#tin-tuc`, `#lien-he`. Defined in `app/lib/constants.ts` `NAV_ITEMS`.
+Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#vi-tri`, `#tien-ich`, `#chinh-sach`, `#san-pham`, `#tien-do`, `#tin-tuc`, `#lien-he`. Defined in `app/lib/constants.ts` `NAV_ITEMS`.
+
+### Content Data Source
+Project content is aligned with the reference at `https://dongtayland.vn/du-an/coastal-quang-ngai/`. Key facts:
+- Location: Đường ven biển Dung Quất – Sa Huỳnh, Quảng Ngãi
+- Scale: 93,9 ha, mật độ xây dựng chỉ 14%
+- Products: 1.111 căn (146 nhà liền kề, 296 biệt thự, 669 căn hộ)
+- Legal: Sổ hồng sở hữu lâu dài
+- Partners: Sweco (Thụy Điển) quy hoạch, Delta xây dựng, Copper Beech (Anh Quốc) vận hành
+- Reference images stored in `images_chuan/` folder at project root
 
 ### Blog System
 - **Listing page**: `/tin-tuc/` — fetches all published posts, renders grid
@@ -54,14 +63,23 @@ Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#
 - **Standalone Docker** — `output: 'standalone'` in next.config.mjs, Dockerfile builds and runs `server.js`
 - **`app/lib/constants.ts`** — central data file for navigation, project info, product specs, contact info. **Change project data here first** — includes `SITE_URL`, `SITE_NAME`, `CONTACT_INFO`, and all section content data.
 
+### Analytics & Tracking
+- **Google Analytics**: `G-HHW4ZZ4BN2` — loaded via `next/script` `afterInteractive`
+- **Facebook Pixel**: `1999396194315989` — loaded via `next/script` `afterInteractive`. Fires `PageView` on load; fires `Lead` event on successful form submission (in `app/lib/form-utils.ts` → `trackFbLead()`)
+- **Preconnect hints**: `connect.facebook.net` and `googletagmanager.com` in `<head>` for faster loading
+- **Noscript fallback**: 1x1 pixel `<img>` for browsers with JS disabled
+
 ### SEO & Structured Data
-- `app/layout.tsx`: Organization + WebSite JSON-LD, Google Analytics (`G-HHW4ZZ4BN2`), Google Search Console verification
+- `app/layout.tsx`: Organization + WebSite JSON-LD, Google Search Console verification
 - `app/page.tsx`: RealEstateListing + FAQPage JSON-LD
 - `app/tin-tuc/[slug]/page.tsx`: Article + BreadcrumbList JSON-LD
 - `app/robots.ts` + `app/sitemap.ts`: auto-generated
+- `app/lib/json-ld-utils.ts`: `safeJsonLd()` escapes `<` to `\u003c` preventing `</script>` XSS in JSON-LD blocks; `safeFormatDate()` handles invalid dates gracefully
 
-### Security Headers
-Configured in `next.config.mjs` `headers()`: `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `X-DNS-Prefetch-Control`, `Strict-Transport-Security`.
+### Security
+- **CSP** in `next.config.mjs`: Whitelists `self`, Google Analytics, Facebook Pixel, `cdn.jsdelivr.net` (Chart.js), Blog API origin. `unsafe-inline` + `unsafe-eval` for scripts (Next.js requirement). `object-src 'none'`, `base-uri 'self'`.
+- **Headers**: `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Strict-Transport-Security`, `Referrer-Policy: strict-origin-when-cross-origin`
+- When adding new external scripts/domains, update CSP `connect-src` and `script-src` in `next.config.mjs`
 
 ### Slide Tư Vấn (Presentation Page)
 Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team to pitch investors. Modular structure:
@@ -71,7 +89,7 @@ Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team t
 - `app/slide-tu-van/slide-styles.css` — Self-contained CSS (not Tailwind — intentional for presentation isolation). Uses separate fonts (Playfair Display + Inter) loaded via CSS `@import`
 
 ### Form & UTM Utilities
-- `app/lib/form-utils.ts` — `getUtmParams()` reads UTM query params client-side; `submitFormToWebhook()` POSTs form data to `/api/contact/`
+- `app/lib/form-utils.ts` — `getUtmParams()` reads UTM query params client-side; `submitFormToWebhook()` POSTs form data to `/api/contact/`; `trackFbLead()` fires FB Pixel Lead event on success
 - Used by `RegistrationFormSection` and `ContactSection` — both forward UTM params alongside lead data
 
 ### API Routes
@@ -97,16 +115,21 @@ Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team t
 - `app/components/floating-cta.tsx` — Fixed-position CTA (Zalo + phone), currently only on homepage
 
 ### Blog API (Separate Repo)
+
+**AI System**: Workers AI (Gemma 3 12B) is the primary model — runs on Cloudflare edge with no region restrictions. Falls back to Gemini API (`gemini-2.5-flash-lite`) if Workers AI binding is unavailable. The function is still named `callGemini()` for historical reasons.
+
+**Auto Daily Posts**: `auto-post-generator.ts` — cron-triggered (`*/5 * * * *`) generates 1 AI post/day at 8:00 AM ICT from a pool of 15 rotating topics about the project. Picks random topic, generates via AI, auto-uploads cover from Pexels, publishes, then triggers landing page ISR revalidation.
+
+**Full Article Import**: `POST /api/admin/ai/import-url` — paste a URL, system crawls full content preserving ALL images and HTML structure (no AI rewrite). `html-content-extractor.ts` has `extractFullContentFromHtml()` with: whitelisted HTML tags, class-based content container detection (falls back through `<article>` → `<main>` → common content div classes → `<body>`), nesting-aware junk div stripping (share/social/sidebar/related/comment/banner/pagination), relative URL resolution, `<img>` attribute normalization. All inline images are downloaded to R2 via `downloadAndReplaceImages()` in `r2-upload.ts`.
+
 Admin panel is an embedded SPA in the Worker, modularized across `src/admin-ui-sections/`:
 - `admin-styles.ts` — CSS
 - `admin-shared-scripts.ts` — api(), esc(), router, toSlug(), sanitizeHtml()
 - `admin-views-scripts.ts` — View rendering + form setup
-- `admin-ai-scripts.ts` — AI generate/edit (Gemini)
+- `admin-ai-scripts.ts` — AI generate/edit, import from URL, full article import
 - `admin-bulk-import-scripts.ts` — Bulk URL import
 
-Admin features: AI post generation, create from URL (crawl + rewrite), bulk import, scheduled publishing (cron `*/5 * * * *`), cover image suggestion via Pexels.
-
-**Known issue**: Gemini API calls from Cloudflare Workers get "User location not supported" — Google blocks cloud provider IPs. Needs Cloudflare AI Gateway proxy to fix.
+Admin features: AI post generation, create from URL (crawl + rewrite), full article import (preserve original), bulk import, scheduled publishing (cron `*/5 * * * *`), cover image suggestion via Pexels, auto daily post generation.
 
 ## Deployment
 
@@ -137,7 +160,7 @@ WEBHOOK_URL=<contact form webhook endpoint>
 REVALIDATE_SECRET=<secret for ISR revalidation API>
 ```
 
-**Blog API secrets** (set via `wrangler secret put`): `ADMIN_PASSWORD`, `JWT_SECRET`, `GEMINI_API_KEY`
+**Blog API secrets** (set via `wrangler secret put`): `ADMIN_PASSWORD`, `JWT_SECRET`, `GEMINI_API_KEY`, `PEXELS_API_KEY`
 
 ## Project Documentation
 

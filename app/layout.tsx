@@ -29,9 +29,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
+  title: 'Coastal Quảng Ngãi | Đô Thị Biển Đẳng Cấp Quốc Tế Đầu Tiên Miền Trung',
   description:
-    'Dự án Coastal Quảng Ngãi 93.9ha - Đô thị sinh thái biển đẳng cấp. Biệt thự biển, Shophouse, Căn hộ ven biển Quảng Ngãi. Sổ đỏ lâu dài. CĐT Haus Group. Hotline: 098 624 3450',
+    'Dự án Coastal Quảng Ngãi 93,9ha - Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung. Nhà liền kề, Biệt thự sinh thái, Căn hộ cao tầng. Sổ hồng sở hữu lâu dài. CĐT Haus Group. Hotline: 098 624 3450',
   authors: [{ name: 'Haus Group' }],
   keywords: [
     'hauscoastal',
@@ -56,19 +56,19 @@ export const metadata: Metadata = {
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
   manifest: '/manifest.json',
   openGraph: {
-    title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
+    title: 'Coastal Quảng Ngãi | Đô Thị Biển Đẳng Cấp Quốc Tế Đầu Tiên Miền Trung',
     description:
-      'Dự án Coastal Quảng Ngãi 93.9ha - Biệt thự biển, Shophouse, Căn hộ ven biển. Sổ đỏ lâu dài. CĐT Haus Group.',
+      'Dự án Coastal Quảng Ngãi 93,9ha - Nhà liền kề, Biệt thự sinh thái, Căn hộ cao tầng. Sổ hồng sở hữu lâu dài. CĐT Haus Group.',
     type: 'website',
     locale: 'vi_VN',
     siteName: 'Coastal Quảng Ngãi',
     url: SITE_URL,
-    images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi - Đô thị sinh thái biển đẳng cấp' }],
+    images: [{ url: '/images/hero/hero-banner-coastal-aerial.jpg', width: 1200, height: 630, alt: 'Coastal Quảng Ngãi - Đô thị biển đẳng cấp quốc tế' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Coastal Quảng Ngãi | Biểu Tượng Đô Thị Sinh Thái Biển',
-    description: 'Dự án Coastal Quảng Ngãi 93.9ha - Biệt thự biển, Shophouse, Căn hộ ven biển. Sổ đỏ lâu dài.',
+    title: 'Coastal Quảng Ngãi | Đô Thị Biển Đẳng Cấp Quốc Tế Đầu Tiên Miền Trung',
+    description: 'Dự án Coastal Quảng Ngãi 93,9ha - Nhà liền kề, Biệt thự sinh thái, Căn hộ cao tầng. Sổ hồng sở hữu lâu dài.',
     images: ['/images/hero/hero-banner-coastal-aerial.jpg'],
   },
 };

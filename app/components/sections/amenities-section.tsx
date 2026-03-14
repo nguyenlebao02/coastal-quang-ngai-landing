@@ -5,6 +5,35 @@ import SectionWrapper from '@/app/components/ui/section-wrapper';
 import Carousel from '@/app/components/ui/carousel';
 import { AMENITIES } from '@/app/lib/constants';
 
+/* 3 nhóm tiện ích — chuẩn theo dongtayland.vn */
+const amenityGroups = [
+  {
+    title: 'Tiện ích sinh hoạt & cộng đồng',
+    items: [
+      'Quảng trường ánh sáng & nhạc nước',
+      'Công viên ven sông & mảng xanh sinh thái ấn tượng',
+      'Khu vui chơi trẻ em (Kids Zone)',
+      'Vườn nướng BBQ ven hồ',
+      'Clubhouse sang trọng',
+    ],
+  },
+  {
+    title: 'Tiện ích thể thao & giải trí',
+    items: [
+      'Khu thể thao đa năng: gym, yoga, sân tennis',
+      'Hồ bơi phong cách resort',
+      'Bến du thuyền trên sông Phước Giang',
+    ],
+  },
+  {
+    title: 'Tiện ích thương mại & dịch vụ',
+    items: [
+      'Phố thương mại sầm uất, đầy đủ các dịch vụ ăn uống, mua sắm',
+      'Hệ thống an ninh đa lớp: camera 24/7 cùng đội ngũ bảo vệ chuyên nghiệp',
+    ],
+  },
+];
+
 const carouselItems = AMENITIES.map((a) => ({ image: a.image, label: a.name }));
 
 export default function AmenitiesSection() {
@@ -13,14 +42,40 @@ export default function AmenitiesSection() {
   return (
     <SectionWrapper id="tien-ich" className="bg-cream-gradient">
       <div className="container mx-auto">
-        <div className="text-center mb-10">
-          <p className="font-heading text-base md:text-lg text-gold font-bold uppercase tracking-[0.25em] mb-4">
-            Hệ tiện ích &ldquo;giàu&rdquo; giá trị
+        {/* Header row — heading trái, mô tả phải (giống reference) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-end">
+          <div>
+            <h2 className="font-heading text-3xl md:text-4xl text-rose-beige font-bold uppercase">
+              Tiện ích đô thị
+            </h2>
+            <p className="font-heading text-xl md:text-2xl text-rose-beige/80 italic">
+              Giàu giá trị
+            </p>
+          </div>
+          <p className="text-charcoal/70 text-sm leading-relaxed">
+            Coastal Quảng Ngãi có mật độ xây dựng thấp giúp cư dân tận hưởng không gian
+            thoáng đãng, hạn chế áp lực giao thông và ô nhiễm — điều mà các đô thị đông đúc
+            khó có được, cư dân trải nghiệm sống với tiện ích nội khu chuẩn Resort 5 sao.
           </p>
-          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
-            Hệ tiện ích đẳng cấp
-          </h2>
-          <div className="rose-line mb-6" />
+        </div>
+
+        {/* 3 nhóm tiện ích */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {amenityGroups.map((group) => (
+            <div key={group.title}>
+              <h3 className="font-heading text-base text-charcoal font-bold mb-3 italic">
+                {group.title}
+              </h3>
+              <ul className="space-y-1.5">
+                {group.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-charcoal/70 text-sm">
+                    <span className="text-rose-beige mt-0.5 flex-shrink-0">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Main carousel */}
@@ -37,7 +92,7 @@ export default function AmenitiesSection() {
         />
 
         {/* Thumbnail navigation */}
-        <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-8 gap-2 mt-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-4">
           {AMENITIES.map((amenity, i) => (
             <button
               key={amenity.name}
@@ -60,30 +115,6 @@ export default function AmenitiesSection() {
               </p>
             </button>
           ))}
-        </div>
-
-        {/* Amenity legend */}
-        <div className="mt-8">
-          <img
-            src="/images/amenities/amenity-legend.jpg"
-            alt="Chú thích tiện ích"
-            loading="lazy"
-            width={1920}
-            height={246}
-            className="w-full rounded-lg"
-          />
-        </div>
-
-        {/* Overview image */}
-        <div className="mt-8">
-          <img
-            src="/images/hero/hero-intro-coastal.jpg"
-            alt="Tổng quan tiện ích Coastal Quảng Ngãi"
-            loading="lazy"
-            width={1500}
-            height={938}
-            className="w-full rounded-lg shadow-lg"
-          />
         </div>
       </div>
     </SectionWrapper>

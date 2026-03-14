@@ -20,6 +20,7 @@ export default function ContactSection() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     setError('');
 

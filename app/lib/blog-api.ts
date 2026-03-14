@@ -19,7 +19,10 @@ export type BlogPostListItem = Omit<BlogPost, 'content'>;
 
 export async function fetchPublishedPosts(): Promise<BlogPostListItem[]> {
   try {
-    const res = await fetch(`${BLOG_API_URL}/api/posts`, { next: { revalidate: 60 } });
+    const res = await fetch(`${BLOG_API_URL}/api/posts`, {
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(5000),
+    });
     if (!res.ok) return [];
     const data = await res.json() as { posts: BlogPostListItem[] };
     return data.posts;
@@ -33,7 +36,10 @@ export async function fetchPublishedPosts(): Promise<BlogPostListItem[]> {
 export const fetchPostBySlug = cache(async (slug: string): Promise<BlogPost | null> => {
   try {
     const safeSlug = encodeURIComponent(slug);
-    const res = await fetch(`${BLOG_API_URL}/api/posts/${safeSlug}`, { next: { revalidate: 60 } });
+    const res = await fetch(`${BLOG_API_URL}/api/posts/${safeSlug}`, {
+      next: { revalidate: 60 },
+      signal: AbortSignal.timeout(5000),
+    });
     if (!res.ok) return null;
     const data = await res.json() as { post: BlogPost };
     return data.post;
@@ -44,6 +50,7 @@ export const fetchPostBySlug = cache(async (slug: string): Promise<BlogPost | nu
 });
 
 export function resolveImageUrl(coverImage: string): string {
+  if (!coverImage) return '/images/news/blog-location-golden-potential.jpg';
   if (coverImage.startsWith('http')) return coverImage;
   if (coverImage.startsWith('/images/')) return coverImage;
   return `${BLOG_API_URL}${coverImage}`;

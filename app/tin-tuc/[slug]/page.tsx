@@ -6,6 +6,7 @@ import Footer from '@/app/components/footer';
 import { fetchPublishedPosts, fetchPostBySlug, resolveImageUrl, sanitizeHtml } from '@/app/lib/blog-api';
 import type { BlogPostListItem } from '@/app/lib/blog-api';
 import { SITE_URL } from '@/app/lib/constants';
+import { safeJsonLd, safeFormatDate } from '@/app/lib/json-ld-utils';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -63,7 +64,7 @@ export default async function BlogDetailPage({ params }: Props) {
   if (!post) notFound();
 
   const coverUrl = resolveImageUrl(post.cover_image);
-  const publishDate = new Date(post.created_at).toLocaleDateString('vi-VN', {
+  const publishDate = safeFormatDate(post.created_at, 'vi-VN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -79,7 +80,7 @@ export default async function BlogDetailPage({ params }: Props) {
       {/* Article + BreadcrumbList JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+        dangerouslySetInnerHTML={{ __html: safeJsonLd([
           {
             '@context': 'https://schema.org',
             '@type': 'Article',

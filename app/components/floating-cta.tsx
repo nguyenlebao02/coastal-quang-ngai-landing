@@ -1,16 +1,21 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { CONTACT_INFO } from '@/app/lib/constants';
 
 export default function FloatingCta() {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setShowScrollTop(window.scrollY > 300);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  /* Hide floating CTA on fullscreen presentation page */
+  if (pathname?.startsWith('/slide-tu-van')) return null;
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">

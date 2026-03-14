@@ -4,16 +4,17 @@ import Header from '@/app/components/header';
 import Footer from '@/app/components/footer';
 import { fetchPublishedPosts, resolveImageUrl } from '@/app/lib/blog-api';
 import { NEWS_ITEMS, SITE_URL } from '@/app/lib/constants';
+import { safeJsonLd, safeFormatDate } from '@/app/lib/json-ld-utils';
 
 export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'Tin tức dự án | Coastal Quảng Ngãi',
-  description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị sinh thái biển đẳng cấp.',
+  description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung.',
   alternates: { canonical: '/tin-tuc/' },
   openGraph: {
     title: 'Tin tức dự án | Coastal Quảng Ngãi',
-    description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị sinh thái biển đẳng cấp.',
+    description: 'Cập nhật tin tức mới nhất về dự án Coastal Quảng Ngãi - đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung.',
     type: 'website',
     url: `${SITE_URL}/tin-tuc/`,
   },
@@ -29,7 +30,7 @@ export default async function BlogListingPage() {
         title: p.title,
         excerpt: p.excerpt,
         image: resolveImageUrl(p.cover_image),
-        date: new Date(p.created_at).toLocaleDateString('vi-VN'),
+        date: safeFormatDate(p.created_at),
       }))
     : NEWS_ITEMS.map((item) => ({
         slug: item.slug,
@@ -44,7 +45,7 @@ export default async function BlogListingPage() {
       {/* BreadcrumbList + CollectionPage JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([
+        dangerouslySetInnerHTML={{ __html: safeJsonLd([
           {
             '@context': 'https://schema.org',
             '@type': 'BreadcrumbList',

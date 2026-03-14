@@ -15,8 +15,8 @@ export default function Lightbox({ images, isOpen, startIndex = 0, onClose }: Li
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (isOpen) setCurrent(startIndex);
-  }, [isOpen, startIndex]);
+    if (isOpen) setCurrent(Math.min(startIndex, Math.max(0, images.length - 1)));
+  }, [isOpen, startIndex, images.length]);
 
   /* Lock body scroll when open */
   useEffect(() => {

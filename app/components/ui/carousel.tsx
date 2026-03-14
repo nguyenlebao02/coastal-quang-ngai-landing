@@ -112,6 +112,9 @@ export default function Carousel({
     else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
   }, [next, prev]);
 
+  /* Guard: nothing to render if items list is empty */
+  if (items.length === 0) return null;
+
   return (
     <div
       ref={containerRef}

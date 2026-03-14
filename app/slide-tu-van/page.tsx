@@ -38,8 +38,8 @@ export default function SlideTuVanPage() {
           <div className="logo-badge">HAUS GROUP</div>
           <h1 className="slide-title" style={{ color: '#FFF', fontSize: 'clamp(48px,7vw,84px)' }}>COASTAL<br/>QUẢNG NGÃI</h1>
           <div className="accent-line-gold" />
-          <p className="slide-subtitle" style={{ color: '#D4AF37', letterSpacing: 5, marginTop: 16 }}>Biểu tượng đô thị sinh thái biển</p>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, marginTop: 30, letterSpacing: 2 }}>Đô thị nghệ thuật văn hóa &bull; Du thuyền hạng sang bên vịnh</p>
+          <p className="slide-subtitle" style={{ color: '#D4AF37', letterSpacing: 5, marginTop: 16 }}>Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung</p>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: 14, marginTop: 30, letterSpacing: 2 }}>Nơi hơi thở của biển, nhịp sống của sông và sự phồn vinh đô thị hội tụ</p>
         </div>
       </div>
 
@@ -49,7 +49,7 @@ export default function SlideTuVanPage() {
           <p className="section-label">Tầm nhìn</p>
           <h2 className="slide-heading">Kiến tạo biểu tượng<br/>đô thị mới tại Quảng Ngãi</h2>
           <div className="accent-line" />
-          <p className="slide-body" style={{ marginBottom: 40 }}>Dự án đô thị sinh thái biển đẳng cấp quy mô 93.9 HA — không gian sống hoàn hảo kết hợp thiên nhiên, nghệ thuật và phong cách sống thượng lưu.</p>
+          <p className="slide-body" style={{ marginBottom: 40 }}>Khám phá sự giao thoa kỳ diệu giữa hơi thở của biển, nhịp sống của sông và sự phồn vinh của đô thị. Quy mô 93,9 ha, mật độ xây dựng chỉ 14%, 1.111 sản phẩm — tất cả đều được bảo chứng bởi HAUS.</p>
           <div className="grid-3 stagger">
             <div className="card animate-fade-up"><span className="card-icon">🏛️</span><h3>Nghệ thuật văn hóa</h3><p>Kiến trúc Địa Trung Hải kết hợp văn hóa bản địa Quảng Ngãi</p></div>
             <div className="card animate-fade-up"><span className="card-icon">🛥️</span><h3>Du thuyền hạng sang</h3><p>Bến du thuyền riêng tư, trải nghiệm sống thượng lưu bên bờ biển</p></div>
@@ -69,11 +69,12 @@ export default function SlideTuVanPage() {
             <tbody>
               <tr><td>Tên dự án</td><td><strong>Coastal Quảng Ngãi</strong></td></tr>
               <tr><td>Chủ đầu tư</td><td>Haus Group</td></tr>
-              <tr><td>Vị trí</td><td>TP. Quảng Ngãi, Tỉnh Quảng Ngãi</td></tr>
-              <tr><td>Quy mô</td><td className="highlight-value">93.9 HA</td></tr>
-              <tr><td>Loại hình</td><td>Shophouse, Biệt thự, Căn hộ</td></tr>
-              <tr><td>Pháp lý</td><td className="highlight-value">Sổ đỏ lâu dài</td></tr>
-              <tr><td>Bàn giao</td><td>2027 – 2028</td></tr>
+              <tr><td>Vị trí</td><td>Đường ven biển Dung Quất – Sa Huỳnh, Quảng Ngãi</td></tr>
+              <tr><td>Quy mô</td><td className="highlight-value">93,9 ha</td></tr>
+              <tr><td>Mật độ xây dựng</td><td className="highlight-value">Chỉ 14%</td></tr>
+              <tr><td>Loại hình</td><td>Shophouse, Nhà phố, Biệt thự, Căn hộ</td></tr>
+              <tr><td>Số lượng</td><td>1.111 căn (146 NLK, 296 BT, 669 CH)</td></tr>
+              <tr><td>Pháp lý</td><td className="highlight-value">Sổ hồng sở hữu lâu dài</td></tr>
             </tbody>
           </table>
         </div>
@@ -98,14 +99,14 @@ export default function SlideTuVanPage() {
       <div className="sl slide--cream">
         <div className="animate-fade-up" style={{ width: '100%' }}>
           <p className="section-label">Vị trí chiến lược</p>
-          <h2 className="slide-heading">Cận thị · Cận giang · Cận lộ</h2>
+          <h2 className="slide-heading">Cận biển · Cận giang · Cận lộ</h2>
           <div className="accent-line" />
           <div className="grid-2" style={{ marginTop: 16 }}>
             <div>
               <div className="grid-3 stagger" style={{ gap: 16 }}>
-                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">📍</span><h3 style={{ fontSize: 15 }}>Cận thị · Cận giang · Cận lộ</h3><p style={{ fontSize: 13 }}>Kết nối trung tâm TP, sông Trà Khúc và giao thông huyết mạch</p></div>
-                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">⏱️</span><h3 style={{ fontSize: 15 }}>5 phút → Trung tâm</h3><p style={{ fontSize: 13 }}>Kết nối nhanh khu thương mại và dịch vụ TP. Quảng Ngãi</p></div>
-                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">🏖️</span><h3 style={{ fontSize: 15 }}>10 phút → Biển</h3><p style={{ fontSize: 13 }}>Gần bãi biển Mỹ Khê, sân bay Chu Lai, điểm du lịch nổi tiếng</p></div>
+                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">📍</span><h3 style={{ fontSize: 15 }}>Cận biển · Cận giang · Cận lộ</h3><p style={{ fontSize: 13 }}>Ven biển Dung Quất–Sa Huỳnh, bao bọc 4 mặt sông Phước Giang, 600m đến biển Mỹ Khê</p></div>
+                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">⏱️</span><h3 style={{ fontSize: 15 }}>10 phút → Trung tâm</h3><p style={{ fontSize: 13 }}>Kết nối trung tâm Quảng Ngãi & QL1A. 15 phút đến cao tốc ĐN–QN</p></div>
+                <div className="card animate-fade-up" style={{ padding: '24px 16px' }}><span className="card-icon">✈️</span><h3 style={{ fontSize: 15 }}>30 phút → Sân bay & KKT</h3><p style={{ fontSize: 13 }}>Sân bay Chu Lai, KKT Dung Quất, VSIP QN. 3-10 phút đến Vincom, trường, bệnh viện</p></div>
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -138,9 +139,9 @@ export default function SlideTuVanPage() {
           <p className="section-label">Sản phẩm</p>
           <h2 className="slide-heading">Loại hình sản phẩm</h2>
           <div className="accent-line" />
-          <p className="slide-body" style={{ margin: '0 auto 24px' }}>Thiết kế hòa mình vào thiên nhiên — Lost in Nature</p>
+          <p className="slide-body" style={{ margin: '0 auto 24px' }}>1.111 sản phẩm — Đa dạng loại hình, Một đẳng cấp sống</p>
           <div className="product-grid stagger">
-            {[['🏘️','Central Villa','Biệt thự trung tâm, vị trí đắc địa','#E8D5CE','#F0E6DC'],['🌳','Nature Villa','Biệt thự thiên nhiên, hòa mình cây xanh','#D4E8D0','#E8F0E6'],['🏞️','Hidden Villa','Biệt thự ẩn mình, riêng tư tuyệt đối','#D0D8E8','#E6ECF0'],['🔑','Multikey','Thiết kế thông minh, linh hoạt đầu tư','#E8E0D0','#F0ECE6']].map(([icon, title, desc, c1, c2], i) => (
+            {[['🏘️','Nhà Liền Kề & Shophouse','~146 căn · Tối đa 5 tầng · Khai thác thương mại','#E8D5CE','#F0E6DC'],['🌳','Biệt Thự Sinh Thái','~296 căn · Tối đa 3 tầng · Riêng tư, mật độ thấp','#D4E8D0','#E8F0E6'],['🏢','Căn Hộ Cao Tầng','~669 căn · Cao đến 25 tầng · Đầu tư cho thuê','#D0D8E8','#E6ECF0']].map(([icon, title, desc, c1, c2], i) => (
               <div key={i} className="product-card animate-fade-up">
                 <div className="product-visual" style={{ background: `linear-gradient(135deg,${c1},${c2})` }}>{icon}</div>
                 <h3>{title}</h3><p>{desc}</p>
@@ -173,7 +174,7 @@ export default function SlideTuVanPage() {
                 <div style={{ textAlign: 'center' }}>
                   <span style={{ fontSize: 80, display: 'block', marginBottom: 16 }}>🏠</span>
                   <p style={{ fontSize: 16, color: '#0B3D5C', fontWeight: 600 }}>Full nội thất cao cấp</p>
-                  <p style={{ fontSize: 13, color: '#6B7280', marginTop: 6 }}>Biệt thự song lập &amp; đơn lập</p>
+                  <p style={{ fontSize: 13, color: '#6B7280', marginTop: 6 }}>Biệt thự sinh thái &amp; Nhà liền kề</p>
                 </div>
               </div>
             </div>
@@ -225,7 +226,7 @@ export default function SlideTuVanPage() {
           <div className="grid-2" style={{ marginTop: 16, alignItems: 'center' }}>
             <div className="chart-container" style={{ width: '100%', maxWidth: 480 }}><canvas id="growthChart" /></div>
             <div style={{ textAlign: 'left' }}>
-              {[['✅ Sổ đỏ lâu dài','Quyền sở hữu vĩnh viễn, an tâm đầu tư dài hạn'],['✅ Hạ tầng phát triển','Giao thông, khu công nghiệp, FDI tăng mạnh tại Quảng Ngãi'],['✅ Bàn giao 2027-2028','Timeline rõ ràng, thanh toán linh hoạt theo tiến độ']].map(([title, desc], i) => (
+              {[['✅ Sổ hồng sở hữu lâu dài','Quyền sở hữu vĩnh viễn, an tâm đầu tư dài hạn'],['✅ Hạ tầng phát triển','Giao thông, KKT Dung Quất 45.000+ ha, FDI tăng mạnh tại Quảng Ngãi'],['✅ Mật độ xây dựng chỉ 14%','Không gian sống thoáng đãng, tiêu chuẩn Resort 5 sao']].map(([title, desc], i) => (
                 <div key={i} className="card-dark" style={{ marginBottom: i < 2 ? 14 : 0, textAlign: 'left', padding: 20 }}>
                   <h3 style={{ fontSize: 16, marginBottom: 8 }}>{title}</h3><p>{desc}</p>
                 </div>

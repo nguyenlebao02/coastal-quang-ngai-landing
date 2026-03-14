@@ -1,7 +1,10 @@
 import { useEffect, useRef, useCallback } from 'react';
 
+const SWIPE_THRESHOLD = 50;
+
 export function useSlideNavigation(onChartSlide: (slideNumber: number) => void) {
   const currentRef = useRef(1);
+  const touchStartX = useRef(0);
 
   const showSlide = useCallback((n: number) => {
     const slides = document.querySelectorAll('.sl');
@@ -45,19 +48,36 @@ export function useSlideNavigation(onChartSlide: (slideNumber: number) => void) 
 
       const handleClick = (e: MouseEvent) => {
         const target = e.target as HTMLElement;
+        /* Skip navigation if user selected text or clicked controls/CTA */
+        if (window.getSelection()?.toString()) return;
         if (!target.closest('.nav-controls') && !target.closest('.cta-button')) {
           nextSlide();
         }
       };
 
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+      };
+
+      const handleTouchEnd = (e: TouchEvent) => {
+        const diff = touchStartX.current - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > SWIPE_THRESHOLD) {
+          diff > 0 ? nextSlide() : prevSlide();
+        }
+      };
+
       document.addEventListener('keydown', handleKeydown);
       document.addEventListener('click', handleClick);
+      document.addEventListener('touchstart', handleTouchStart, { passive: true });
+      document.addEventListener('touchend', handleTouchEnd);
 
       showSlide(1);
 
       return () => {
         document.removeEventListener('keydown', handleKeydown);
         document.removeEventListener('click', handleClick);
+        document.removeEventListener('touchstart', handleTouchStart);
+        document.removeEventListener('touchend', handleTouchEnd);
       };
     };
 

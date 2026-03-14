@@ -38,6 +38,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
   }
 
+  /* First IP from x-forwarded-for header. Accuracy depends on reverse proxy (nginx/CDN) stripping client-controlled values. */
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
   if (isRateLimited(ip)) {
     return NextResponse.json({ error: 'Quá nhiều yêu cầu, vui lòng thử lại sau.' }, { status: 429 });

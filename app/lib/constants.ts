@@ -24,15 +24,16 @@ export const CONTACT_INFO = {
   zaloUrl: 'https://zalo.me/0986243450',
 } as const;
 
-/* Project overview data */
+/* Project overview data — chuẩn theo dongtayland.vn */
 export const PROJECT_INFO = [
   { label: 'Tên dự án', value: 'Coastal Quảng Ngãi' },
-  { label: 'Vị trí', value: 'TP. Quảng Ngãi, Tỉnh Quảng Ngãi' },
+  { label: 'Vị trí', value: 'Đường ven biển Dung Quất – Sa Huỳnh, Quảng Ngãi' },
   { label: 'Chủ đầu tư', value: 'Haus Group' },
-  { label: 'Quy mô', value: '93.9 HA' },
-  { label: 'Loại hình', value: 'Shophouse, Biệt thự, Căn hộ' },
-  { label: 'Pháp lý', value: 'Sổ đỏ lâu dài' },
-  { label: 'Bàn giao', value: '2027 - 2028' },
+  { label: 'Quy mô', value: '93,9 ha' },
+  { label: 'Mật độ xây dựng', value: 'Chỉ 14%' },
+  { label: 'Loại hình', value: 'Shophouse, Nhà phố, Biệt thự, Căn hộ' },
+  { label: 'Số lượng', value: '1.111 căn (146 nhà liền kề, 296 biệt thự, 669 căn hộ)' },
+  { label: 'Pháp lý', value: 'Sổ hồng sở hữu lâu dài' },
 ] as const;
 
 /* Introduction highlights */
@@ -54,20 +55,42 @@ export const INTRO_HIGHLIGHTS = [
   },
 ] as const;
 
-/* Product types */
+/* Product types — chuẩn theo dongtayland.vn */
 export const PRODUCT_TYPES = [
-  { id: 'central-villa', name: 'Central Villa', image: '/images/products/central-villa.jpg' },
-  { id: 'nature-villa', name: 'Nature Villa', image: '/images/products/nature-villa.jpg' },
-  { id: 'hidden-villa', name: 'Hidden Villa', image: '/images/products/hidden-villa.jpg' },
-  { id: 'multikey', name: 'Multikey', image: '/images/products/multikey-smart-design.jpg' },
+  {
+    id: 'shophouse-townhouse',
+    name: 'Nhà Liền Kề & Shophouse',
+    image: '/images/products/shophouse-townhouse.jpg',
+    quantity: '~146 căn',
+    maxFloors: 'Cao tối đa 5 tầng',
+    description: 'Phù hợp khai thác thương mại, kinh doanh dịch vụ.',
+    longDesc: 'Shophouse tại Coastal Quảng Ngãi có tiềm năng tạo dòng tiền khi cộng đồng cư dân hình thành và lượng khách ven biển tăng trưởng.',
+  },
+  {
+    id: 'eco-villa',
+    name: 'Biệt Thự Sinh Thái',
+    image: '/images/products/eco-villa.jpg',
+    quantity: '~296 căn',
+    maxFloors: 'Cao tối đa 3 tầng',
+    description: 'Không gian riêng tư, mật độ thấp.',
+    longDesc: 'Phân khúc dành cho gia chủ mong muốn khẳng định vị thế, tận hưởng môi trường sống xanh và đẳng cấp.',
+  },
+  {
+    id: 'highrise-apartment',
+    name: 'Căn Hộ Cao Tầng',
+    image: '/images/products/highrise-apartment.jpg',
+    quantity: '~669 căn',
+    maxFloors: 'Chung cư cao đến 25 tầng',
+    description: 'Phù hợp chuyên gia, gia đình trẻ, đầu tư cho thuê.',
+    longDesc: 'Căn hộ phù hợp với chuyên gia đang làm việc tại Dung Quất, VSIP... gia đình trẻ hoặc chiến lược đầu tư cho thuê trung – dài hạn.',
+  },
 ] as const;
 
-/* Contact form product options */
+/* Contact form product options — chuẩn theo dongtayland.vn */
 export const CONTACT_PRODUCT_OPTIONS = [
-  'Biệt thự song lập',
-  'Biệt thự đơn lập',
-  'Nhà phố',
-  'Căn hộ',
+  'Nhà liền kề & Shophouse',
+  'Biệt thự sinh thái',
+  'Căn hộ cao tầng',
 ] as const;
 
 /* Sales policy highlights */
@@ -79,23 +102,14 @@ export const SALES_POLICIES = [
   { title: 'Quà tặng', value: 'Bốc thăm Mercedes' },
 ] as const;
 
-/* Amenity items for gallery */
+/* Amenity items for gallery — chú thích theo nội dung thực tế ảnh */
 export const AMENITIES = [
-  { name: 'Nhà hát Opera', image: '/images/amenities/opera-house.webp' },
-  { name: 'Quảng trường âm nhạc', image: '/images/amenities/music-square.webp' },
-  { name: 'Công trình biểu tượng', image: '/images/amenities/iconic-building.webp' },
-  { name: 'Công viên san hô', image: '/images/amenities/coral-park.webp' },
-  { name: 'Bến du thuyền', image: '/images/amenities/yacht-marina.webp' },
-  { name: 'Yacht Clubhouse', image: '/images/amenities/yacht-clubhouse.webp' },
-  { name: 'Trung tâm hội nghị', image: '/images/amenities/conference-center.webp' },
-  { name: 'Boutique House', image: '/images/amenities/boutique-house.webp' },
-  { name: 'Sân chơi trẻ em', image: '/images/amenities/children-playground.webp' },
-  { name: 'Khu vui chơi cho bé', image: '/images/amenities/kids-play-area.webp' },
-  { name: 'Hồ bơi trẻ em', image: '/images/amenities/children-swimming-pool.webp' },
-  { name: 'Hồ cảnh quan', image: '/images/amenities/landscape-lake.webp' },
-  { name: 'Khu thể thao', image: '/images/amenities/sports-area.webp' },
-  { name: 'Sân Pickleball', image: '/images/amenities/pickleball-courts.webp' },
-  { name: 'Hồ bơi trung tâm', image: '/images/amenities/central-swimming-pool.jpg' },
+  { name: 'Kiến trúc nghệ thuật giữa rừng thông', image: '/images/amenities/reference-amenity-1.jpg' },
+  { name: 'Clubhouse ven sông', image: '/images/amenities/reference-amenity-2.jpg' },
+  { name: 'Hồ bơi cảnh quan', image: '/images/amenities/reference-amenity-3.jpg' },
+  { name: 'Công viên & Khu vui chơi trẻ em', image: '/images/amenities/reference-amenity-4.jpg' },
+  { name: 'Phố thương mại', image: '/images/amenities/reference-amenity-5.jpg' },
+  { name: 'Quảng trường ven biển', image: '/images/amenities/reference-amenity-6.jpg' },
 ] as const;
 
 /* News/blog items */

@@ -12,7 +12,7 @@ Two-repo system: Next.js 14 landing page on Docker/Tose + Hono Blog API on Cloud
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
 │  │ Landing Page │  │ Blog Listing │  │ Blog Detail  │       │
 │  │   (/)        │  │  (/tin-tuc/) │  │ (/tin-tuc/   │       │
-│  │  12 sections │  │              │  │   [slug]/)   │       │
+│  │  15 sections │  │              │  │   [slug]/)   │       │
 │  └──────────────┘  └──────────────┘  └──────────────┘       │
 │         │                  │                 │               │
 │         │         ISR fetch (revalidate: 60s)                │
@@ -65,7 +65,7 @@ Two-repo system: Next.js 14 landing page on Docker/Tose + Hono Blog API on Cloud
 
 | Route | Type | Description |
 |-------|------|-------------|
-| `/` | SSG | Homepage — 12 section components |
+| `/` | SSG | Homepage — 15 section components |
 | `/tin-tuc/` | ISR (60s) | Blog listing — fetches all published posts |
 | `/tin-tuc/[slug]/` | ISR (60s) | Blog detail — full post + 3 related articles |
 | `/slide-tu-van/` | SSG | Consultation slide deck |
@@ -76,7 +76,7 @@ Two-repo system: Next.js 14 landing page on Docker/Tose + Hono Blog API on Cloud
 
 ```
 Homepage
-  └─ 12 server components rendered sequentially
+  └─ 15 server components rendered sequentially
   └─ NewsSection → fetchPublishedPosts() → shows 3 latest posts
 
 Blog Listing (/tin-tuc/)
@@ -126,7 +126,7 @@ Google Search Console: verified via meta tag
 
 | File | Purpose |
 |------|---------|
-| `gemini-client.ts` | Gemini API calls (model: `gemini-2.5-flash-lite`) |
+| `gemini-client.ts` | Workers AI (Gemma 3 12B) primary, Gemini API fallback |
 | `posts-db.ts` | D1 database queries |
 | `r2-upload.ts` | R2 image upload |
 | `pexels-image-search.ts` | Cover image suggestions via Pexels |

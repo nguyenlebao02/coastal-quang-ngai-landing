@@ -20,7 +20,7 @@ export default function Footer() {
             />
             <h3 className="font-heading text-lg text-rose-beige mb-2 font-bold uppercase">{SITE_NAME}</h3>
             <p className="text-white/60 text-sm leading-relaxed">
-              Biểu tượng đô thị sinh thái biển đẳng cấp tại Quảng Ngãi
+              Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung
             </p>
             <p className="text-white/60 text-sm mt-2">{CONTACT_INFO.address}</p>
           </div>

@@ -7,10 +7,12 @@ import RegistrationFormSection from '@/app/components/sections/registration-form
 import OverviewSection from '@/app/components/sections/overview-section';
 import LocationSection from '@/app/components/sections/location-section';
 import AmenitiesSection from '@/app/components/sections/amenities-section';
-import ArchitectureSection from '@/app/components/sections/architecture-section';
+import PartnersSection from '@/app/components/sections/partners-section';
+import PlanningSection from '@/app/components/sections/planning-section';
+import OperationsSection from '@/app/components/sections/operations-section';
+import PotentialSection from '@/app/components/sections/potential-section';
 import PolicySection from '@/app/components/sections/policy-section';
 import ProductsSection from '@/app/components/sections/products-section';
-import LayoutSection from '@/app/components/sections/layout-section';
 import ProgressSection from '@/app/components/sections/progress-section';
 import NewsSection from '@/app/components/sections/news-section';
 import ContactSection from '@/app/components/sections/contact-section';
@@ -57,13 +59,13 @@ export default function Home() {
           '@context': 'https://schema.org',
           '@type': 'RealEstateListing',
           name: 'Coastal Quảng Ngãi',
-          description: 'Đô thị sinh thái biển đẳng cấp tại Quảng Ngãi - Shophouse, Biệt thự, Căn hộ',
+          description: 'Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung - Shophouse, Nhà phố, Biệt thự, Căn hộ',
           url: `${SITE_URL}/`,
           image: `${SITE_URL}/images/hero/hero-banner-coastal-aerial.jpg`,
           mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}/` },
           address: {
             '@type': 'PostalAddress',
-            streetAddress: '88 Hùng Vương, Phường Nghĩa Lộ',
+            streetAddress: 'Đường ven biển Dung Quất – Sa Huỳnh',
             addressLocality: 'Quảng Ngãi',
             addressRegion: 'Quảng Ngãi',
             addressCountry: 'VN',
@@ -73,7 +75,7 @@ export default function Home() {
             priceCurrency: 'VND',
             availability: 'https://schema.org/PreOrder',
             lowPrice: '3000000000',
-            offerCount: '4',
+            offerCount: '3',
           },
         }) }}
       />
@@ -87,17 +89,17 @@ export default function Home() {
             {
               '@type': 'Question',
               name: 'Dự án Coastal Quảng Ngãi ở đâu?',
-              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi tọa lạc tại TP. Quảng Ngãi, Tỉnh Quảng Ngãi, do Haus Group phát triển với quy mô 93.9 ha. Vị trí đắc địa ven biển, kết nối trung tâm thành phố và các tuyến giao thông huyết mạch.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi tọa lạc tại đường ven biển Dung Quất – Sa Huỳnh, Quảng Ngãi, do Haus Group phát triển với quy mô 93,9 ha, mật độ xây dựng chỉ 14%. Bao bọc bởi 4 mặt sông Phước Giang, chỉ 600m đến biển Mỹ Khê.' },
             },
             {
               '@type': 'Question',
               name: 'Coastal Quảng Ngãi có những loại hình sản phẩm nào?',
-              acceptedAnswer: { '@type': 'Answer', text: 'Coastal Quảng Ngãi cung cấp đa dạng sản phẩm: Central Villa (biệt thự trung tâm), Nature Villa (biệt thự sinh thái), Hidden Villa (biệt thự ẩn mình), Multikey (căn hộ thông minh), Shophouse thương mại và Nhà phố.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'Coastal Quảng Ngãi cung cấp 1.111 sản phẩm gồm 3 loại hình chính: Nhà Liền Kề & Shophouse (~146 căn, 5 tầng), Biệt Thự Sinh Thái (~296 căn, 3 tầng), Căn Hộ Cao Tầng (~669 căn, 25 tầng).' },
             },
             {
               '@type': 'Question',
               name: 'Pháp lý dự án Coastal Quảng Ngãi như thế nào?',
-              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi có pháp lý sổ đỏ lâu dài, đảm bảo quyền sở hữu vĩnh viễn cho cư dân. Chủ đầu tư Haus Group cam kết hoàn thiện pháp lý đầy đủ trước khi bàn giao.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'Dự án Coastal Quảng Ngãi có pháp lý sổ hồng sở hữu lâu dài, đảm bảo quyền sở hữu vĩnh viễn cho cư dân. Chủ đầu tư Haus Group cam kết hoàn thiện pháp lý đầy đủ trước khi bàn giao.' },
             },
             {
               '@type': 'Question',
@@ -112,12 +114,12 @@ export default function Home() {
             {
               '@type': 'Question',
               name: 'Tiện ích tại Coastal Quảng Ngãi gồm những gì?',
-              acceptedAnswer: { '@type': 'Answer', text: 'Hệ tiện ích đẳng cấp: Nhà hát Opera, Quảng trường âm nhạc, Bến du thuyền, Yacht Clubhouse, Hồ bơi trung tâm, Sân Pickleball, Khu vui chơi trẻ em, Công viên san hô, Trung tâm hội nghị và nhiều tiện ích khác.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'Hệ tiện ích đẳng cấp tiêu chuẩn Resort 5 sao: Quảng trường ánh sáng & nhạc nước, Công viên ven sông, Hồ bơi resort, Gym & Yoga, Bến du thuyền, Phố thương mại, Clubhouse, Vườn nướng BBQ, Khu vui chơi trẻ em, Hệ thống an ninh 24/7.' },
             },
             {
               '@type': 'Question',
               name: 'Coastal Quảng Ngãi giá bao nhiêu?',
-              acceptedAnswer: { '@type': 'Answer', text: 'Giá bán Coastal Quảng Ngãi từ 3 tỷ VNĐ tùy loại hình sản phẩm. Shophouse thương mại, Nhà phố, Biệt thự song lập và đơn lập có mức giá khác nhau. Liên hệ hotline 098 624 3450 để nhận bảng giá chi tiết mới nhất.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'Giá bán Coastal Quảng Ngãi từ 3 tỷ VNĐ tùy loại hình sản phẩm. Nhà liền kề & Shophouse, Biệt thự sinh thái và Căn hộ cao tầng có mức giá khác nhau. Liên hệ hotline 098 624 3450 để nhận bảng giá chi tiết mới nhất.' },
             },
             {
               '@type': 'Question',
@@ -132,7 +134,7 @@ export default function Home() {
             {
               '@type': 'Question',
               name: 'Đầu tư bất động sản Quảng Ngãi có lời không?',
-              acceptedAnswer: { '@type': 'Answer', text: 'BĐS Quảng Ngãi có tiềm năng tăng trưởng cao nhờ dòng vốn FDI lớn (VSIP, Dung Quất), hạ tầng giao thông phát triển và nhu cầu nhà ở tăng. Coastal Quảng Ngãi với pháp lý sổ đỏ lâu dài, vị trí ven biển là lựa chọn đầu tư an toàn.' },
+              acceptedAnswer: { '@type': 'Answer', text: 'BĐS Quảng Ngãi có tiềm năng tăng trưởng cao nhờ dòng vốn FDI lớn (VSIP, Dung Quất), hạ tầng giao thông phát triển và nhu cầu nhà ở tăng. Coastal Quảng Ngãi với pháp lý sổ hồng sở hữu lâu dài, vị trí ven biển là lựa chọn đầu tư an toàn.' },
             },
             {
               '@type': 'Question',
@@ -151,14 +153,16 @@ export default function Home() {
       <main id="main-content">
         <HeroSection />
         <IntroductionSection />
-        <RegistrationFormSection />
         <OverviewSection />
         <LocationSection />
-        <AmenitiesSection />
-        <ArchitectureSection />
-        <PolicySection />
+        <PartnersSection />
         <ProductsSection />
-        <LayoutSection />
+        <PlanningSection />
+        <OperationsSection />
+        <AmenitiesSection />
+        <PolicySection />
+        <PotentialSection />
+        <RegistrationFormSection />
         <ProgressSection />
         <Suspense fallback={<NewsSkeleton />}>
           <NewsSection />

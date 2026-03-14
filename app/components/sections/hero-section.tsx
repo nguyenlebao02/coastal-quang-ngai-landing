@@ -32,10 +32,10 @@ export default function HeroSection() {
         </h1>
         <div className="w-20 h-[1px] bg-white/50 mx-auto mb-4" />
         <p className="text-white/90 text-base md:text-lg mb-2 font-heading uppercase tracking-[3px]">
-          Biểu tượng đô thị sinh thái biển
+          Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung
         </p>
         <p className="text-white/70 text-sm md:text-base mb-10 tracking-wide">
-          Đô thị nghệ thuật văn hóa - Du thuyền hạng sang bên vịnh
+          Nơi hơi thở của biển, nhịp sống của sông và sự phồn vinh đô thị hội tụ
         </p>
         <Button href="#lien-he" className="text-base px-12 py-4">Đăng ký tư vấn</Button>
       </div>

@@ -12,9 +12,10 @@ export default function IntroductionSection() {
           </h2>
           <div className="rose-line mb-6" />
           <p className="text-charcoal/70 max-w-3xl mx-auto text-sm leading-relaxed">
-            Coastal Quảng Ngãi là dự án đô thị sinh thái biển đẳng cấp, quy mô 93.9 HA tại TP. Quảng Ngãi.
-            Với tầm nhìn kiến tạo một biểu tượng đô thị mới, dự án mang đến không gian sống hoàn hảo
-            kết hợp giữa thiên nhiên, nghệ thuật và phong cách sống thượng lưu.
+            Khám phá sự giao thoa kỳ diệu giữa hơi thở của biển, nhịp sống của sông
+            và sự phồn vinh của đô thị. Coastal Quảng Ngãi – dự án đô thị biển đẳng cấp quốc tế
+            đầu tiên tại miền Trung, quy mô 93,9 ha với mật độ xây dựng chỉ 14%,
+            mang đến 1.111 sản phẩm đa dạng – tất cả đều được bảo chứng bởi HAUS.
           </p>
         </div>
 
@@ -31,14 +32,14 @@ export default function IntroductionSection() {
           </div>
         </div>
 
-        {/* Master plan image */}
+        {/* Master plan image — ảnh chuẩn từ reference */}
         <div className="mb-10 max-w-2xl mx-auto">
           <img
-            src="/images/hero/project-overview-masterplan.png"
-            alt="Tổng quan dự án"
+            src="/images/hero/project-masterplan-reference.jpg"
+            alt="Quy hoạch tổng thể dự án Coastal Quảng Ngãi"
             loading="lazy"
-            width={600}
-            height={180}
+            width={800}
+            height={500}
             className="w-full rounded-lg"
           />
         </div>
