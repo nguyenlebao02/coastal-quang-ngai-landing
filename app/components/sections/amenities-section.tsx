@@ -45,10 +45,10 @@ export default function AmenitiesSection() {
         {/* Header row — heading trái, mô tả phải (giống reference) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 items-end">
           <div>
-            <h2 className="font-heading text-3xl md:text-4xl text-rose-beige font-bold uppercase">
+            <h2 className="font-heading text-3xl md:text-4xl text-cta-orange font-bold uppercase">
               Tiện ích đô thị
             </h2>
-            <p className="font-heading text-xl md:text-2xl text-rose-beige/80 italic">
+            <p className="font-heading text-xl md:text-2xl text-cta-orange/80 italic">
               Giàu giá trị
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function AmenitiesSection() {
               <ul className="space-y-1.5">
                 {group.items.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-charcoal/70 text-sm">
-                    <span className="text-rose-beige mt-0.5 flex-shrink-0">•</span>
+                    <span className="text-cta-orange mt-0.5 flex-shrink-0">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
@@ -99,7 +99,7 @@ export default function AmenitiesSection() {
               onClick={() => setActiveIndex(i)}
               className={`overflow-hidden rounded transition-all duration-200 ${
                 i === activeIndex
-                  ? 'ring-2 ring-rose-beige scale-105'
+                  ? 'ring-2 ring-cta-orange scale-105'
                   : 'opacity-60 hover:opacity-100'
               }`}
             >
@@ -110,7 +110,7 @@ export default function AmenitiesSection() {
                 height={719}
                 className="w-full h-14 md:h-20 object-cover"
               />
-              <p className="text-[10px] md:text-xs text-center py-1 bg-rose-beige text-white truncate px-1">
+              <p className="text-[10px] md:text-xs text-center py-1 bg-cta-orange text-white truncate px-1">
                 {amenity.name}
               </p>
             </button>

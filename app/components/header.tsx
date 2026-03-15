@@ -41,7 +41,7 @@ export default function Header() {
     >
       {/* Top bar - hotline */}
       <div className={`hidden md:block text-white text-[11px] py-1 transition-colors duration-300 ${
-        scrolled ? 'bg-rose-beige/90' : 'bg-black/30'
+        scrolled ? 'bg-cta-orange/90' : 'bg-black/30'
       }`}>
         <div className="container mx-auto flex justify-end gap-6 px-4">
           <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="hover:text-white/80 transition-colors">

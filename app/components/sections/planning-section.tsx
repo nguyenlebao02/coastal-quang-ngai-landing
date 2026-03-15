@@ -43,7 +43,7 @@ export default function PlanningSection() {
               Đầu tư hôm nay là chọn cho con cái một môi trường sống tự vận hành bền vững 20-30 năm tới!
             </p>
 
-            <Button href="#lien-he" className="bg-white text-terracotta hover:bg-white/90 border-white">
+            <Button href="#lien-he" className="bg-white !text-cta-orange hover:bg-white/90 border-white">
               Đăng ký ngay
             </Button>
           </div>

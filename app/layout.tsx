@@ -3,6 +3,7 @@ import { Alumni_Sans, Pathway_Extreme } from 'next/font/google';
 import Script from 'next/script';
 import FloatingCta from '@/app/components/floating-cta';
 import { SITE_URL } from '@/app/lib/constants';
+import { safeJsonLd } from '@/app/lib/json-ld-utils';
 import './globals.css';
 
 const GA_ID = 'G-HHW4ZZ4BN2';
@@ -24,7 +25,7 @@ const pathwayExtreme = Pathway_Extreme({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0B3D5C',
+  themeColor: '#FF5722',
 };
 
 export const metadata: Metadata = {
@@ -88,7 +89,7 @@ export default function RootLayout({
         {/* Organization + WebSite JSON-LD */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          dangerouslySetInnerHTML={{ __html: safeJsonLd([
             {
               '@context': 'https://schema.org',
               '@type': 'Organization',

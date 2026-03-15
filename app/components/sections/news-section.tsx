@@ -19,11 +19,11 @@ export default async function NewsSection() {
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <Link href="/tin-tuc/" className="inline-block hover:opacity-80 transition-opacity">
-            <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
+            <h2 className="font-heading text-2xl md:text-3xl text-cta-orange font-bold mb-2 uppercase">
               Tin tức dự án
             </h2>
           </Link>
-          <div className="rose-line mb-6" />
+          <div className="gold-line mb-6" />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -44,10 +44,10 @@ export default async function NewsSection() {
                 />
               </div>
               <div className="p-5">
-                <h3 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
+                <h3 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-cta-orange transition-colors">
                   {item.title}
                 </h3>
-                <span className="inline-block mt-3 text-sm text-rose-beige font-medium">
+                <span className="inline-block mt-3 text-sm text-cta-orange font-medium">
                   Xem thêm →
                 </span>
               </div>

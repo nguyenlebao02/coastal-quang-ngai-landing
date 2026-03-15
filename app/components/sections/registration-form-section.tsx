@@ -6,7 +6,7 @@ import Button from '@/app/components/ui/button';
 import { CONTACT_INFO } from '@/app/lib/constants';
 import { getUtmParams, submitFormToWebhook } from '@/app/lib/form-utils';
 
-const INPUT_CLASS = 'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors';
+const INPUT_CLASS = 'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-cta-orange focus:outline-none transition-colors';
 
 export default function RegistrationFormSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -57,7 +57,7 @@ export default function RegistrationFormSection() {
       id="dang-ky"
       className="relative bg-cover bg-center"
     >
-      <div className="absolute inset-0 bg-rose-beige" />
+      <div className="absolute inset-0 bg-gradient-to-br from-terracotta to-cta-orange" />
 
       <div className="relative z-10 container mx-auto max-w-2xl text-center">
         <h2 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
@@ -70,7 +70,7 @@ export default function RegistrationFormSection() {
 
         {submitted ? (
           <div className="bg-white rounded-lg p-8">
-            <p className="text-rose-beige text-xl font-semibold">Cảm ơn bạn đã đăng ký!</p>
+            <p className="text-cta-orange text-xl font-semibold">Cảm ơn bạn đã đăng ký!</p>
             <p className="text-charcoal/70 mt-2">Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</p>
           </div>
         ) : (

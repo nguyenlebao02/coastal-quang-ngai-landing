@@ -17,7 +17,7 @@ type ButtonProps = AsButton | AsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-cta-orange text-navy font-semibold hover:brightness-110 shadow-md hover:shadow-lg',
+    'bg-cta-orange text-white font-semibold hover:brightness-110 shadow-md hover:shadow-lg',
   outline:
     'bg-transparent border-2 border-ocean-blue text-ocean-blue hover:bg-ocean-blue hover:text-white',
 };

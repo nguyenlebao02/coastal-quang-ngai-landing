@@ -53,7 +53,7 @@ export default function PotentialSection() {
           <p className="text-white text-sm italic mb-4">
             Nếu anh chị tìm kiếm một nơi an cư đẳng cấp và khan hiếm thực sự, đây là thời điểm phù hợp nhất!
           </p>
-          <Button href="#lien-he" className="bg-white text-terracotta hover:bg-white/90 border-white">
+          <Button href="#lien-he" className="bg-white !text-cta-orange hover:bg-white/90 border-white">
             Đăng ký tư vấn
           </Button>
         </div>

@@ -18,7 +18,7 @@ export default function Footer() {
               height={48}
               className="h-12 mb-4"
             />
-            <h3 className="font-heading text-lg text-rose-beige mb-2 font-bold uppercase">{SITE_NAME}</h3>
+            <h3 className="font-heading text-lg text-cta-orange mb-2 font-bold uppercase">{SITE_NAME}</h3>
             <p className="text-white/60 text-sm leading-relaxed">
               Đô thị biển đẳng cấp quốc tế đầu tiên tại miền Trung
             </p>
@@ -27,7 +27,7 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h4 className="text-rose-beige text-sm font-heading font-bold uppercase tracking-wider mb-4">
+            <h4 className="text-cta-orange text-sm font-heading font-bold uppercase tracking-wider mb-4">
               Liên kết
             </h4>
             <ul className="space-y-2">
@@ -35,7 +35,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-white/60 text-sm hover:text-rose-beige transition-colors"
+                    className="text-white/60 text-sm hover:text-cta-orange transition-colors"
                   >
                     {item.label}
                   </a>
@@ -46,19 +46,19 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-rose-beige text-sm font-heading font-bold uppercase tracking-wider mb-4">
+            <h4 className="text-cta-orange text-sm font-heading font-bold uppercase tracking-wider mb-4">
               Liên hệ
             </h4>
             <div className="space-y-3 text-sm text-white/60">
               <p>
                 <span className="text-white/80">Hotline: </span>
-                <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="text-rose-beige hover:underline">
+                <a href={`tel:${CONTACT_INFO.hotlineRaw}`} className="text-cta-orange hover:underline">
                   {CONTACT_INFO.hotline}
                 </a>
               </p>
               <p>
                 <span className="text-white/80">Email: </span>
-                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-rose-beige transition-colors">
+                <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-cta-orange transition-colors">
                   {CONTACT_INFO.email}
                 </a>
               </p>

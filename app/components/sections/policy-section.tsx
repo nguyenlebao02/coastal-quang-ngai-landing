@@ -17,13 +17,10 @@ export default function PolicySection() {
     >
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <p className="font-heading text-base md:text-lg text-gold font-bold uppercase tracking-[0.25em] mb-4">
-            Chính sách bán hàng
-          </p>
-          <h2 className="font-heading text-xl md:text-2xl text-rose-beige font-medium mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-cta-orange font-bold mb-2 uppercase">
             Chính sách bán hàng Coastal Quảng Ngãi (Dự kiến)
           </h2>
-          <div className="rose-line mb-6" />
+          <div className="gold-line mb-6" />
         </div>
 
         {/* Policy highlights */}
@@ -31,9 +28,9 @@ export default function PolicySection() {
           {SALES_POLICIES.map((policy) => (
             <div
               key={policy.title}
-              className="bg-white rounded-lg p-4 text-center border border-rose-beige/20 shadow-sm"
+              className="bg-white rounded-lg p-4 text-center border border-cta-orange/20 shadow-sm"
             >
-              <p className="text-rose-beige font-heading text-2xl font-bold mb-1">{policy.value}</p>
+              <p className="text-cta-orange font-heading text-2xl font-bold mb-1">{policy.value}</p>
               <p className="text-charcoal/70 text-sm">{policy.title}</p>
             </div>
           ))}
@@ -57,13 +54,13 @@ export default function PolicySection() {
           <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             {paymentSteps.map((step, i) => (
               <div key={step.phase} className="flex items-center gap-4">
-                <div className="bg-white border border-rose-beige/20 rounded-lg p-4 text-center min-w-[140px] shadow-sm">
-                  <p className="text-rose-beige font-bold text-xl">{step.percent}</p>
+                <div className="bg-white border border-cta-orange/20 rounded-lg p-4 text-center min-w-[140px] shadow-sm">
+                  <p className="text-cta-orange font-bold text-xl">{step.percent}</p>
                   <p className="text-charcoal font-semibold text-sm">{step.phase}</p>
                   <p className="text-charcoal/50 text-xs">{step.note}</p>
                 </div>
                 {i < paymentSteps.length - 1 && (
-                  <svg className="w-6 h-6 text-rose-beige hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-cta-orange hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 )}

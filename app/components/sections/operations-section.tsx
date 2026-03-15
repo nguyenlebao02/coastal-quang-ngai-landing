@@ -45,7 +45,7 @@ export default function OperationsSection() {
               – tìm hiểu kỹ hơn để thấy vì sao dự án này đang được nhiều nhà đầu tư quan tâm.
             </p>
 
-            <Button href="#lien-he" className="bg-white text-terracotta hover:bg-white/90 border-white">
+            <Button href="#lien-he" className="bg-white !text-cta-orange hover:bg-white/90 border-white">
               Đăng ký ngay
             </Button>
           </div>

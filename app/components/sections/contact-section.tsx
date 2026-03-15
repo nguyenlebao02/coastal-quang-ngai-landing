@@ -6,7 +6,7 @@ import Button from '@/app/components/ui/button';
 import { CONTACT_PRODUCT_OPTIONS, CONTACT_INFO } from '@/app/lib/constants';
 import { getUtmParams, submitFormToWebhook } from '@/app/lib/form-utils';
 
-const INPUT_CLASS = 'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-rose-beige focus:outline-none transition-colors';
+const INPUT_CLASS = 'w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded text-charcoal placeholder-charcoal/40 focus:border-cta-orange focus:outline-none transition-colors';
 
 export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -58,7 +58,7 @@ export default function ContactSection() {
   }
 
   return (
-    <SectionWrapper id="lien-he" className="bg-rose-beige">
+    <SectionWrapper id="lien-he" className="bg-gradient-to-br from-terracotta to-cta-orange">
       <div className="container mx-auto max-w-3xl">
         <div className="text-center mb-8">
           <h2 className="font-heading text-xl md:text-2xl text-white font-medium mb-2 uppercase tracking-[1px]">
@@ -72,7 +72,7 @@ export default function ContactSection() {
 
         {submitted ? (
           <div className="bg-white rounded-lg p-10 text-center">
-            <p className="text-cta-amber text-2xl font-heading font-bold mb-2">Cảm ơn bạn!</p>
+            <p className="text-cta-orange text-2xl font-heading font-bold mb-2">Cảm ơn bạn!</p>
             <p className="text-charcoal/70">Chúng tôi đã nhận được thông tin và sẽ liên hệ sớm nhất.</p>
           </div>
         ) : (
@@ -105,13 +105,13 @@ export default function ContactSection() {
                 {CONTACT_PRODUCT_OPTIONS.map((option) => (
                   <label
                     key={option}
-                    className="flex items-center gap-2 text-charcoal/70 text-sm cursor-pointer hover:text-rose-beige transition-colors"
+                    className="flex items-center gap-2 text-charcoal/70 text-sm cursor-pointer hover:text-cta-orange transition-colors"
                   >
                     <input
                       type="radio"
                       name="product"
                       value={option}
-                      className="accent-rose-beige"
+                      className="accent-cta-orange"
                     />
                     {option}
                   </label>
