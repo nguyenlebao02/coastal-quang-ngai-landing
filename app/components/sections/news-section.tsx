@@ -6,8 +6,9 @@ import { fetchPublishedPosts, resolveImageUrl } from '@/app/lib/blog-api';
 export default async function NewsSection() {
   const posts = await fetchPublishedPosts();
 
+  /* Show up to 6 articles on homepage for better internal linking coverage */
   const articles = posts.length > 0
-    ? posts.slice(0, 3).map((p) => ({
+    ? posts.slice(0, 6).map((p) => ({
         slug: p.slug,
         title: p.title,
         image: resolveImageUrl(p.cover_image),
@@ -54,6 +55,18 @@ export default async function NewsSection() {
             </Link>
           ))}
         </div>
+
+        {/* Link to full listing — helps Google discover /tin-tuc/ page */}
+        {posts.length > 6 && (
+          <div className="text-center mt-8">
+            <Link
+              href="/tin-tuc/"
+              className="inline-block px-6 py-2.5 border-2 border-cta-orange text-cta-orange rounded font-heading font-bold uppercase text-sm hover:bg-cta-orange hover:text-white transition-colors"
+            >
+              Xem tất cả tin tức →
+            </Link>
+          </div>
+        )}
       </div>
     </SectionWrapper>
   );

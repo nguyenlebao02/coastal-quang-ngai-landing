@@ -70,9 +70,17 @@ export default async function BlogDetailPage({ params }: Props) {
     day: 'numeric',
   });
 
-  /* Pick up to 3 related posts (exclude current) */
-  const relatedPosts: BlogPostListItem[] = allPosts
-    .filter((p) => p.slug !== slug)
+  /* Pick up to 3 related posts — use deterministic shuffle based on slug
+     so different articles link to different posts, improving crawl graph */
+  const otherPosts = allPosts.filter((p) => p.slug !== slug);
+  const hashCode = slug.split('').reduce((acc, ch) => acc * 31 + ch.charCodeAt(0), 0);
+  const relatedPosts: BlogPostListItem[] = otherPosts
+    .slice()
+    .sort((a, b) => {
+      const ha = (hashCode ^ a.slug.length) % 1000;
+      const hb = (hashCode ^ b.slug.length) % 1000;
+      return ha - hb;
+    })
     .slice(0, 3);
 
   return (
@@ -182,6 +190,25 @@ export default async function BlogDetailPage({ params }: Props) {
               </div>
             </div>
           )}
+
+          {/* CTA — drives link equity back to homepage and listing */}
+          <div className="mt-8 bg-gradient-to-r from-cta-orange/5 to-terracotta/5 rounded-lg p-6 text-center">
+            <p className="text-charcoal/70 text-sm mb-3">Quan tâm đến dự án Coastal Quảng Ngãi?</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                href="/#lien-he"
+                className="inline-block px-5 py-2 bg-cta-orange text-white rounded font-heading font-bold text-sm uppercase hover:bg-cta-orange/90 transition-colors"
+              >
+                Đăng ký tư vấn
+              </Link>
+              <Link
+                href="/tin-tuc/"
+                className="inline-block px-5 py-2 border-2 border-cta-orange text-cta-orange rounded font-heading font-bold text-sm uppercase hover:bg-cta-orange hover:text-white transition-colors"
+              >
+                Xem tất cả tin tức
+              </Link>
+            </div>
+          </div>
 
           <div className="flex justify-between items-center mt-8 px-2">
             <Link
