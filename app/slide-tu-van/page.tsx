@@ -212,7 +212,7 @@ export default function SlideTuVanPage() {
                 </div>
               ))}
             </div>
-            <div><div className="chart-container" style={{ margin: '0 auto' }}><canvas id="paymentChart" /></div></div>
+            <div><div className="chart-container" style={{ margin: '0 auto' }}><canvas id="paymentChart" /><noscript><p style={{ color: '#6B7280', textAlign: 'center', padding: 20 }}>Biểu đồ cần JavaScript</p></noscript></div></div>
           </div>
         </div>
       </div>
@@ -224,7 +224,7 @@ export default function SlideTuVanPage() {
           <h2 className="slide-heading" style={{ color: '#FFF' }}>Tiềm năng tăng giá vượt trội</h2>
           <div className="accent-line-gold" />
           <div className="grid-2" style={{ marginTop: 16, alignItems: 'center' }}>
-            <div className="chart-container" style={{ width: '100%', maxWidth: 480 }}><canvas id="growthChart" /></div>
+            <div className="chart-container" style={{ width: '100%', maxWidth: 480 }}><canvas id="growthChart" /><noscript><p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', padding: 20 }}>Biểu đồ cần JavaScript</p></noscript></div>
             <div style={{ textAlign: 'left' }}>
               {[['✅ Sổ hồng sở hữu lâu dài','Quyền sở hữu vĩnh viễn, an tâm đầu tư dài hạn'],['✅ Hạ tầng phát triển','Giao thông, KKT Dung Quất 45.000+ ha, FDI tăng mạnh tại Quảng Ngãi'],['✅ Mật độ xây dựng chỉ 14%','Không gian sống thoáng đãng, tiêu chuẩn Resort 5 sao']].map(([title, desc], i) => (
                 <div key={i} className="card-dark" style={{ marginBottom: i < 2 ? 14 : 0, textAlign: 'left', padding: 20 }}>

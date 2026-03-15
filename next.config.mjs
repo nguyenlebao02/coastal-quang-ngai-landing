@@ -14,6 +14,7 @@ const nextConfig = {
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=()' },
           {
             key: 'Content-Security-Policy',
             value: [
@@ -23,7 +24,7 @@ const nextConfig = {
               "img-src 'self' data: https: blob:",
               "font-src 'self' https://fonts.gstatic.com",
               "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://haus-coastal-blog-api.hauscoastal.workers.dev",
-              "frame-src 'self'",
+              "frame-src 'self' https://www.youtube.com",
               "object-src 'none'",
               "base-uri 'self'",
             ].join('; '),

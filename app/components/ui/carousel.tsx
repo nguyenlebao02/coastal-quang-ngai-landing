@@ -47,10 +47,16 @@ export default function Carousel({
       }
       if (controlledIndex === undefined) setInternalIndex(next);
       onSlideChange?.(next);
-      setTimeout(() => setIsTransitioning(false), 500);
     },
     [isTransitioning, loop, total, onSlideChange, controlledIndex]
   );
+
+  /* Reset transitioning flag after animation completes; clear on unmount */
+  useEffect(() => {
+    if (!isTransitioning) return;
+    const timer = setTimeout(() => setIsTransitioning(false), 500);
+    return () => clearTimeout(timer);
+  }, [isTransitioning]);
 
   const next = useCallback(() => goTo(current + 1), [current, goTo]);
   const prev = useCallback(() => goTo(current - 1), [current, goTo]);
@@ -135,7 +141,7 @@ export default function Carousel({
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
         {items.map((item, i) => (
-          <div key={item.image} className={`w-full flex-shrink-0 ${slideHeight}`}>
+          <div key={`${item.image}-${i}`} className={`w-full flex-shrink-0 ${slideHeight}`}>
             <img
               src={item.image}
               alt={item.label || `Slide ${i + 1}`}

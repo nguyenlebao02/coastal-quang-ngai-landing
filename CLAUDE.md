@@ -35,10 +35,12 @@ No test framework is configured. Validate with `npm run lint` and `npm run build
 Homepage (`app/page.tsx`) composes section components sequentially:
 `Hero → Introduction → Overview → Location → Partners → Products → Planning → Operations → Amenities → Policy → Potential → RegistrationForm → Progress → News → Contact`
 
+There are also `architecture-section.tsx` and `layout-section.tsx` components in `app/components/sections/` available but not necessarily in the homepage composition above — check `app/page.tsx` for the actual render order.
+
 Each section is a standalone component in `app/components/sections/`. Sections use `SectionWrapper` (client component with Framer Motion + Intersection Observer) for scroll-triggered animations and ID-based anchor linking.
 
 ### Navigation & Anchors
-Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#vi-tri`, `#tien-ich`, `#chinh-sach`, `#san-pham`, `#tien-do`, `#tin-tuc`, `#lien-he`. Defined in `app/lib/constants.ts` `NAV_ITEMS`.
+Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#vi-tri`, `#tien-ich`, `#ban-giao`, `#chinh-sach`, `#san-pham`, `#layout`, `#tien-do`, `#tin-tuc`, `#lien-he`. Defined in `app/lib/constants.ts` `NAV_ITEMS`.
 
 ### Content Data Source
 Project content is aligned with the reference at `https://dongtayland.vn/du-an/coastal-quang-ngai/`. Key facts:
@@ -61,7 +63,7 @@ Project content is aligned with the reference at `https://dongtayland.vn/du-an/c
 - **No image optimization** — `images: { unoptimized: true }` in next.config.mjs; images from `public/` or Blog API's R2
 - **`trailingSlash: true`** — all routes end with `/` (e.g., `/tin-tuc/`, `/tin-tuc/[slug]/`)
 - **Standalone Docker** — `output: 'standalone'` in next.config.mjs, Dockerfile builds and runs `server.js`
-- **`app/lib/constants.ts`** — central data file for navigation, project info, product specs, contact info. **Change project data here first** — includes `SITE_URL`, `SITE_NAME`, `CONTACT_INFO`, and all section content data.
+- **`app/lib/constants.ts`** — central data file for navigation, project info, product specs, contact info, sales policies, amenities, and news items. **Change project data here first** — includes `SITE_URL`, `SITE_NAME`, `CONTACT_INFO`, `PROJECT_INFO`, `PRODUCT_TYPES`, `SALES_POLICIES`, `AMENITIES`, `NEWS_ITEMS`, and all section content data.
 
 ### Analytics & Tracking
 - **Google Analytics**: `G-HHW4ZZ4BN2` — loaded via `next/script` `afterInteractive`
@@ -71,8 +73,9 @@ Project content is aligned with the reference at `https://dongtayland.vn/du-an/c
 
 ### SEO & Structured Data
 - `app/layout.tsx`: Organization + WebSite JSON-LD, Google Search Console verification
-- `app/page.tsx`: RealEstateListing + FAQPage JSON-LD
-- `app/tin-tuc/[slug]/page.tsx`: Article + BreadcrumbList JSON-LD
+- `app/page.tsx`: RealEstateListing + FAQPage JSON-LD (uses raw `JSON.stringify` — NOT `safeJsonLd`, since no user-generated content)
+- `app/tin-tuc/[slug]/page.tsx`: Article + BreadcrumbList JSON-LD (uses `safeJsonLd()` since it includes blog content)
+- `app/tin-tuc/page.tsx`: BreadcrumbList + CollectionPage JSON-LD
 - `app/robots.ts` + `app/sitemap.ts`: auto-generated
 - `app/lib/json-ld-utils.ts`: `safeJsonLd()` escapes `<` to `\u003c` preventing `</script>` XSS in JSON-LD blocks; `safeFormatDate()` handles invalid dates gracefully
 
@@ -83,7 +86,7 @@ Project content is aligned with the reference at `https://dongtayland.vn/du-an/c
 
 ### Slide Tư Vấn (Presentation Page)
 Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team to pitch investors. Modular structure:
-- `app/slide-tu-van/page.tsx` — Main component (`'use client'`), composes all slides, loads Chart.js via `next/script`
+- `app/slide-tu-van/page.tsx` — Main component (`'use client'`), composes all 12 slides, loads Chart.js via `next/script`
 - `app/slide-tu-van/use-slide-navigation.ts` — Keyboard/touch/click navigation hook, progress bar updates
 - `app/slide-tu-van/slide-charts.ts` — Chart.js initialization per slide (lazy, only when slide becomes active)
 - `app/slide-tu-van/slide-styles.css` — Self-contained CSS (not Tailwind — intentional for presentation isolation). Uses separate fonts (Playfair Display + Inter) loaded via CSS `@import`
@@ -91,6 +94,7 @@ Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team t
 ### Form & UTM Utilities
 - `app/lib/form-utils.ts` — `getUtmParams()` reads UTM query params client-side; `submitFormToWebhook()` POSTs form data to `/api/contact/`; `trackFbLead()` fires FB Pixel Lead event on success
 - Used by `RegistrationFormSection` and `ContactSection` — both forward UTM params alongside lead data
+- Both forms have honeypot field (`website`) for bot detection
 
 ### API Routes
 - `POST /api/contact/` — form submission with honeypot field (`website`), in-memory rate limiting (5/min/IP with periodic cleanup), phone regex validation (`/^(\+84|0)\d{9,10}$/`), email format validation, forwards to `WEBHOOK_URL`. Note: in-memory rate limiter resets on cold start — relies on reverse proxy for production-grade protection.
@@ -103,16 +107,19 @@ Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team t
 
 ### Design System
 - **Fonts**: `Alumni Sans` (headings via `font-heading`), `Pathway Extreme` (body via `font-sans`)
-- **Brand colors** (tailwind.config.ts): `navy` (#0B3D5C), `gold` (#D4AF37), `cream` (#F0E6DC), `rose-beige` (#C39F93), `terracotta` (#B7401D), `cta-orange` (#FF5722)
+- **Brand colors** (tailwind.config.ts): `navy` (#0B3D5C), `gold` (#D4AF37), `cream` (#F0E6DC), `rose-beige` (#C39F93), `terracotta` (#B7401D), `cta-orange` (#FF5722), `cta-amber` (#FFAB00), `ocean-blue` (#1B76A8)
+- **Button styles**: Primary button is `bg-cta-orange text-navy` (orange background, navy text). Outline variant uses `ocean-blue` border.
 - **Utility CSS classes** in globals.css: `.gold-line`, `.rose-line`, `.terracotta-line`, `.bg-cream-gradient`, `.section-padding`
 - **Path alias**: `@/*` maps to project root
 
 ### UI Components
 - `app/components/ui/section-wrapper.tsx` — Client component wrapping sections with Framer Motion scroll animation
-- `app/components/ui/carousel.tsx` — Image carousel with touch/swipe, keyboard nav, auto-play
-- `app/components/ui/lightbox.tsx` — Fullscreen image viewer with `role="dialog"`, `aria-modal`, Escape to close
-- `app/components/ui/button.tsx` — Shared button component (renders as `<button>` or `<a>`)
-- `app/components/floating-cta.tsx` — Fixed-position CTA (Zalo + phone), currently only on homepage
+- `app/components/ui/carousel.tsx` — Image carousel with touch/swipe, keyboard nav, auto-play, visibility-change pause
+- `app/components/ui/lightbox.tsx` — Fullscreen image viewer with `role="dialog"`, `aria-modal`, focus trap, Escape to close
+- `app/components/ui/button.tsx` — Shared button component (renders as `<button>` or `<a>`), supports `primary` and `outline` variants
+- `app/components/floating-cta.tsx` — Fixed-position CTA (Zalo + phone + scroll-to-top), hidden on `/slide-tu-van` pages
+- `app/components/header.tsx` — Sticky nav with mobile menu, body scroll lock, focus trap, Escape to close
+- `app/components/footer.tsx` — Footer with contact info
 
 ### Blog API (Separate Repo)
 
@@ -133,7 +140,7 @@ Admin features: AI post generation, create from URL (crawl + rewrite), full arti
 
 ## Deployment
 
-**Landing (this repo)**: Docker image → Tose hosting
+**Landing (this repo)**: Docker image → Tose hosting (no CI/CD — manual build & deploy)
 ```bash
 docker build -t haus-coastal .
 # Override blog API URL at build time:

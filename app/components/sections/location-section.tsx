@@ -73,10 +73,10 @@ export default function LocationSection() {
 
           {/* Right — Heading + bullets + 3 carousel riêng biệt */}
           <div>
-            <h2 className="font-heading text-3xl md:text-4xl text-rose-beige font-bold italic mb-1 uppercase">
+            <h2 className="font-heading text-3xl md:text-4xl text-cta-orange font-bold italic mb-1 uppercase">
               Vị trí lý tưởng
             </h2>
-            <p className="font-heading text-lg md:text-xl text-rose-beige/80 italic mb-6">
+            <p className="font-heading text-lg md:text-xl text-cta-orange/80 italic mb-6">
               Cận giang - Cận hải - Cận lộ
             </p>
 

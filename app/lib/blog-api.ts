@@ -51,17 +51,22 @@ export const fetchPostBySlug = cache(async (slug: string): Promise<BlogPost | nu
 
 export function resolveImageUrl(coverImage: string): string {
   if (!coverImage) return '/images/news/blog-location-golden-potential.jpg';
-  if (coverImage.startsWith('http')) return coverImage;
+  if (coverImage.startsWith('http://') || coverImage.startsWith('https://')) return coverImage;
   if (coverImage.startsWith('/images/')) return coverImage;
-  return `${BLOG_API_URL}${coverImage}`;
+  /* Only resolve API-relative paths; reject other schemes (javascript:, data:, etc.) */
+  if (coverImage.startsWith('/api/') || coverImage.startsWith('/uploads/')) return `${BLOG_API_URL}${coverImage}`;
+  return '/images/news/blog-location-golden-potential.jpg';
 }
 
 /** Sanitize HTML content using DOMPurify — safe against XSS. Also resolves relative image URLs and strips Pexels captions. */
 export function sanitizeHtml(html: string): string {
   /* Sanitize first, then rewrite URLs — prevents regex from creating malformed HTML pre-sanitization */
-  const clean = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+  const clean = DOMPurify.sanitize(html, {
+    USE_PROFILES: { html: true },
+    FORBID_TAGS: ['form', 'input', 'button', 'select', 'textarea', 'canvas', 'audio', 'video', 'source', 'template', 'dialog'],
+  });
   return clean
     .replace(/(<img\s[^>]*src=["'])\/api\//g, `$1${BLOG_API_URL}/api/`)
     /* Strip <figcaption> with Pexels stock photo alt texts (e.g. "Ảnh lưu trữ miễn phí về...") */
-    .replace(/<figcaption[^>]*>.*?<\/figcaption>/gi, '');
+    .replace(/<figcaption[^>]*>[\s\S]*?<\/figcaption>/gi, '');
 }
