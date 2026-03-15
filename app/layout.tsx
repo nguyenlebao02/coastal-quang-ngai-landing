@@ -82,6 +82,8 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${alumniSans.variable} ${pathwayExtreme.variable}`}>
       <head>
+        {/* Preload hero LCP image for faster first paint */}
+        <link rel="preload" as="image" href="/images/hero/hero-banner-coastal-aerial.jpg" fetchPriority="high" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
