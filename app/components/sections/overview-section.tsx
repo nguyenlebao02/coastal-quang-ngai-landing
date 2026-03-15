@@ -73,7 +73,7 @@ export default function OverviewSection() {
       </div>
 
       {/* Video + BG image layer: ảnh nền phía dưới, video đè lên trên */}
-      <div className="relative mt-24 overflow-hidden">
+      <div className="relative mt-24 isolate">
         {/* BG-Tong-quan-2.jpg — lớp dưới */}
         <img
           src="/images/misc/bg-tong-quan.jpg"
