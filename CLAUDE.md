@@ -66,6 +66,7 @@ Project content is aligned with the reference at `https://dongtayland.vn/du-an/c
 - **`trailingSlash: true`** — all routes end with `/` (e.g., `/tin-tuc/`, `/tin-tuc/[slug]/`)
 - **Standalone Docker** — `output: 'standalone'` in next.config.mjs, Dockerfile builds and runs `server.js`
 - **`app/lib/constants.ts`** — central data file for navigation, project info, product specs, contact info, sales policies, amenities, and news items. **Change project data here first** — includes `SITE_URL`, `SITE_NAME`, `CONTACT_INFO`, `PROJECT_INFO`, `PRODUCT_TYPES`, `SALES_POLICIES`, `AMENITIES`, `NEWS_ITEMS`, and all section content data.
+- **Overview video overlay** — `overview-section.tsx` uses absolute-positioned YouTube iframe over a background image with `-translate-y-[10%]`. Container uses `isolate` (not `overflow-hidden`) to prevent z-index bleed without clipping rounded corners. Do NOT add `overflow-hidden` to the video container — it clips the border-radius.
 
 ### Analytics & Tracking
 - **Google Analytics**: `G-HHW4ZZ4BN2` — loaded via `next/script` `afterInteractive`

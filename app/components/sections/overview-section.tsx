@@ -7,8 +7,8 @@ import SectionWrapper from '@/app/components/ui/section-wrapper';
 export default function OverviewSection() {
   return (
     <SectionWrapper id="tong-quan" className="!pb-0 bg-white">
-      {/* Grid thông tin — nền trắng */}
-      <div className="container mx-auto max-w-6xl">
+      {/* Grid thông tin — nền trắng, z-10 để không bị video đè */}
+      <div className="container mx-auto max-w-6xl relative z-10">
         {/* Heading — gradient orange text like dongtayland reference */}
         <h2 className="font-heading text-3xl md:text-4xl text-cta-orange font-bold italic mb-10 uppercase">
           Thông tin tổng quan
@@ -83,8 +83,8 @@ export default function OverviewSection() {
           height={800}
           className="w-full h-auto block"
         />
-        {/* Video — đè lên trên ảnh, căn giữa */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-12 -translate-y-[10%]">
+        {/* Video — đè lên trên ảnh, căn giữa, z-0 để không đè lên content phía trên */}
+        <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-12 -translate-y-[10%] z-0">
           <div className="w-full max-w-[1500px] rounded-xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
             <iframe
               src="https://www.youtube.com/embed/RV5eoU2sv7s?autoplay=1&mute=1&color=red&controls=1&loop=1&playlist=RV5eoU2sv7s&rel=0&start=0&cc_load_policy=0&iv_load_policy=3&enablejsapi=1"
