@@ -3,8 +3,8 @@ export default function BlogLoading() {
     <div className="min-h-screen pt-28 pb-16 bg-cream-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <div className="h-10 w-56 bg-rose-beige/20 rounded mx-auto mb-4 animate-pulse" />
-          <div className="rose-line mb-4" />
+          <div className="h-10 w-56 bg-cta-orange/20 rounded mx-auto mb-4 animate-pulse" />
+          <div className="gold-line mb-4" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[0, 1, 2].map((i) => (

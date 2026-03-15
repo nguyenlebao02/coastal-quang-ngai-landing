@@ -37,10 +37,10 @@ export default function ArchitectureSection() {
           <p className="font-heading text-base md:text-lg text-gold font-bold uppercase tracking-[0.25em] mb-4">
             Bàn giao full nội thất
           </p>
-          <h2 className="font-heading text-2xl md:text-3xl text-rose-beige font-bold mb-2 uppercase">
+          <h2 className="font-heading text-2xl md:text-3xl text-cta-orange font-bold mb-2 uppercase">
             Thiết kế nội thất cao cấp
           </h2>
-          <div className="rose-line mb-6" />
+          <div className="gold-line mb-6" />
         </div>
 
         {/* Interior showcase */}

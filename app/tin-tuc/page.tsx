@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogListingPage() {
-  let posts = await fetchPublishedPosts();
+  const posts = await fetchPublishedPosts();
 
   /* Fallback to hardcoded items when API unavailable */
   const articles = posts.length > 0
@@ -69,16 +69,16 @@ export default async function BlogListingPage() {
         <div className="container mx-auto">
           {/* Visual breadcrumb */}
           <nav aria-label="Breadcrumb" className="text-sm text-charcoal/50 mb-6">
-            <Link href="/" className="hover:text-rose-beige transition-colors">Trang chủ</Link>
+            <Link href="/" className="hover:text-cta-orange transition-colors">Trang chủ</Link>
             <span className="mx-2">/</span>
             <span className="text-charcoal/80">Tin tức</span>
           </nav>
 
           <div className="text-center mb-10">
-            <h1 className="font-heading text-3xl md:text-4xl text-rose-beige font-bold mb-2 uppercase">
+            <h1 className="font-heading text-3xl md:text-4xl text-cta-orange font-bold mb-2 uppercase">
               Tin tức dự án
             </h1>
-            <div className="rose-line mb-4" />
+            <div className="gold-line mb-4" />
             <p className="text-charcoal/60 max-w-xl mx-auto">
               Cập nhật thông tin mới nhất về dự án Coastal Quảng Ngãi
             </p>
@@ -105,13 +105,13 @@ export default async function BlogListingPage() {
                   {item.date && (
                     <span className="text-xs text-charcoal/40 mb-2 block">{item.date}</span>
                   )}
-                  <h3 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
+                  <h3 className="font-heading font-bold text-charcoal text-lg leading-snug line-clamp-2 group-hover:text-cta-orange transition-colors">
                     {item.title}
                   </h3>
                   {item.excerpt && (
                     <p className="text-sm text-charcoal/60 mt-2 line-clamp-2">{item.excerpt}</p>
                   )}
-                  <span className="inline-block mt-3 text-sm text-rose-beige font-medium">
+                  <span className="inline-block mt-3 text-sm text-cta-orange font-medium">
                     Xem thêm →
                   </span>
                 </div>
@@ -122,7 +122,7 @@ export default async function BlogListingPage() {
           <div className="text-center mt-10">
             <Link
               href="/#tin-tuc"
-              className="text-rose-beige hover:text-cta-orange font-medium transition-colors"
+              className="text-cta-orange hover:text-cta-orange font-medium transition-colors"
             >
               ← Quay lại trang chủ
             </Link>

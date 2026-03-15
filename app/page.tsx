@@ -17,14 +17,15 @@ import ProgressSection from '@/app/components/sections/progress-section';
 import NewsSection from '@/app/components/sections/news-section';
 import ContactSection from '@/app/components/sections/contact-section';
 import { SITE_URL } from '@/app/lib/constants';
+import { safeJsonLd } from '@/app/lib/json-ld-utils';
 
 function NewsSkeleton() {
   return (
     <div className="py-16 bg-cream-gradient">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <div className="h-8 w-48 bg-rose-beige/20 rounded mx-auto mb-2" />
-          <div className="rose-line mb-6" />
+          <div className="h-8 w-48 bg-cta-orange/20 rounded mx-auto mb-2" />
+          <div className="gold-line mb-6" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[0, 1, 2].map((i) => (
@@ -55,7 +56,7 @@ export default function Home() {
       {/* RealEstateListing JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        dangerouslySetInnerHTML={{ __html: safeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'RealEstateListing',
           name: 'Coastal Quảng Ngãi',
@@ -82,7 +83,7 @@ export default function Home() {
       {/* FAQPage JSON-LD — targets long-tail search queries */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        dangerouslySetInnerHTML={{ __html: safeJsonLd({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           mainEntity: [

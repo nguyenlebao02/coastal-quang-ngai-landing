@@ -139,7 +139,7 @@ export default async function BlogDetailPage({ params }: Props) {
               <h1 className="font-heading text-2xl md:text-3xl lg:text-4xl text-navy font-bold mt-2 leading-tight">
                 {post.title}
               </h1>
-              <div className="rose-line !mx-0 mt-4 mb-4" />
+              <div className="gold-line !mx-0 mt-4 mb-4" />
               <p className="text-charcoal/60 italic">{post.excerpt}</p>
             </div>
 
@@ -173,7 +173,7 @@ export default async function BlogDetailPage({ params }: Props) {
                       loading="lazy"
                     />
                     <div className="p-3">
-                      <h3 className="font-heading font-bold text-sm text-charcoal leading-snug line-clamp-2 group-hover:text-rose-beige transition-colors">
+                      <h3 className="font-heading font-bold text-sm text-charcoal leading-snug line-clamp-2 group-hover:text-cta-orange transition-colors">
                         {rp.title}
                       </h3>
                     </div>
@@ -186,13 +186,13 @@ export default async function BlogDetailPage({ params }: Props) {
           <div className="flex justify-between items-center mt-8 px-2">
             <Link
               href="/tin-tuc/"
-              className="text-rose-beige hover:text-cta-orange font-medium transition-colors"
+              className="text-cta-orange hover:text-cta-orange/80 font-medium transition-colors"
             >
               ← Tất cả bài viết
             </Link>
             <Link
               href="/"
-              className="text-rose-beige hover:text-cta-orange font-medium transition-colors"
+              className="text-cta-orange hover:text-cta-orange/80 font-medium transition-colors"
             >
               Trang chủ
             </Link>
