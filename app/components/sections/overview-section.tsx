@@ -72,19 +72,20 @@ export default function OverviewSection() {
         </div>
       </div>
 
-      {/* Video + BG image layer: ảnh nền phía dưới, video đè lên trên */}
-      <div className="relative mt-24">
-        {/* BG-Tong-quan-2.jpg — lớp dưới */}
+      {/* Video section: video nổi lên trên, ảnh nền phía sau */}
+      <div className="relative mt-12">
+        {/* BG image — lớp dưới */}
         <img
           src="/images/misc/bg-tong-quan.jpg"
-          alt="Coastal Quảng Ngãi"
+          alt=""
+          aria-hidden="true"
           width={1920}
           height={800}
           className="w-full h-auto block"
         />
-        {/* Video — đè lên trên ảnh, căn giữa */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 md:px-8 lg:px-12 -translate-y-[10%]">
-          <div className="w-full max-w-[1500px] rounded-xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
+        {/* Video — overlap lên ảnh nền bằng negative margin */}
+        <div className="container mx-auto max-w-5xl px-4 -mt-[30%] md:-mt-[25%] relative z-10 pb-6">
+          <div className="rounded-xl overflow-hidden shadow-2xl" style={{ aspectRatio: '16/9' }}>
             <iframe
               src="https://www.youtube.com/embed/RV5eoU2sv7s?autoplay=1&mute=1&color=red&controls=1&loop=1&playlist=RV5eoU2sv7s&rel=0&start=0&cc_load_policy=0&iv_load_policy=3&enablejsapi=1"
               title="Video giới thiệu Coastal Quảng Ngãi"

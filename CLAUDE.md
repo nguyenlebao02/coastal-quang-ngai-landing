@@ -33,11 +33,13 @@ No test framework is configured. Validate with `npm run lint` and `npm run build
 
 ### Homepage Structure
 Homepage (`app/page.tsx`) composes section components sequentially:
-`Hero → Introduction → Overview → Location → Partners → Products → Planning → Operations → Amenities → Policy → Potential → RegistrationForm → Progress → News → Contact`
+`Hero → Introduction → Overview → Location → Partners → Products → Planning → Operations → Amenities → Policy → Potential → RegistrationForm → Progress → News (Suspense) → Contact`
 
 There are also `architecture-section.tsx` and `layout-section.tsx` components in `app/components/sections/` available but not necessarily in the homepage composition above — check `app/page.tsx` for the actual render order.
 
 Each section is a standalone component in `app/components/sections/`. Sections use `SectionWrapper` (client component with Framer Motion + Intersection Observer) for scroll-triggered animations and ID-based anchor linking.
+
+`NewsSection` is the only async server component on the homepage — wrapped in `<Suspense>` with a skeleton fallback because it fetches from the Blog API.
 
 ### Navigation & Anchors
 Navigation uses Vietnamese slugs for anchor IDs: `#gioi-thieu`, `#tong-quan`, `#vi-tri`, `#tien-ich`, `#ban-giao`, `#chinh-sach`, `#san-pham`, `#layout`, `#tien-do`, `#tin-tuc`, `#lien-he`. Defined in `app/lib/constants.ts` `NAV_ITEMS`.
@@ -85,7 +87,7 @@ Project content is aligned with the reference at `https://dongtayland.vn/du-an/c
 - When adding new external scripts/domains, update CSP `connect-src` and `script-src` in `next.config.mjs`
 
 ### Slide Tư Vấn (Presentation Page)
-Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team to pitch investors. Modular structure:
+Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team to pitch investors. `robots: noindex, nofollow` via `layout.tsx`. Modular structure:
 - `app/slide-tu-van/page.tsx` — Main component (`'use client'`), composes all 12 slides, loads Chart.js via `next/script`
 - `app/slide-tu-van/use-slide-navigation.ts` — Keyboard/touch/click navigation hook, progress bar updates
 - `app/slide-tu-van/slide-charts.ts` — Chart.js initialization per slide (lazy, only when slide becomes active)
@@ -108,7 +110,9 @@ Client-side fullscreen presentation at `/slide-tu-van/` — used by sales team t
 ### Design System
 - **Fonts**: `Alumni Sans` (headings via `font-heading`), `Pathway Extreme` (body via `font-sans`)
 - **Brand colors** (tailwind.config.ts): `navy` (#0B3D5C), `gold` (#D4AF37), `cream` (#F0E6DC), `rose-beige` (#C39F93), `terracotta` (#B7401D), `cta-orange` (#FF5722), `cta-amber` (#FFAB00), `ocean-blue` (#1B76A8)
-- **Button styles**: Primary button is `bg-cta-orange text-navy` (orange background, navy text). Outline variant uses `ocean-blue` border.
+- **Primary accent**: `cta-orange` (#FF5722) — used for headings, hover states, focus rings, card values, thumbnail labels, success messages, and all interactive elements. `gold` is secondary accent for divider lines only. `rose-beige` and `terracotta` are retained in config but minimally used in components.
+- **Gradient sections**: Planning, Operations, Potential use `bg-gradient-to-br from-terracotta to-cta-orange`. Form sections (Registration, Contact) also use this gradient.
+- **Button styles**: Primary button is `bg-cta-orange text-navy` (orange background, navy text). Outline variant uses `ocean-blue` border. On gradient backgrounds, buttons use `bg-white text-cta-orange`.
 - **Utility CSS classes** in globals.css: `.gold-line`, `.rose-line`, `.terracotta-line`, `.bg-cream-gradient`, `.section-padding`
 - **Path alias**: `@/*` maps to project root
 
