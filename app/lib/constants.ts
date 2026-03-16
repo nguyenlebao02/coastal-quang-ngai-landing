@@ -1,16 +1,16 @@
 /* Navigation items matching coastal.com.vn structure */
 export const NAV_ITEMS = [
-  { label: 'Giới thiệu', href: '#gioi-thieu' },
-  { label: 'Tổng quan', href: '#tong-quan' },
-  { label: 'Vị trí', href: '#vi-tri' },
-  { label: 'Tiện ích', href: '#tien-ich' },
-  { label: 'Bàn giao', href: '#ban-giao' },
-  { label: 'Chính sách', href: '#chinh-sach' },
-  { label: 'Sản phẩm', href: '#san-pham' },
-  { label: 'Layout', href: '#layout' },
-  { label: 'Tiến độ', href: '#tien-do' },
-  { label: 'Tin tức', href: '#tin-tuc' },
-  { label: 'Liên hệ', href: '#lien-he' },
+  { label: 'Giới thiệu', href: '/#gioi-thieu' },
+  { label: 'Tổng quan', href: '/#tong-quan' },
+  { label: 'Vị trí', href: '/#vi-tri' },
+  { label: 'Tiện ích', href: '/#tien-ich' },
+  { label: 'Bàn giao', href: '/#ban-giao' },
+  { label: 'Chính sách', href: '/#chinh-sach' },
+  { label: 'Sản phẩm', href: '/#san-pham' },
+  { label: 'Layout', href: '/#layout' },
+  { label: 'Tiến độ', href: '/#tien-do' },
+  { label: 'Tin tức', href: '/#tin-tuc' },
+  { label: 'Liên hệ', href: '/#lien-he' },
 ] as const;
 
 export const SITE_URL = 'https://hauscoastal.com.vn';

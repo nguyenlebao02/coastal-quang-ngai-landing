@@ -70,15 +70,16 @@ export default async function BlogDetailPage({ params }: Props) {
     day: 'numeric',
   });
 
-  /* Pick up to 3 related posts — use deterministic shuffle based on slug
+  /* Pick up to 3 related posts — use deterministic shuffle based on slug hash
      so different articles link to different posts, improving crawl graph */
   const otherPosts = allPosts.filter((p) => p.slug !== slug);
   const hashCode = slug.split('').reduce((acc, ch) => acc * 31 + ch.charCodeAt(0), 0);
   const relatedPosts: BlogPostListItem[] = otherPosts
     .slice()
     .sort((a, b) => {
-      const ha = (hashCode ^ a.slug.length) % 1000;
-      const hb = (hashCode ^ b.slug.length) % 1000;
+      /* Hash each related slug individually for better distribution */
+      const ha = (hashCode ^ a.slug.split('').reduce((s, c) => s * 31 + c.charCodeAt(0), 0)) % 10000;
+      const hb = (hashCode ^ b.slug.split('').reduce((s, c) => s * 31 + c.charCodeAt(0), 0)) % 10000;
       return ha - hb;
     })
     .slice(0, 3);
@@ -151,14 +152,16 @@ export default async function BlogDetailPage({ params }: Props) {
               <p className="text-charcoal/60 italic">{post.excerpt}</p>
             </div>
 
-            <div
-              className="prose prose-lg max-w-none
-                prose-headings:font-heading prose-headings:text-navy prose-headings:font-bold
-                prose-p:text-charcoal/80 prose-p:leading-relaxed
-                prose-a:text-ocean-blue prose-a:underline
-                prose-img:rounded-lg prose-img:shadow-md"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
-            />
+            {post.content && (
+              <div
+                className="prose prose-lg max-w-none
+                  prose-headings:font-heading prose-headings:text-navy prose-headings:font-bold
+                  prose-p:text-charcoal/80 prose-p:leading-relaxed
+                  prose-a:text-ocean-blue prose-a:underline
+                  prose-img:rounded-lg prose-img:shadow-md"
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.content) }}
+              />
+            )}
           </div>
 
           {/* Related articles */}

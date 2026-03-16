@@ -87,7 +87,7 @@ export default function RegistrationFormSection() {
             </div>
             <div>
               <label htmlFor="reg-phone" className="sr-only">Số điện thoại</label>
-              <input id="reg-phone" type="tel" name="phone" placeholder="Số điện thoại" required pattern="[\d\s\-+]{9,15}" title="Số điện thoại (VD: 0901234567)" maxLength={15} className={INPUT_CLASS} />
+              <input id="reg-phone" type="tel" name="phone" placeholder="Số điện thoại" required pattern="(0|\+84)[\d\s\-]{8,13}" title="Số điện thoại Việt Nam (VD: 0901234567)" maxLength={15} className={INPUT_CLASS} />
             </div>
             <div>
               <label htmlFor="reg-email" className="sr-only">Email</label>

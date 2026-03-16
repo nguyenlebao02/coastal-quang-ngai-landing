@@ -9,7 +9,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogUrls: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/tin-tuc/${post.slug}/`,
-    lastModified: new Date(post.updated_at || post.created_at),
+    lastModified: new Date(post.updated_at || post.created_at || new Date().toISOString()),
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
